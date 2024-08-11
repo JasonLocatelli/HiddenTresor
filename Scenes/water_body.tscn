@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccgh1tnhrlw6k"]
+[gd_scene load_steps=7 format=3 uid="uid://ccgh1tnhrlw6k"]
 
 [ext_resource type="Script" path="res://Scripts/water_body.gd" id="1_2rfbr"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="2_nd8nw"]
@@ -10,6 +10,8 @@ shader_parameter/tint = Color(0, 0.509804, 1, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_sxav8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86ynw"]
+
 [node name="WaterBody" type="Node2D"]
 script = ExtResource("1_2rfbr")
 
@@ -19,3 +21,11 @@ material = SubResource("ShaderMaterial_ntoyd")
 [node name="WaterBorder" type="Path2D" parent="."]
 curve = SubResource("Curve2D_sxav8")
 script = ExtResource("3_thmbn")
+
+[node name="Water_body_area" type="Area2D" parent="."]
+
+[node name="water_body_collision" type="CollisionShape2D" parent="Water_body_area"]
+shape = SubResource("RectangleShape2D_86ynw")
+
+[connection signal="body_entered" from="Water_body_area" to="." method="_on_water_body_area_body_entered"]
+[connection signal="body_exited" from="Water_body_area" to="." method="_on_water_body_area_body_exited"]
