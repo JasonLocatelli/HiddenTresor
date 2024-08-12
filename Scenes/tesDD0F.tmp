@@ -18,5 +18,4 @@ texture = ExtResource("2_j6d6s")
 position = Vector2(0, 0.429993)
 shape = SubResource("CircleShape2D_otb2t")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 81.93)
+[node name="TimerOxygen" type="Timer" parent="."]

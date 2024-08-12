@@ -89,8 +89,10 @@ func new_border():
 
 func _on_water_body_area_body_entered(body):
 	if (body.is_in_group("player")) :
+		body.start_timer_oxygen()
 		body.max_speed = body.max_speed/2
 
 func _on_water_body_area_body_exited(body):
 	if (body.is_in_group("player")) :
+		body.stop_timer_oxygen()
 		body.max_speed = body.max_speed*2
