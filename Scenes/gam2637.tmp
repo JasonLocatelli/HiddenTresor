@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_62svw"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="PackedScene" uid="uid://bi6gv80feb75s" path="res://Scenes/groundTest.tscn" id="1_vij6w"]
-[ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
+[ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/test_stone.tscn" id="2_3m4wa"]
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="4_mjh56"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_ha2y5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_mhwr4"]

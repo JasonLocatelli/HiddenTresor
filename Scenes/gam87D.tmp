@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_62svw"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="PackedScene" uid="uid://bi6gv80feb75s" path="res://Scenes/groundTest.tscn" id="1_vij6w"]
-[ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
+[ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/test_stone.tscn" id="2_3m4wa"]
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="4_mjh56"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_ha2y5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_mhwr4"]
@@ -34,8 +34,7 @@ position = Vector2(-627, 7.99999)
 scale = Vector2(3.40994, 2.49296)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-38, 131)
-scale = Vector2(0.405, 0.405)
+position = Vector2(-69, 276)
 texture = ExtResource("4_mjh56")
 
 [node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
@@ -46,14 +45,13 @@ scale = Vector2(1.33372, 1.20018)
 distance_between_springs = 50
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(0, -104.93)
+position = Vector2(0, -254.93)
 script = ExtResource("5_ha2y5")
 follow_mode = 2
 follow_target = NodePath("../TestStone")
 snap_to_pixel = true
 tween_resource = SubResource("Resource_o2xsg")
 tween_on_load = false
-follow_offset = Vector2(0, 150)
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
 dead_zone_width = 0.22
@@ -61,7 +59,7 @@ dead_zone_height = 0.25
 show_viewfinder_in_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -105)
+position = Vector2(0, -255)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_d3870")

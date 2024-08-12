@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://clxrufp2gfhb2"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7srlu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyhe6"]
+bg_color = Color(0.333333, 0.501961, 1, 0.501961)
+
+[node name="HUD" type="Control" groups=["hud"]]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_amwu5")
+
+[node name="PbOxygen" type="ProgressBar" parent="."]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 20.0
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_7srlu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyhe6")
+max_value = 30.0
+step = 0.001
+value = 30.0
+show_percentage = false
