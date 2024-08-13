@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=8 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
+[ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7srlu"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.843137)
@@ -108,6 +109,27 @@ max_value = 30.0
 step = 0.0
 value = 30.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 28)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_77em6")
+
+[node name="X" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 119.0
+text = "X"
+
+[node name="numberOfCoins" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 16.0
+offset_right = 108.0
+offset_bottom = 119.0
+text = "0"
 
 [node name="GameOver" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
