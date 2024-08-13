@@ -50,12 +50,13 @@ func _physics_process(delta):
 
 # Méthode chargée de gérer l'oxygène.
 func manage_oxygen(delta):
-	if enableOxygen && timerOxygen > 0:
-		timerOxygen -= delta
-	elif timerOxygen < initTimerOxygen:
-		timerOxygen += delta
-	if timerOxygen <= 0:
-		dead()
+	if !isDead:
+		if enableOxygen && timerOxygen > 0:
+			timerOxygen -= delta
+		elif timerOxygen < initTimerOxygen:
+			timerOxygen += delta
+		if timerOxygen <= 0:
+			dead()
 
 # Méthode chargée de démarrer le timer d'oxygène.
 func start_timer_oxygen():
@@ -72,3 +73,4 @@ func reset_timer_oxygen(value):
 func dead():
 	isDead = true
 	# Afficher le game over
+	GameManager.hud.displayGameOver()
