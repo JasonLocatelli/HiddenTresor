@@ -2,22 +2,19 @@ extends CharacterBody2D
 
 # Vélocité de saut, définie comme une constante pour être utilisée lors de la détection du saut.
 const JUMP_VELOCITY = -400.0
-
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
 @export var initTimerOxygen = 30
-
 # Vitesse maximale du personnage en pixels par seconde.
 var max_speed = 225
 # Force de gravité appliquée au personnage, récupérée depuis les paramètres du projet.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Valeur en temps reel de l'oxygène
 var enableOxygen = false
+# Si <code>true<code> alors il est en vie sinon mort
 var isDead = false
-var timerOxygene
 
 func _ready():
-	timerOxygene = $TimerOxygen
-	timerOxygene.wait_time = initTimerOxygen
+	$TimerOxygen.wait_time = initTimerOxygen
 
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
 # 'delta' est le temps écoulé depuis la dernière frame, utilisé pour garantir des mouvements indépendants de la performance.
@@ -46,15 +43,16 @@ func _physics_process(delta):
 
 # Méthode chargée de démarrer le timer d'oxygène.
 func start_timer_oxygen():
-	timerOxygene.start()
+	$TimerOxygen.start()
 	enableOxygen = true
 
 # Méthode chargée d'arrêter le timer d'oxygène.
 func stop_timer_oxygen():
-	timerOxygene.stop()
+	$TimerOxygen.stop()
 	enableOxygen = false
 
 func dead():
+	isDead = true
 	GameManager.hud.displayGameOver()
 
 func _on_timer_oxygen_timeout():
