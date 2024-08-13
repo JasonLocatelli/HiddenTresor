@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ccgh1tnhrlw6k" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_uraxx"]
-[ext_resource type="PackedScene" uid="uid://bi6gv80feb75s" path="res://Scenes/groundTest.tscn" id="1_vij6w"]
 [ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
+[ext_resource type="PackedScene" uid="uid://eqypoyb5ohmw" path="res://Scenes/map.tscn" id="3_2npin"]
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="4_mjh56"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_ha2y5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_mhwr4"]
@@ -17,37 +17,35 @@ transition = 1
 ease = 2
 
 [node name="Game" type="Node2D"]
+position = Vector2(24, -16)
 script = ExtResource("1_uraxx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_nrjld")]
-
-[node name="Ground" parent="." instance=ExtResource("1_vij6w")]
-position = Vector2(505, -11)
-scale = Vector2(3.5791, 1.57891)
-
-[node name="Ground2" parent="." instance=ExtResource("1_vij6w")]
-position = Vector2(-627, 7.99999)
-scale = Vector2(3.40994, 2.49296)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-38, 131)
-scale = Vector2(0.405, 0.405)
-texture = ExtResource("4_mjh56")
-
-[node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
-initTimerOxygen = 2
-
 [node name="WaterBody" parent="." instance=ExtResource("1_2h55a")]
-position = Vector2(-181, -7)
+position = Vector2(-192, -696)
 scale = Vector2(1.33372, 1.20018)
 distance_between_springs = 50
+spring_number = 50
+depth = 1000000
+
+[node name="Map" parent="." instance=ExtResource("3_2npin")]
+
+[node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
+position = Vector2(407, -921)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(328, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mjh56")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-120, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mjh56")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(0, -104.93)
+position = Vector2(407, -921)
 script = ExtResource("5_ha2y5")
-follow_mode = 2
+follow_mode = 1
 follow_target = NodePath("../TestStone")
 snap_to_pixel = true
 tween_resource = SubResource("Resource_o2xsg")
@@ -60,7 +58,11 @@ dead_zone_height = 0.25
 show_viewfinder_in_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -105)
+position = Vector2(407, -921)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_d3870")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("1_nrjld")]

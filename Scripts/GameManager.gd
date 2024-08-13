@@ -2,7 +2,7 @@ extends Node
 
 var player : CharacterBody2D
 var hud : HUD
-
+var timer 
 func _ready():
 	find_nodes()
 
@@ -10,12 +10,14 @@ func _ready():
 func find_nodes():
 	player = get_tree().get_first_node_in_group("player")
 	hud = get_tree().get_first_node_in_group("hud")
-	
-func _physics_process(delta):
+	timer = player.timerOxygene
+
+func _process(delta):
 	if hud != null && player != null:
-		hud.updateMaxValuePbOxygen(player.initTimerOxygen)
-		hud.updateValuePbOxygen(player.timerOxygen)
+		hud.updateValuePbOxygen(timer.time_left)
 
 # Méthode chargée de charger le jeu.
 func load_game_scene():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	hud.updateMaxValuePbOxygen(player.initTimerOxygen)
+	hud.updateValuePbOxygen(player.initTimerOxygen)
