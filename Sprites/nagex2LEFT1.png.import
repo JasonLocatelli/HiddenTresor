@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifvgd77gnbpw"
-path="res://.godot/imported/oursin128.png-330e94e2770ad9747de95ac87b94466e.ctex"
+uid="uid://00kuhf8wj042"
+path="res://.godot/imported/nagex2LEFT1.png-e12ae0e2c01428a3c5d9d85e29329430.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/oursin128.png"
-dest_files=["res://.godot/imported/oursin128.png-330e94e2770ad9747de95ac87b94466e.ctex"]
+source_file="res://Sprites/nagex2LEFT1.png"
+dest_files=["res://.godot/imported/nagex2LEFT1.png-e12ae0e2c01428a3c5d9d85e29329430.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
