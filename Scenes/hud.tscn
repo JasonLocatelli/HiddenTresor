@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=7 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 
@@ -7,6 +7,90 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyhe6"]
 bg_color = Color(0.333333, 0.501961, 1, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61ct5"]
+bg_color = Color(0, 0, 0, 0.388235)
+
+[sub_resource type="Animation" id="Animation_0o4jf"]
+resource_name = "displayGameOver"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BtnRestart:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BtnQuit:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../..:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../..:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../../../PbOxygen:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lngvl"]
+_data = {
+"displayGameOver": SubResource("Animation_0o4jf")
+}
 
 [node name="HUD" type="Control" groups=["hud"]]
 layout_mode = 3
@@ -24,3 +108,59 @@ max_value = 30.0
 step = 0.001
 value = 30.0
 show_percentage = false
+
+[node name="GameOver" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_61ct5")
+
+[node name="Panel" type="HBoxContainer" parent="GameOver"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VboxBtn" type="VBoxContainer" parent="GameOver/Panel/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="LbGameOver" type="Label" parent="GameOver/Panel/MarginContainer/VboxBtn"]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 32
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="BtnRestart" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+focus_mode = 0
+text = "RESTART"
+
+[node name="BtnQuit" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+focus_mode = 0
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+root_node = NodePath("../Panel/MarginContainer/VboxBtn/LbGameOver")
+libraries = {
+"": SubResource("AnimationLibrary_lngvl")
+}
+
+[connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnRestart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnQuit" to="." method="_on_btn_quit_pressed"]

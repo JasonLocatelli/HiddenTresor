@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://ccgh1tnhrlw6k" path="res://Scenes/water_body.tscn" id="1_2h55a"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_62svw"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_uraxx"]
 [ext_resource type="PackedScene" uid="uid://bi6gv80feb75s" path="res://Scenes/groundTest.tscn" id="1_vij6w"]
 [ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="4_mjh56"]
@@ -17,9 +17,7 @@ transition = 1
 ease = 2
 
 [node name="Game" type="Node2D"]
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_62svw")
+script = ExtResource("1_uraxx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -39,6 +37,7 @@ scale = Vector2(0.405, 0.405)
 texture = ExtResource("4_mjh56")
 
 [node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
+initTimerOxygen = 2
 
 [node name="WaterBody" parent="." instance=ExtResource("1_2h55a")]
 position = Vector2(-181, -7)
