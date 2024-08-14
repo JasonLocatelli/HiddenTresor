@@ -19,6 +19,5 @@ position = Vector2(0, 2.92999)
 shape = SubResource("CircleShape2D_otb2t")
 
 [node name="TimerOxygen" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="timeout" from="TimerOxygen" to="." method="_on_timer_oxygen_timeout"]

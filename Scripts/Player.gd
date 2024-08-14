@@ -12,10 +12,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var enableOxygen = false
 # Si <code>true<code> alors il est en vie sinon mort
 var isDead = false
+@onready var timerOxygene = $TimerOxygen
 
 func _ready():
 	$TimerOxygen.wait_time = initTimerOxygen
-
+	
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
 # 'delta' est le temps écoulé depuis la dernière frame, utilisé pour garantir des mouvements indépendants de la performance.
 func _physics_process(delta):
@@ -44,6 +45,8 @@ func _physics_process(delta):
 # Méthode chargée de démarrer le timer d'oxygène.
 func start_timer_oxygen():
 	$TimerOxygen.start()
+	GameManager.hud.updateMaxValuePbOxygen(initTimerOxygen)	
+	GameManager.hud.set_visible_pb_oxygen(true)
 	enableOxygen = true
 
 # Méthode chargée d'arrêter le timer d'oxygène.

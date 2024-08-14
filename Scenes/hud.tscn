@@ -82,7 +82,7 @@ tracks/5/path = NodePath("../../../../../PbOxygen:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -99,6 +99,7 @@ anchors_preset = 0
 script = ExtResource("1_amwu5")
 
 [node name="PbOxygen" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 2
 offset_right = 360.0
 offset_bottom = 20.0

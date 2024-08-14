@@ -20,6 +20,7 @@ func updateMaxValuePbOxygen(value : float):
 # Méthode chargée d'activer l'animation pour afficher le game over.
 func displayGameOver():
 	animGameOver.play("displayGameOver")
+	set_visible_pb_oxygen(false)
 
 # Méthode chargée s'assigner un evènement au bouton "Restart".
 func _on_btn_restart_pressed():
@@ -31,3 +32,6 @@ func _on_btn_quit_pressed():
 
 func update_coins_quantity():
 	$numberOfCoins.text = str(GameManager.coins)
+	
+func set_visible_pb_oxygen(value : bool):
+	progressbarOxygen.visible = value
