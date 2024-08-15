@@ -34,3 +34,6 @@ func add_coins(numberOfCoin):
 func remove_coins(numberOfCoin):
 	coins = coins - numberOfCoin
 	hud.update_coins_quantity()
+
+func visibilityStore(visibility):
+	hud.storeVisibility(visibility)

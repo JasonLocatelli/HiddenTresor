@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=9 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 [ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
+[ext_resource type="Texture2D" uid="uid://dgl0nnhm4mlyp" path="res://icon.svg" id="3_lbo73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7srlu"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.843137)
@@ -95,7 +96,11 @@ _data = {
 
 [node name="HUD" type="Control" groups=["hud"]]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_amwu5")
 
 [node name="PbOxygen" type="ProgressBar" parent="."]
@@ -184,6 +189,42 @@ root_node = NodePath("../Panel/MarginContainer/VboxBtn/LbGameOver")
 libraries = {
 "": SubResource("AnimationLibrary_lngvl")
 }
+
+[node name="store" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="store"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="store/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="store/VBoxContainer/HBoxContainer"]
+texture = ExtResource("3_lbo73")
+
+[node name="Label" type="Label" parent="store/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SPEED"
+
+[node name="Button" type="Button" parent="store/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnRestart" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnQuit" to="." method="_on_btn_quit_pressed"]
