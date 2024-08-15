@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=13 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://ccgh1tnhrlw6k" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_mhwr4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_d3870"]
 [ext_resource type="PackedScene" uid="uid://y3e134yu3em6" path="res://Scenes/coin.tscn" id="10_mehoh"]
+[ext_resource type="PackedScene" uid="uid://c0gufep1x1wet" path="res://Scenes/God.tscn" id="11_xjrug"]
 
 [sub_resource type="Resource" id="Resource_o2xsg"]
 script = ExtResource("6_mhwr4")
@@ -30,10 +31,6 @@ depth = 1000000
 
 [node name="Map" parent="." instance=ExtResource("3_2npin")]
 
-[node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
-position = Vector2(407, -921)
-initTimerOxygen = 5
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(328, 40)
 scale = Vector2(0.5, 0.5)
@@ -43,6 +40,13 @@ texture = ExtResource("4_mjh56")
 position = Vector2(-120, 40)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_mjh56")
+
+[node name="God" parent="." instance=ExtResource("11_xjrug")]
+position = Vector2(344, -960)
+
+[node name="TestStone" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
+position = Vector2(407, -921)
+initTimerOxygen = 5
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 position = Vector2(407, -921)
@@ -60,6 +64,7 @@ dead_zone_height = 0.25
 show_viewfinder_in_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 position = Vector2(407, -921)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

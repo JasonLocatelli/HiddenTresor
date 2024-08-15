@@ -35,3 +35,6 @@ func update_coins_quantity():
 	
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value
+
+func storeVisibility(visible):
+	$store.visible = visible
