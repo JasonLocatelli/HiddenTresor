@@ -1,0 +1,175 @@
+[gd_scene load_steps=11 format=3 uid="uid://tqm6s562tnb7"]
+
+[ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="1_kef85"]
+[ext_resource type="Script" path="res://Scripts/diodon.gd" id="1_u0ewl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq8wo"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bs0ib"]
+radius = 42.0476
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3pbn"]
+radius = 63.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1vvj"]
+radius = 26.0
+
+[sub_resource type="Animation" id="Animation_3yu7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mpnw5"]
+resource_name = "increaseScale"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.494118, 0.356863, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TimerPuffy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w4t5e"]
+resource_name = "decreaseScale"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.494118, 0.356863, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_teo48"]
+_data = {
+"RESET": SubResource("Animation_3yu7o"),
+"decreaseScale": SubResource("Animation_w4t5e"),
+"increaseScale": SubResource("Animation_mpnw5")
+}
+
+[node name="Diodon" type="CharacterBody2D"]
+script = ExtResource("1_u0ewl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kef85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xq8wo")
+
+[node name="RangeEjectCloudToxic" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeEjectCloudToxic"]
+shape = SubResource("CircleShape2D_bs0ib")
+
+[node name="RangeDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeDetect"]
+shape = SubResource("CircleShape2D_c3pbn")
+
+[node name="TimerWaitToMove" type="Timer" parent="."]
+one_shot = true
+
+[node name="RangeAttack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeAttack"]
+shape = SubResource("CircleShape2D_a1vvj")
+
+[node name="TimerAttack" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_teo48")
+}
+
+[node name="TimerReloadPoison" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerPuffy" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerVulnerable" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="RangeDetect" to="." method="_on_range_detect_body_entered"]
+[connection signal="body_exited" from="RangeDetect" to="." method="_on_range_detect_body_exited"]
+[connection signal="timeout" from="TimerWaitToMove" to="." method="_on_timer_wait_to_move_timeout"]
+[connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
+[connection signal="body_exited" from="RangeAttack" to="." method="_on_range_attack_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="TimerReloadPoison" to="." method="_on_timer_reload_poison_timeout"]
+[connection signal="timeout" from="TimerPuffy" to="." method="_on_timer_puffy_timeout"]
+[connection signal="timeout" from="TimerVulnerable" to="." method="_on_timer_vulnerable_timeout"]
