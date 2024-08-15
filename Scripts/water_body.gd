@@ -39,7 +39,6 @@ func _ready():
 	var rectangle = RectangleShape2D.new().duplicate()
 	var rect_position = Vector2(total_lenght /2, depth /2)
 	var rect_extends = Vector2(total_lenght, depth)
-	
 	$Water_body_area.position = rect_position
 	rectangle.size = rect_extends
 	$Water_body_area/water_body_collision.set_shape(rectangle)

@@ -56,7 +56,20 @@ func stop_timer_oxygen():
 
 func dead():
 	isDead = true
+	$CollisionShape2D.queue_free()
+	timerOxygene.stop()
 	GameManager.hud.displayGameOver()
 
 func _on_timer_oxygen_timeout():
 	dead()
+	
+func takeDamage(value):
+	var newTime = timerOxygene.time_left - value
+	if newTime > 0:
+		timerOxygene.start(timerOxygene.time_left - value)
+	else:
+		dead()
+
+func _on_area_2d_body_entered(body):
+	if body is CPUParticles2D:
+		print("Collision detectée")
