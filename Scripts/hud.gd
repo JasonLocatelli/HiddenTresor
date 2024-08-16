@@ -4,11 +4,13 @@ class_name HUD
 var progressbarOxygen : ProgressBar
 var animGameOver : AnimationPlayer
 
+@onready var itemOptions = preload("res://Scenes/power_up_panel.tscn")
+
 func _ready():
 	progressbarOxygen = $PbOxygen
 	animGameOver = $GameOver/AnimationPlayer
 	update_coins_quantity()
-	storeVisibility(false)
+	fillStore()
 
 # Met a jour la valeur de l'oxygene
 func updateValuePbOxygen(value):
@@ -37,5 +39,16 @@ func update_coins_quantity():
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value
 
-func storeVisibility(visible):
-	$store.visible = visible
+func storeVisibility(visibleChange):
+	$store.visible = visibleChange
+	
+func fillStore():
+	print("Filling the store...")
+	for key in PowerDb.UPGRADE :
+		print("Adding item:", key)
+		var powerUp = PowerDb.UPGRADE[key]
+		var option_choice = itemOptions.instantiate()
+		option_choice.item = powerUp
+		option_choice.initElement()
+		$store/MarginContainer/VBoxContainer.add_child(option_choice)
+		

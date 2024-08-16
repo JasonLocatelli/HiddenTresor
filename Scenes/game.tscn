@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://6pcocsfpfhsy"]
 
-[ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
+[ext_resource type="PackedScene" uid="uid://ccgh1tnhrlw6k" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_uraxx"]
 [ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]

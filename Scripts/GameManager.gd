@@ -15,7 +15,7 @@ func find_nodes():
 	hud = get_tree().get_first_node_in_group("hud")
 	timer = player.timerOxygene
 	
-func _process(delta):
+func _process(_delta):
 	if hud != null && player != null:
 		hud.updateValuePbOxygen(timer.time_left)
 		

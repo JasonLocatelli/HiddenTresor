@@ -21,7 +21,7 @@ func _on_range_attack_body_entered(body):
 		target = body
 		body.takeDamage(damage)
 		
-func _on_range_attack_body_exited(body):
+func _on_range_attack_body_exited(_body):
 	$TimerAttack.stop()
 
 func _on_timer_attack_timeout():
