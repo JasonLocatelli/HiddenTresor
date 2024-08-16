@@ -44,7 +44,7 @@ func _ready():
 	$Water_body_area/water_body_collision.set_shape(rectangle)
 
 # Fonction appelée à chaque frame de simulation physique
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Met à jour chaque ressort avec les constantes de simulation
 	for i in springs:
 		i.water_update(k, d)
@@ -72,10 +72,6 @@ func _physics_process(delta):
 func splash(index, speed):
 	if index >= 0 and index < springs.size():
 		springs[index].velocity += speed
-
-# Fonction appelée à chaque frame, mais actuellement vide
-func _process(delta):
-	pass
 
 # Dessine le polygone représentant la surface de l'eau
 func draw_water_body():

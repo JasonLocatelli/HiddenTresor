@@ -3,8 +3,6 @@ extends Path2D
 
 # Variables exportées
 @export var spline_length = 20 # Longueur des splines utilisées pour lisser le chemin
-@export var _smooth: bool: set = smooth # Propriété permettant de lisser le chemin
-@export var _straighten: bool: set = straighten # Propriété permettant de rectifier le chemin en ligne droite
 @export var color: Color = Color(1,1,1,1) # Couleur utilisée pour dessiner le chemin
 
 # Variables internes
