@@ -4,13 +4,13 @@ class_name Porcupinefish
 var detect
 var target
 
-@export var damage = 3
-@export var timeAttack = 1
-@export var dmgPerSecPoison = 1
-@export var timeAtkPerSecPoison = 1
-@export var timeReloadPoison = 7
-@export var timePuffy = 5
-@export var timeVulnerable = 3
+@export var damage = 3 # Dommage du poisson
+@export var timeAttack = 1 # Cooldown de l'attaque du poisson
+@export var dmgPerSecPoison = 1 # Dommage par secondes
+@export var timeAtkPerSecPoison = 1 # Cooldown des dmg du poison
+@export var timeReloadPoison = 7 # Cooldown du rechargement du poisson
+@export var timePuffy = 5 # Cooldown en mode "gonflé"
+@export var timeVulnerable = 3 # Cooldown de la vulnérabilité
 
 @onready var cloudToxic = load("res://Scenes/cloud_toxic.tscn")
 

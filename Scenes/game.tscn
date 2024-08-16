@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=23 format=3 uid="uid://6pcocsfpfhsy"]
 
-[ext_resource type="PackedScene" uid="uid://ccgh1tnhrlw6k" path="res://Scenes/water_body.tscn" id="1_2h55a"]
+[ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_uraxx"]
 [ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
@@ -10,8 +10,11 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_d3870"]
 [ext_resource type="PackedScene" uid="uid://d3tkk3ip5don2" path="res://Scenes/urchin.tscn" id="10_dxaiu"]
 [ext_resource type="PackedScene" uid="uid://y3e134yu3em6" path="res://Scenes/coin.tscn" id="10_mehoh"]
-[ext_resource type="PackedScene" uid="uid://c0gufep1x1wet" path="res://Scenes/God.tscn" id="11_xjrug"]
 [ext_resource type="PackedScene" uid="uid://tqm6s562tnb7" path="res://Scenes/diodon.tscn" id="11_ltnvu"]
+[ext_resource type="PackedScene" uid="uid://c0gufep1x1wet" path="res://Scenes/God.tscn" id="11_xjrug"]
+[ext_resource type="AudioStream" uid="uid://d7d2plglxi1t" path="res://SFX/Sounds/445244__matrixxx__vibrations-01.mp3" id="13_nvj5j"]
+[ext_resource type="AudioStream" uid="uid://gvjhlr5drlcl" path="res://SFX/Sounds/434978__felixblume__water-splash.mp3" id="13_qme6o"]
+[ext_resource type="AudioStream" uid="uid://dxkybxn5bq787" path="res://SFX/Sounds/lake-wavelet-27909.mp3" id="14_0qdnv"]
 
 [sub_resource type="Resource" id="Resource_o2xsg"]
 script = ExtResource("6_mhwr4")
@@ -21,7 +24,7 @@ ease = 2
 
 [sub_resource type="Curve2D" id="Curve2D_c854m"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -128.54, 41, 0, 0, 0, 0, 49.3429, 40.9746, 0, 0, 0, 0, 64.5561, 40.5779, 0, 0, 0, 0, 90, 41)
+"points": PackedVector2Array(0, 0, 0, 0, -115, 41, 0, 0, 0, 0, 49.3429, 40.9746, 0, 0, 0, 0, 64.5561, 40.5779, 0, 0, 0, 0, 90, 41)
 }
 point_count = 4
 
@@ -39,6 +42,12 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqhq8"]
 size = Vector2(272, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gu60"]
+size = Vector2(16, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
+size = Vector2(308, 9)
 
 [node name="Game" type="Node2D"]
 position = Vector2(24, -16)
@@ -58,7 +67,6 @@ position = Vector2(344, -960)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
 position = Vector2(407, -921)
-initTimerOxygen = 200
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 position = Vector2(407, -921)
@@ -99,8 +107,8 @@ position = Vector2(0, -3)
 curve = SubResource("Curve2D_c854m")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathUrchin1"]
-position = Vector2(-128.54, 41)
-rotation = -0.000142781
+position = Vector2(-115, 41)
+rotation = -0.000154544
 loop = false
 
 [node name="PathUrchin2" type="Path2D" parent="Paths"]
@@ -147,4 +155,53 @@ scale = Vector2(0.99853, 0.98633)
 position = Vector2(112, 83)
 shape = SubResource("RectangleShape2D_jqhq8")
 
+[node name="TriggerImpactStart" type="Area2D" parent="Triggers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerImpactStart"]
+position = Vector2(115, 40.5)
+shape = SubResource("RectangleShape2D_4gu60")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="Triggers/TriggerImpactStart"]
+position = Vector2(116, 40)
+stream = ExtResource("13_nvj5j")
+volume_db = 10.0
+max_distance = 1000.0
+attenuation = 11.7127
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="TriggerWaterZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerWaterZone"]
+position = Vector2(117, -685)
+shape = SubResource("RectangleShape2D_rn5n3")
+
+[node name="AudioSplash" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(112, -698)
+stream = ExtResource("13_qme6o")
+volume_db = -10.0
+max_distance = 500.0
+attenuation = 9.0
+panning_strength = 1.5
+
+[node name="AudioPointWater" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(4, -728)
+stream = ExtResource("14_0qdnv")
+autoplay = true
+max_distance = 1000.0
+attenuation = 9.0
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="AudioPointWater2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(212, -732)
+stream = ExtResource("14_0qdnv")
+autoplay = true
+max_distance = 1000.0
+attenuation = 9.0
+panning_strength = 1.5
+bus = &"SFX"
+
 [connection signal="body_entered" from="Triggers/TriggerStart" to="." method="_on_trigger_start_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerImpactStart" to="." method="_on_trigger_impact_start_body_entered"]
+[connection signal="body_entered" from="TriggerWaterZone" to="." method="_on_trigger_water_zone_body_entered"]

@@ -4,6 +4,7 @@ class_name Urchin
 var target
 @export var damage = 3
 @export var timeAttack = 1
+
 func _ready():
 	$AnimationPlayer.play("idle")
 	

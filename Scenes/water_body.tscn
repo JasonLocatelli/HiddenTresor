@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccgh1tnhrlw6k"]
+[gd_scene load_steps=7 format=3 uid="uid://dxrrerr5bo4jq"]
 
 [ext_resource type="Script" path="res://Scripts/water_body.gd" id="1_2rfbr"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="2_nd8nw"]
