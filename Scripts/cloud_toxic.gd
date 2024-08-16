@@ -21,9 +21,9 @@ func _on_range_particle_body_entered(body):
 		body.takeDamage(dmgPerSecPoison)
 
 # Méthode chargée d'arrêter le timer du poisson qsuand le joueur quitte la portée de celui-ci.
-func _on_range_particle_body_exited(body):
+func _on_range_particle_body_exited(_body):
 	$TimerPoison.stop()
 
 # Méthode chargée de supprimer les particules quand sont l'animation est fini.
-func _on_animation_player_particles_animation_finished(anim_name):
+func _on_animation_player_particles_animation_finished(_anim_name):
 	queue_free()
