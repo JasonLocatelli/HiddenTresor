@@ -101,7 +101,11 @@ vertical_alignment = 1
 clip_contents = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_tispj")
 theme_override_font_sizes/font_size = 8
 text = "BUY"
 icon_alignment = 1
+
+[connection signal="pressed" from="HbcIcon/McPriceBtn/VbcPriceBtn/Button" to="." method="_on_button_pressed"]

@@ -5,6 +5,11 @@ var hud : HUD
 var timer : Timer
 # Pieces posséder
 var coins : int = 0
+# Niveau de la mutation pour chaque amélioration diferrent
+var powerLevel = 0
+var speedLevel = 0
+var oxygeneLevel = 0
+var dashLevel = 0
 
 func _ready():
 	find_nodes()
@@ -22,8 +27,8 @@ func _process(_delta):
 # Méthode chargée de charger le jeu.
 func load_game_scene():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
-	hud.updateMaxValuePbOxygen(player.initTimerOxygen)
-	hud.updateValuePbOxygen(player.initTimerOxygen)
+	hud.updateMaxValuePbOxygen(player.getMaxOxygene())
+	hud.updateValuePbOxygen(player.getMaxOxygene())
 
 # ajoute des pieces
 func add_coins(numberOfCoin):
@@ -37,3 +42,25 @@ func remove_coins(numberOfCoin):
 
 func visibilityStore(visibility):
 	hud.storeVisibility(visibility)
+
+func getLevelFromItem(item):
+	match item :
+		PowerDb.UPGRADE.SPEED : 
+			return  speedLevel
+		PowerDb.UPGRADE.DASH : 
+			return  dashLevel
+		PowerDb.UPGRADE.POWER : 
+			return  powerLevel
+		PowerDb.UPGRADE.OXYGENE : 
+			return  oxygeneLevel
+
+func addLevelFromItem(item):
+	match item :
+		PowerDb.UPGRADE.SPEED : 
+			speedLevel = speedLevel + 1
+		PowerDb.UPGRADE.DASH : 
+			dashLevel = dashLevel + 1
+		PowerDb.UPGRADE.POWER : 
+			powerLevel = powerLevel + 1
+		PowerDb.UPGRADE.OXYGENE : 
+			oxygeneLevel = oxygeneLevel + 1

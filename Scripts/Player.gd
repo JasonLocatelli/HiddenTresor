@@ -14,9 +14,6 @@ var enableOxygen = false
 var isDead = false
 @onready var timerOxygene = $TimerOxygen
 
-func _ready():
-	$TimerOxygen.wait_time = initTimerOxygen
-	
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
 # 'delta' est le temps écoulé depuis la dernière frame, utilisé pour garantir des mouvements indépendants de la performance.
 func _physics_process(delta):
@@ -25,7 +22,7 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta
 			# Limiter la vitesse de chute pour éviter une accélération excessive en chute libre.
-			velocity.y = clamp(velocity.y, -max_speed, max_speed)
+			velocity.y = clamp(velocity.y, -getMaxSpeed(), getMaxSpeed())
 		# Gérer le saut du personnage.
 		# Si le personnage est au sol et que le joueur appuie sur la touche de saut, appliquer la vélocité de saut.
 		if is_on_floor() and Input.is_action_pressed("jump"):
@@ -37,7 +34,7 @@ func _physics_process(delta):
 		x_dir = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 		# Appliquer la vitesse horizontale en fonction de la direction détectée.
 		# La vitesse est divisée par 1.5 pour un contrôle plus précis du personnage.
-		velocity.x = x_dir * max_speed / 1.5
+		velocity.x = x_dir * getMaxSpeed() / 1.5
 
 		# Appliquer le mouvement au personnage en utilisant la fonction 'move_and_slide()'.
 		# Cette fonction gère automatiquement les collisions et permet au personnage de glisser le long des surfaces.
@@ -45,8 +42,9 @@ func _physics_process(delta):
 
 # Méthode chargée de démarrer le timer d'oxygène.
 func start_timer_oxygen():
+	$TimerOxygen.wait_time = getMaxOxygene()
 	$TimerOxygen.start()
-	GameManager.hud.updateMaxValuePbOxygen(initTimerOxygen)	
+	GameManager.hud.updateMaxValuePbOxygen(getMaxOxygene())	
 	GameManager.hud.set_visible_pb_oxygen(true)
 	enableOxygen = true
 
@@ -64,10 +62,10 @@ func dead():
 func _on_timer_oxygen_timeout():
 	dead()
 	
-func takeDamage(value):
-	var newTime = timerOxygene.time_left - value
+func takeDamage(pValue):
+	var newTime = timerOxygene.time_left - pValue
 	if newTime > 0:
-		timerOxygene.start(timerOxygene.time_left - value)
+		timerOxygene.start(timerOxygene.time_left - pValue)
 		AudioManager.play_human_hurt()
 	else:
 		dead()
@@ -78,3 +76,9 @@ func _on_area_2d_body_entered(body):
 
 func play_pick_up_coin():
 	$AudioPickUpCoin.play()
+
+func getMaxSpeed():
+	return max (max_speed,max_speed + max_speed * GameManager.speedLevel)
+	
+func getMaxOxygene():
+	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)

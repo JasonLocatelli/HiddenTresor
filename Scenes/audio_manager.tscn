@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dclxbqlev44xl"]
+[gd_scene load_steps=9 format=3 uid="uid://b7jh3ypa2rla3"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y6pe1"]
 [ext_resource type="AudioStream" uid="uid://db7ob0n77b5ad" path="res://SFX/Musics/Jason_Locatelli_Discovery.mp3" id="2_yhoks"]

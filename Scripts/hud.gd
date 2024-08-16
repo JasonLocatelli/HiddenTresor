@@ -35,7 +35,8 @@ func _on_btn_quit_pressed():
 
 func update_coins_quantity():
 	$numberOfCoins.text = str(GameManager.coins)
-	
+	resetAllButtonActivation()
+
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value
 
@@ -52,3 +53,7 @@ func fillStore():
 		option_choice.initElement()
 		$store/MarginContainer/VBoxContainer.add_child(option_choice)
 		
+func resetAllButtonActivation():
+	for element in $store/MarginContainer/VBoxContainer.get_children() :
+		if element is PanelContainer :
+			element.updateButton()

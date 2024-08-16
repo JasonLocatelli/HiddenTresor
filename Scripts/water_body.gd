@@ -37,7 +37,7 @@ func _ready():
 	# Définir la forme et la position de la zone de collision de l'eau
 	var total_lenght = distance_between_springs * (spring_number - 1)
 	var rectangle = RectangleShape2D.new().duplicate()
-	var rect_position = Vector2(total_lenght /2, depth /2)
+	var rect_position = Vector2(total_lenght /2.0, depth /2.0)
 	var rect_extends = Vector2(total_lenght, depth)
 	$Water_body_area.position = rect_position
 	rectangle.size = rect_extends

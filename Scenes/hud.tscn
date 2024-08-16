@@ -250,6 +250,7 @@ libraries = {
 }
 
 [node name="store" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 640.0
