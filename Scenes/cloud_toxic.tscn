@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://e6o5tqrhwqgv"]
+[gd_scene load_steps=9 format=3 uid="uid://e6o5tqrhwqgv"]
 
 [ext_resource type="Script" path="res://Scripts/cloud_toxic.gd" id="1_f5vfk"]
+[ext_resource type="AudioStream" uid="uid://d36yfgarhb33m" path="res://SFX/Sounds/488392__wobesound__poisongasrelease.mp3" id="2_lddvl"]
 
 [sub_resource type="Curve" id="Curve_3fh5k"]
 _data = [Vector2(0.0036036, 0.0837194), 0.0, 0.0, 0, 0, Vector2(0.996396, 0.324619), 0.0, 0.0, 0, 0]
@@ -145,6 +146,7 @@ scale_amount_curve = SubResource("Curve_3fh5k")
 color_ramp = SubResource("Gradient_f6car")
 
 [node name="rangeParticle" type="Area2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rangeParticle"]
 scale = Vector2(3, 3)
@@ -157,6 +159,13 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_wkosg")
 }
+
+[node name="AudioGas" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lddvl")
+pitch_scale = 0.5
+attenuation = 6.27667
+panning_strength = 3.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="rangeParticle" to="." method="_on_range_particle_body_entered"]
 [connection signal="body_exited" from="rangeParticle" to="." method="_on_range_particle_body_exited"]

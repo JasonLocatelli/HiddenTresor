@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://dclxbqlev44xl"]
+
+[ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y6pe1"]
+[ext_resource type="AudioStream" uid="uid://db7ob0n77b5ad" path="res://SFX/Musics/Jason_Locatelli_Discovery.mp3" id="2_yhoks"]
+[ext_resource type="AudioStream" uid="uid://kembhejg6sio" path="res://SFX/Musics/Jason_Locatelli_Discovery_Underwater.mp3" id="3_4yr6x"]
+[ext_resource type="AudioStream" uid="uid://dt7nbtyxlthr" path="res://SFX/Musics/underwater-19568.mp3" id="4_3f04n"]
+[ext_resource type="AudioStream" uid="uid://1rypwssqrpbp" path="res://SFX/Musics/Jason_Locatelli_Discovery_Shop.mp3" id="4_qlbh4"]
+[ext_resource type="AudioStream" uid="uid://bi7acb3cr7sij" path="res://SFX/Sounds/343462__rocotilos__real-coin-drop.mp3" id="5_0omb1"]
+[ext_resource type="AudioStream" uid="uid://drtc17p77whxl" path="res://SFX/Sounds/288899__petebuchwald__rocky-mountain-outdoors-wind-and-birds.mp3" id="7_cdd1e"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1r2sy"]
+stream_count = 3
+stream_0/stream = ExtResource("2_yhoks")
+stream_0/volume = -10.0
+stream_1/stream = ExtResource("3_4yr6x")
+stream_1/volume = -40.0
+stream_2/stream = ExtResource("4_qlbh4")
+stream_2/volume = -40.0
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_y6pe1")
+
+[node name="AudioMusicProcedural" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_1r2sy")
+
+[node name="AmbientUnderWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3f04n")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="playAmbientUnderwater" type="Timer" parent="."]
+
+[node name="AudioPickUpCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0omb1")
+volume_db = -15.0
+
+[node name="AudioVoice" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="AudioAmbientOutdoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_cdd1e")

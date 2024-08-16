@@ -29,6 +29,7 @@ func _physics_process(delta):
 		# Gérer le saut du personnage.
 		# Si le personnage est au sol et que le joueur appuie sur la touche de saut, appliquer la vélocité de saut.
 		if is_on_floor() and Input.is_action_pressed("jump"):
+			AudioManager.play_human_jump()
 			velocity.y = JUMP_VELOCITY
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
@@ -67,9 +68,13 @@ func takeDamage(value):
 	var newTime = timerOxygene.time_left - value
 	if newTime > 0:
 		timerOxygene.start(timerOxygene.time_left - value)
+		AudioManager.play_human_hurt()
 	else:
 		dead()
 
 func _on_area_2d_body_entered(body):
 	if body is CPUParticles2D:
 		print("Collision detectée")
+
+func play_pick_up_coin():
+	$AudioPickUpCoin.play()

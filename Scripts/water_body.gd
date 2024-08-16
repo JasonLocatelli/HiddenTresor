@@ -106,9 +106,13 @@ func _on_water_body_area_body_entered(body):
 	if body.is_in_group("player"):
 		body.start_timer_oxygen() # Commence le timer d'oxygène
 		body.max_speed = body.max_speed / 2 # Réduit la vitesse maximale du joueur
+		AudioManager.audioSplash.position.x = body.global_position.x
+		AudioManager.music_outwater()
+		AudioManager.play_audio_splash()
 
 # Gère les événements lorsqu'un corps sort de la zone d'eau
 func _on_water_body_area_body_exited(body):
 	if body.is_in_group("player"):
 		body.stop_timer_oxygen() # Arrête le timer d'oxygène
 		body.max_speed = body.max_speed * 2 # Rétablit la vitesse maximale du joueur
+		

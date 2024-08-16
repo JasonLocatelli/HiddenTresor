@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3tkk3ip5don2"]
+[gd_scene load_steps=8 format=3 uid="uid://d3tkk3ip5don2"]
 
 [ext_resource type="Script" path="res://Scripts/urchin.gd" id="1_w8555"]
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="2_qt6tr"]
+[ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="3_pdrwj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m65ul"]
 radius = 21.0238
@@ -52,6 +53,14 @@ libraries = {
 shape = SubResource("CircleShape2D_p4mhb")
 
 [node name="TimerAttack" type="Timer" parent="."]
+
+[node name="AudioNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pdrwj")
+volume_db = -10.0
+autoplay = true
+attenuation = 18.0
+panning_strength = 1.5
+bus = &"SFX"
 
 [connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
 [connection signal="body_exited" from="RangeAttack" to="." method="_on_range_attack_body_exited"]

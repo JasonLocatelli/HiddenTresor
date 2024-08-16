@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://tqm6s562tnb7"]
+[gd_scene load_steps=12 format=3 uid="uid://tqm6s562tnb7"]
 
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="1_kef85"]
 [ext_resource type="Script" path="res://Scripts/diodon.gd" id="1_u0ewl"]
+[ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="3_cqc65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xq8wo"]
 radius = 20.0
@@ -40,6 +41,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4t5e"]
+resource_name = "decreaseScale"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.494118, 0.356863, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_mpnw5"]
@@ -82,34 +111,6 @@ tracks/2/keys = {
 "args": [-1],
 "method": &"start"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_w4t5e"]
-resource_name = "decreaseScale"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.494118, 0.356863, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_teo48"]
@@ -162,6 +163,14 @@ one_shot = true
 
 [node name="TimerVulnerable" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cqc65")
+volume_db = -10.0
+autoplay = true
+attenuation = 18.0
+panning_strength = 1.5
+bus = &"SFX"
 
 [connection signal="body_entered" from="RangeDetect" to="." method="_on_range_detect_body_entered"]
 [connection signal="body_exited" from="RangeDetect" to="." method="_on_range_detect_body_exited"]
