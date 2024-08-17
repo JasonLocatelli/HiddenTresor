@@ -65,21 +65,44 @@ alignment = 1
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Game1" type="Button" parent="AspectRatioContainer/LoadMenu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
 text = "GAME 1"
 
-[node name="Game2" type="Button" parent="AspectRatioContainer/LoadMenu"]
+[node name="deleteSave1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "X"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
 text = "GAME 2"
 
-[node name="Game3" type="Button" parent="AspectRatioContainer/LoadMenu"]
+[node name="deleteSave2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "X"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
 text = "GAME 3"
 
-[node name="Delete" type="Button" parent="AspectRatioContainer/LoadMenu"]
+[node name="deleteSave3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
-text = "DELETE SAVE FILE"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "X"
 
 [node name="Return" type="Button" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
@@ -116,10 +139,12 @@ text = "NO"
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/LoadMenu/Game1" to="." method="_on_game_1_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/LoadMenu/Game2" to="." method="_on_game_2_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/LoadMenu/Game3" to="." method="_on_game_3_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/LoadMenu/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer/Game1" to="." method="_on_game_1_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer/deleteSave1" to="." method="_on_delete_save_1_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer2/Game2" to="." method="_on_game_2_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer2/deleteSave2" to="." method="_on_delete_save_2_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer3/Game3" to="." method="_on_game_3_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer3/deleteSave3" to="." method="_on_delete_save_3_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/LoadMenu/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/comfirmation/Answer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/comfirmation/Answer/No" to="." method="_on_no_pressed"]
