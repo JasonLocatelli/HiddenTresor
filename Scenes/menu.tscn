@@ -75,10 +75,12 @@ alignment = 1
 
 [node name="Game1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 1"
 
 [node name="deleteSave1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 
@@ -88,10 +90,12 @@ alignment = 1
 
 [node name="Game2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 2"
 
 [node name="deleteSave2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 
@@ -101,10 +105,12 @@ alignment = 1
 
 [node name="Game3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 3"
 
 [node name="deleteSave3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 

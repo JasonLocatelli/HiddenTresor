@@ -4,7 +4,7 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -300.0
 const JUMP_VELOCITY_ON_WATER = -80.0
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
-@export var initTimerOxygen = 30
+@export var initTimerOxygen = 5
 # Vitesse maximale du personnage en pixels par seconde.
 var max_speed = 225
 # Vitesse de chute dans l'eau
