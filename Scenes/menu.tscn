@@ -41,19 +41,23 @@ horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
+focus_mode = 0
 text = "NEW GAME"
 
 [node name="LoadGame" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
+focus_mode = 0
 text = "LOAD GAME"
 
 [node name="Option" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
+focus_mode = 0
 disabled = true
-text = "OPTION"
+text = "OPTIONS"
 
 [node name="Exit" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
+focus_mode = 0
 text = "EXIT"
 
 [node name="LoadMenu" type="VBoxContainer" parent="AspectRatioContainer"]
@@ -71,10 +75,12 @@ alignment = 1
 
 [node name="Game1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 1"
 
 [node name="deleteSave1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 
@@ -84,10 +90,12 @@ alignment = 1
 
 [node name="Game2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 2"
 
 [node name="deleteSave2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 
@@ -97,15 +105,18 @@ alignment = 1
 
 [node name="Game3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
+focus_mode = 0
 text = "GAME 3"
 
 [node name="deleteSave3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "X"
 
 [node name="Return" type="Button" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
+focus_mode = 0
 text = "RETURN TO MAIN MENU"
 
 [node name="comfirmation" type="VBoxContainer" parent="AspectRatioContainer"]
@@ -130,10 +141,12 @@ alignment = 1
 
 [node name="Yes" type="Button" parent="AspectRatioContainer/comfirmation/Answer"]
 layout_mode = 2
+focus_mode = 0
 text = "YES"
 
 [node name="No" type="Button" parent="AspectRatioContainer/comfirmation/Answer"]
 layout_mode = 2
+focus_mode = 0
 text = "NO"
 
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/NewGame" to="." method="_on_new_game_pressed"]

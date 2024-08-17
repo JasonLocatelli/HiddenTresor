@@ -1,18 +1,176 @@
-[gd_scene load_steps=4 format=3 uid="uid://h226rc4u0u8i"]
+[gd_scene load_steps=18 format=3 uid="uid://h226rc4u0u8i"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_a1cli"]
-[ext_resource type="Texture2D" uid="uid://00kuhf8wj042" path="res://Sprites/nagex2LEFT1.png" id="2_xpotp"]
+[ext_resource type="Texture2D" uid="uid://dn13o7afw8y8e" path="res://Sprites/NageX2Right1.png" id="3_fnvrs"]
+[ext_resource type="Texture2D" uid="uid://uk0yjf3615ek" path="res://Sprites/NageX2Right2.png" id="4_vppci"]
+[ext_resource type="Texture2D" uid="uid://616bgu62vw0y" path="res://Sprites/MeleeAttack/SFX304_01.png" id="5_3q5qb"]
+[ext_resource type="Texture2D" uid="uid://bgyvc1lv0o8qc" path="res://Sprites/NageX2Right3.png" id="5_x5l3e"]
+[ext_resource type="Texture2D" uid="uid://bcufmjrolrlj6" path="res://Sprites/MeleeAttack/SFX304_02.png" id="6_60th7"]
+[ext_resource type="Texture2D" uid="uid://die1m4latlct7" path="res://Sprites/MeleeAttack/SFX304_03.png" id="7_2bgnb"]
+[ext_resource type="Texture2D" uid="uid://cb7hsdjykbdwt" path="res://Sprites/MeleeAttack/SFX304_04.png" id="8_o5n6l"]
+[ext_resource type="Texture2D" uid="uid://8xhghyoixm0i" path="res://Sprites/MeleeAttack/SFX304_05.png" id="9_ba8tt"]
+[ext_resource type="AudioStream" uid="uid://bnth1hb5a8udd" path="res://SFX/Sounds/60030__qubodup__swosh-whoosh-air-cut.mp3" id="10_18i2u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otb2t"]
 radius = 6.0208
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0osh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fnvrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vppci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x5l3e")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xxla"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3q5qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_60th7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2bgnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o5n6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ba8tt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gonu7"]
+size = Vector2(32, 21)
+
+[sub_resource type="Animation" id="Animation_rbukj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rangeAttackUnderWater/AnimatedSprite2D2:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rangeAttackUnderWater/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rangeAttackUnderWater/AnimatedSprite2D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r8hdj"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rangeAttackUnderWater/AnimatedSprite2D2:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rangeAttackUnderWater/AnimatedSprite2D2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rangeAttackUnderWater/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rangeAttackUnderWater/AnimatedSprite2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioAttackPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bo5xc"]
+_data = {
+"RESET": SubResource("Animation_rbukj"),
+"attack": SubResource("Animation_r8hdj")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, -254.93)
 script = ExtResource("1_a1cli")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_xpotp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.92999)
@@ -21,4 +179,33 @@ shape = SubResource("CircleShape2D_otb2t")
 [node name="TimerOxygen" type="Timer" parent="."]
 one_shot = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_a0osh")
+animation = &"swim"
+frame_progress = 0.836506
+
+[node name="rangeAttackUnderWater" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rangeAttackUnderWater"]
+visible = false
+position = Vector2(20.99, 5.28999)
+rotation = -3.14159
+sprite_frames = SubResource("SpriteFrames_3xxla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rangeAttackUnderWater"]
+position = Vector2(20, 7.42999)
+shape = SubResource("RectangleShape2D_gonu7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bo5xc")
+}
+
+[node name="AudioAttackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_18i2u")
+volume_db = -10.0
+bus = &"SFX"
+
 [connection signal="timeout" from="TimerOxygen" to="." method="_on_timer_oxygen_timeout"]
+[connection signal="body_entered" from="rangeAttackUnderWater" to="." method="_on_range_attack_under_water_body_entered"]

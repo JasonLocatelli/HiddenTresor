@@ -67,7 +67,6 @@ position = Vector2(344, -960)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
 position = Vector2(407, -921)
-initTimerOxygen = 5
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 position = Vector2(407, -921)
