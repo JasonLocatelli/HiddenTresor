@@ -11,9 +11,6 @@ var speedLevel = 0
 var oxygeneLevel = 0
 var dashLevel = 0
 
-func _ready():
-	find_nodes()
-
 # Méthode chargée de chercher les nodes afin de les affecter.
 func find_nodes():
 	player = get_tree().get_first_node_in_group("player")
@@ -23,7 +20,7 @@ func find_nodes():
 func _process(_delta):
 	if hud != null && player != null:
 		hud.updateValuePbOxygen(timer.time_left)
-		
+
 # Méthode chargée de charger le jeu.
 func load_game_scene():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
@@ -64,3 +61,10 @@ func addLevelFromItem(item):
 			powerLevel = powerLevel + 1
 		PowerDb.UPGRADE.OXYGENE : 
 			oxygeneLevel = oxygeneLevel + 1
+
+func resetElement():
+	coins = 0
+	powerLevel = 0
+	speedLevel = 0
+	oxygeneLevel = 0
+	dashLevel = 0
