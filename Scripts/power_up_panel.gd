@@ -30,3 +30,4 @@ func updateButton():
 func _on_button_pressed() -> void:
 	GameManager.addLevelFromItem(item)
 	GameManager.remove_coins(item["priceInital"])
+	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)

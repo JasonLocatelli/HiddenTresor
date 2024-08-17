@@ -31,7 +31,6 @@ text = "NEW GAME"
 
 [node name="LoadGame" type="Button" parent="MainMenu"]
 layout_mode = 2
-disabled = true
 text = "LOAD GAME"
 
 [node name="Option" type="Button" parent="MainMenu"]
@@ -69,9 +68,46 @@ text = "GAME 2"
 layout_mode = 2
 text = "GAME 3"
 
+[node name="Delete" type="Button" parent="LoadMenu"]
+layout_mode = 2
+text = "DELETE SAVE FILE"
+
 [node name="Return" type="Button" parent="LoadMenu"]
 layout_mode = 2
 text = "RETURN TO MAIN MENU"
+
+[node name="comfirmation" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="DeleteComfirmation" type="Label" parent="comfirmation"]
+layout_mode = 2
+text = "ARE YOU SURE YOU WANT TO
+ DELETE THIS FILE ?"
+horizontal_alignment = 1
+
+[node name="FileNumber" type="Label" parent="comfirmation"]
+layout_mode = 2
+text = "FILE 1"
+horizontal_alignment = 1
+
+[node name="Answer" type="HBoxContainer" parent="comfirmation"]
+layout_mode = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="comfirmation/Answer"]
+layout_mode = 2
+text = "YES"
+
+[node name="No" type="Button" parent="comfirmation/Answer"]
+layout_mode = 2
+text = "NO"
 
 [connection signal="pressed" from="MainMenu/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/LoadGame" to="." method="_on_load_game_pressed"]
@@ -79,4 +115,7 @@ text = "RETURN TO MAIN MENU"
 [connection signal="pressed" from="LoadMenu/Game1" to="." method="_on_game_1_pressed"]
 [connection signal="pressed" from="LoadMenu/Game2" to="." method="_on_game_2_pressed"]
 [connection signal="pressed" from="LoadMenu/Game3" to="." method="_on_game_3_pressed"]
+[connection signal="pressed" from="LoadMenu/Delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="LoadMenu/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="comfirmation/Answer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="comfirmation/Answer/No" to="." method="_on_no_pressed"]
