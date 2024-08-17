@@ -74,6 +74,7 @@ position = Vector2(407, -921)
 script = ExtResource("5_ha2y5")
 follow_mode = 1
 follow_target = NodePath("../Player")
+zoom = Vector2(0.6, 0.6)
 snap_to_pixel = true
 tween_resource = SubResource("Resource_o2xsg")
 tween_on_load = false
@@ -87,6 +88,7 @@ show_viewfinder_in_play = true
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(407, -921)
+zoom = Vector2(0.6, 0.6)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_d3870")

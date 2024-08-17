@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Vélocité de saut, définie comme une constante pour être utilisée lors de la détection du saut.
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
 @export var initTimerOxygen = 30
 # Vitesse maximale du personnage en pixels par seconde.

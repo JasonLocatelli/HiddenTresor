@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=12 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 [ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
@@ -146,6 +146,9 @@ _data = {
 "displayGameOver": SubResource("Animation_0o4jf")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al5wh"]
+bg_color = Color(0, 0, 0, 0.298039)
+
 [sub_resource type="LabelSettings" id="LabelSettings_6aw53"]
 font = ExtResource("3_kn2ru")
 outline_size = 5
@@ -163,8 +166,8 @@ script = ExtResource("1_amwu5")
 [node name="PbOxygen" type="ProgressBar" parent="."]
 visible = false
 layout_mode = 2
-offset_right = 360.0
-offset_bottom = 20.0
+offset_right = 480.0
+offset_bottom = 10.0
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_7srlu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wyhe6")
@@ -173,32 +176,42 @@ step = 0.0
 value = 30.0
 show_percentage = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, 28)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_77em6")
-
-[node name="X" type="Label" parent="."]
+[node name="MarginContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 96.0
-offset_bottom = 119.0
+offset_right = 50.0
+offset_bottom = 38.0
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+texture = ExtResource("2_77em6")
+expand_mode = 3
+
+[node name="X" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
 text = "X"
 
-[node name="numberOfCoins" type="Label" parent="."]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 16.0
-offset_right = 108.0
-offset_bottom = 119.0
+[node name="numberOfCoins" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
 text = "0"
 
 [node name="GameOver" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 360.0
-offset_bottom = 640.0
+offset_right = 480.0
+offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_61ct5")
 
 [node name="Panel" type="HBoxContainer" parent="GameOver"]
@@ -212,7 +225,7 @@ theme_override_constants/margin_right = 10
 
 [node name="VboxBtn" type="VBoxContainer" parent="GameOver/Panel/MarginContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 1
@@ -252,8 +265,9 @@ libraries = {
 [node name="store" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 360.0
-offset_bottom = 640.0
+offset_right = 480.0
+offset_bottom = 270.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_al5wh")
 
 [node name="MarginContainer" type="MarginContainer" parent="store"]
 layout_mode = 2
