@@ -9,7 +9,7 @@ var force = 0 # Force appliquée au ressort
 var height = 0 # Hauteur actuelle du ressort
 var target_height = 0 # Hauteur cible du ressort
 var index = 0 # Indice de ce ressort particulier dans la liste des ressorts
-var motion_factor = 0.014 # Facteur de mouvement utilisé pour calculer l'impact lors des collisions
+var motion_factor = 0.008 # Facteur de mouvement utilisé pour calculer l'impact lors des collisions
 var collided_with = null # Référence au dernier corps entré en collision avec ce ressort
 
 # Signal émis lorsqu'un éclaboussement est généré
