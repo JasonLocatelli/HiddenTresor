@@ -3,6 +3,7 @@ extends Node
 var player : CharacterBody2D
 var hud : HUD
 var timer : Timer
+var gameSlot : int = 0
 # Pieces posséder
 var coins : int = 0
 # Niveau de la mutation pour chaque amélioration diferrent
@@ -10,6 +11,7 @@ var powerLevel = 0
 var speedLevel = 0
 var oxygeneLevel = 0
 var dashLevel = 0
+
 
 # Méthode chargée de chercher les nodes afin de les affecter.
 func find_nodes():

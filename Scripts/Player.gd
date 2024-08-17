@@ -57,6 +57,7 @@ func dead():
 	isDead = true
 	$CollisionShape2D.queue_free()
 	timerOxygene.stop()
+	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
 	GameManager.hud.displayGameOver()
 
 func _on_timer_oxygen_timeout():
