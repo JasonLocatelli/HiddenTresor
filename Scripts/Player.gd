@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Vélocité de saut, définie comme une constante pour être utilisée lors de la détection du saut.
 const JUMP_VELOCITY = -300.0
-const JUMP_VELOCITY_ON_WATER = -90.0
+const JUMP_VELOCITY_ON_WATER = -80.0
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
 @export var initTimerOxygen = 30
 # Vitesse maximale du personnage en pixels par seconde.
@@ -16,6 +16,7 @@ var gravityOnWater = 80
 var enableOxygen = false
 # Si <code>true<code> alors il est en vie sinon mort
 var isDead = false
+var damage = 2
 @onready var timerOxygene = $TimerOxygen
 
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
@@ -37,7 +38,10 @@ func _physics_process(delta):
 				velocity.y = JUMP_VELOCITY
 			else:
 				velocity.y = JUMP_VELOCITY_ON_WATER
-	
+		
+		if Input.is_action_just_pressed("attack") && !$AnimationPlayer.is_playing():
+				$AnimationPlayer.play("attack")
+		
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
 		var x_dir = 0
@@ -45,7 +49,21 @@ func _physics_process(delta):
 		# Appliquer la vitesse horizontale en fonction de la direction détectée.
 		# La vitesse est divisée par 1.5 pour un contrôle plus précis du personnage.
 		velocity.x = x_dir * getMaxSpeed() / 1.5
-	
+		
+		
+		if x_dir == 1:
+			$AnimatedSprite2D.flip_h = false
+			$rangeAttackUnderWater.scale.x = x_dir
+			if enableOxygen:
+				$AnimatedSprite2D.play("swim")
+		elif x_dir == -1:
+			$AnimatedSprite2D.flip_h = true
+			$rangeAttackUnderWater.scale.x = x_dir
+			if enableOxygen:
+				$AnimatedSprite2D.play("swim")
+		else:
+			$AnimatedSprite2D.pause()
+		
 		# Appliquer le mouvement au personnage en utilisant la fonction 'move_and_slide()'.
 		# Cette fonction gère automatiquement les collisions et permet au personnage de glisser le long des surfaces.
 		move_and_slide()
@@ -67,6 +85,7 @@ func dead():
 	isDead = true
 	$CollisionShape2D.queue_free()
 	timerOxygene.stop()
+	$AnimatedSprite2D.pause()
 	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
 	GameManager.hud.displayGameOver()
 
@@ -93,3 +112,13 @@ func getMaxSpeed():
 	
 func getMaxOxygene():
 	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)
+
+func playAnimationAttack():
+	$AnimationPlayer.play("attack")
+
+func _on_range_attack_under_water_body_entered(body):
+	if body.is_in_group("enemy"):
+		print("Make damage")
+	elif body.is_in_group("diodon") && body.isVulnerable():
+		print("Make damage")
+		body.takeDamage(damage)

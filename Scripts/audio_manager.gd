@@ -40,7 +40,7 @@ func music_outwater():
 	tween.tween_property($AudioMusicProcedural.stream, "stream_0/volume", -10, 0.5)
 	tween.set_parallel().tween_property($AudioMusicProcedural.stream, "stream_1/volume", -40, 1.5)
 	$AmbientUnderWater.stream_paused = true
-	
+	$AudioMusicProcedural.stream.set_sync_stream_volume(2, -60)
 # Méthode chargée de faire la transition de la musique en dehors de l'eau vers la musique de la boutique.
 func music_outwater_to_shop():
 	# On enlève les anciens "Tween"
