@@ -8,45 +8,45 @@ var gameState : GAME_STATE
 func _ready() -> void:
 	gameState = GAME_STATE.NONE
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
-		$MainMenu/LoadGame.disabled = false
+		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = false
 	else :
-		$MainMenu/LoadGame.disabled = true
+		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
 
 func _on_new_game_pressed() -> void:
 	gameState = GAME_STATE.NEW
-	$LoadMenu/Game1.disabled = false
-	$LoadMenu/Game2.disabled = false
-	$LoadMenu/Game3.disabled = false
-	$LoadMenu/Delete.disabled = true
-	$LoadMenu/Delete.visible = false
-	$LoadMenu/StateGame.text = "CHOOSE FILE TO START A NEW GAME"
-	$MainMenu.visible = false
-	$LoadMenu.visible = true
+	$AspectRatioContainer/LoadMenu/Game1.disabled = false
+	$AspectRatioContainer/LoadMenu/Game2.disabled = false
+	$AspectRatioContainer/LoadMenu/Game3.disabled = false
+	$AspectRatioContainer/LoadMenu/Delete.disabled = true
+	$AspectRatioContainer/LoadMenu/Delete.visible = false
+	$AspectRatioContainer/LoadMenu/StateGame.text = "CHOOSE FILE TO START A NEW GAME"
+	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
+	$AspectRatioContainer/LoadMenu.visible = true
 
 func _on_load_game_pressed() -> void:
 	gameState = GAME_STATE.LOAD
-	$LoadMenu/Game1.disabled = !SaveAndLoad.fileExist(1)
-	$LoadMenu/Game2.disabled = !SaveAndLoad.fileExist(2)
-	$LoadMenu/Game3.disabled = !SaveAndLoad.fileExist(3)
-	$LoadMenu/Delete.disabled = false
-	$LoadMenu/Delete.visible = true
-	$LoadMenu/StateGame.text = "LOAD GAME"
-	$MainMenu.visible = false
-	$LoadMenu.visible = true
+	$AspectRatioContainer/LoadMenu/Game1.disabled = !SaveAndLoad.fileExist(1)
+	$AspectRatioContainer/LoadMenu/Game2.disabled = !SaveAndLoad.fileExist(2)
+	$AspectRatioContainer/LoadMenu/Game3.disabled = !SaveAndLoad.fileExist(3)
+	$AspectRatioContainer/LoadMenu/Delete.disabled = false
+	$AspectRatioContainer/LoadMenu/Delete.visible = true
+	$AspectRatioContainer/LoadMenu/StateGame.text = "LOAD GAME"
+	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
+	$AspectRatioContainer/LoadMenu.visible = true
 
 func _on_return_pressed() -> void:
 	if gameState == GAME_STATE.DELETE :
 		gameState = GAME_STATE.LOAD
-		$LoadMenu/StateGame.text = "LOAD GAME"
-		$LoadMenu/Delete.visible = true
+		$AspectRatioContainer/LoadMenu/StateGame.text = "LOAD GAME"
+		$AspectRatioContainer/LoadMenu/Delete.visible = true
 	else :
 		gameState = GAME_STATE.NONE
-		$MainMenu.visible = true
-		$LoadMenu.visible = false
+		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
+		$AspectRatioContainer/LoadMenu.visible = false
 		if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
-			$MainMenu/LoadGame.disabled = false
+			$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = false
 		else :
-			$MainMenu/LoadGame.disabled = true
+			$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -86,30 +86,30 @@ func _on_game_3_pressed() -> void:
 
 func _on_delete_pressed() -> void:
 	gameState = GAME_STATE.DELETE
-	$LoadMenu/StateGame.text = "CHOOSE FILE TO DELETE SAVE FILE"
-	$LoadMenu/Delete.visible = false
-	$LoadMenu.visible = true
+	$AspectRatioContainer/LoadMenu/StateGame.text = "CHOOSE FILE TO DELETE SAVE FILE"
+	$AspectRatioContainer/LoadMenu/Delete.visible = false
+	$AspectRatioContainer/LoadMenu.visible = true
 
 func _onFileDeletion() -> void:
-	$LoadMenu.visible = false
-	$comfirmation.visible = true
+	$AspectRatioContainer/LoadMenu.visible = false
+	$AspectRatioContainer/comfirmation.visible = true
 
 func _on_yes_pressed() -> void:
 	SaveAndLoad.deleteDataFromSaveFile(GameManager.gameSlot)
-	$comfirmation.visible = false
+	$AspectRatioContainer/comfirmation.visible = false
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
-		$LoadMenu/Game1.disabled = !SaveAndLoad.fileExist(1)
-		$LoadMenu/Game2.disabled = !SaveAndLoad.fileExist(2)
-		$LoadMenu/Game3.disabled = !SaveAndLoad.fileExist(3)
+		$AspectRatioContainer/LoadMenu/Game1.disabled = !SaveAndLoad.fileExist(1)
+		$AspectRatioContainer/LoadMenu/Game2.disabled = !SaveAndLoad.fileExist(2)
+		$AspectRatioContainer/LoadMenu/Game3.disabled = !SaveAndLoad.fileExist(3)
 		gameState = GAME_STATE.LOAD
-		$LoadMenu/Delete.visible = true
-		$LoadMenu.visible = true
-		$LoadMenu/StateGame.text = "LOAD GAME"
+		$AspectRatioContainer/LoadMenu/Delete.visible = true
+		$AspectRatioContainer/LoadMenu.visible = true
+		$AspectRatioContainer/LoadMenu/StateGame.text = "LOAD GAME"
 	else :
-		$MainMenu/LoadGame.disabled = true
-		$LoadMenu.visible = false
-		$MainMenu.visible = true
+		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
+		$AspectRatioContainer/LoadMenu.visible = false
+		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 
 func _on_no_pressed() -> void:
-	$comfirmation.visible = false
-	$LoadMenu.visible = true
+	$AspectRatioContainer/comfirmation.visible = false
+	$AspectRatioContainer/LoadMenu.visible = true

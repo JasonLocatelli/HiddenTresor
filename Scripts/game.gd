@@ -4,6 +4,7 @@ var blockStart
 func _ready():
 	GameManager.find_nodes()
 	AudioManager.audioSplash = $AudioSplash
+	AudioServer.set_bus_effect_enabled(AudioManager.SFX_BUS_ID, 0, false)
 	AudioManager.play_music_outwater()
 	AudioManager.play_ambient_outdoor()
 	
