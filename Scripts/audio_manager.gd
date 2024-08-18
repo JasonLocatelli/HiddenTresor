@@ -96,3 +96,25 @@ func play_pick_up_coin():
 func cleanTween():
 	if tween:
 		tween.kill()
+
+# Méthode chargée de jouer la musique du game over.
+func playGameOver():
+	$AudioGameOver.stop()
+
+# Méthode chargée d'arrêter les musiques qui sont trouve dans la partie.
+func stopMusicInGame():
+	$AmbientUnderWater.stop()
+	$AudioMusicProcedural.stop()
+	$AudioGameOver.stop()
+
+# Méthode chargée de jouer la musique du menu principal.
+func playMusicMainMenu():
+	$AudioMainMenu.play()
+
+# Méthode chargée d'arrêter la musique du menu principal.
+func stopMusicMainMenu():
+	$AudioMainMenu.stop()
+	
+# Méthode chargée de jouer l'audio de selection.
+func playAudioSelect():
+	$AudioSelect.play()

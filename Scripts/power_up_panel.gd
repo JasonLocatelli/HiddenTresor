@@ -28,6 +28,7 @@ func updateButton():
 		$HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn/price.text = "--"
 
 func _on_button_pressed() -> void:
+	AudioManager.playAudioSelect()
 	GameManager.addLevelFromItem(item)
 	GameManager.remove_coins(item["priceInital"])
 	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
