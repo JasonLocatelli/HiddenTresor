@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7jh3ypa2rla3"]
+[gd_scene load_steps=12 format=3 uid="uid://b7jh3ypa2rla3"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y6pe1"]
 [ext_resource type="AudioStream" uid="uid://db7ob0n77b5ad" path="res://SFX/Musics/Jason_Locatelli_Discovery.mp3" id="2_yhoks"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://1rypwssqrpbp" path="res://SFX/Musics/Jason_Locatelli_Discovery_Shop.mp3" id="4_qlbh4"]
 [ext_resource type="AudioStream" uid="uid://bi7acb3cr7sij" path="res://SFX/Sounds/343462__rocotilos__real-coin-drop.mp3" id="5_0omb1"]
 [ext_resource type="AudioStream" uid="uid://drtc17p77whxl" path="res://SFX/Sounds/288899__petebuchwald__rocky-mountain-outdoors-wind-and-birds.mp3" id="7_cdd1e"]
+[ext_resource type="AudioStream" uid="uid://c4hkpk72tp1gy" path="res://SFX/Musics/Hidden_Tresor_GameOver.mp3" id="8_6wshf"]
+[ext_resource type="AudioStream" uid="uid://qpv2f3r60bcm" path="res://SFX/Musics/Hidden_Tresor_Main_Menu.mp3" id="9_batqe"]
+[ext_resource type="AudioStream" uid="uid://cjwl06cgguun1" path="res://SFX/Sounds/253168__suntemple__sfx-ui-button-click.mp3" id="10_msvle"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1r2sy"]
 stream_count = 3
@@ -28,8 +31,6 @@ stream = ExtResource("4_3f04n")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="playAmbientUnderwater" type="Timer" parent="."]
-
 [node name="AudioPickUpCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_0omb1")
 volume_db = -15.0
@@ -40,3 +41,13 @@ bus = &"SFX"
 
 [node name="AudioAmbientOutdoor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cdd1e")
+
+[node name="AudioGameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6wshf")
+volume_db = -10.0
+
+[node name="AudioMainMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_batqe")
+
+[node name="AudioSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_msvle")

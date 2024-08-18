@@ -24,13 +24,16 @@ func updateMaxValuePbOxygen(value : float):
 func displayGameOver():
 	animGameOver.play("displayGameOver")
 	set_visible_pb_oxygen(false)
+	AudioManager.playGameOver()
 
 # Méthode chargée s'assigner un evènement au bouton "Restart".
 func _on_btn_restart_pressed():
+	AudioManager.playAudioSelect()
 	get_tree().reload_current_scene()
 
 # Méthode chargée d'assigner un evènement au bouton "Quit".
 func _on_btn_quit_pressed():
+	AudioManager.playAudioSelect()
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func update_coins_quantity():
