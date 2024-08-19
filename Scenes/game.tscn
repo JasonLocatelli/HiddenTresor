@@ -53,6 +53,13 @@ size = Vector2(308, 9)
 position = Vector2(24, -16)
 script = ExtResource("1_uraxx")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1590.0
+offset_top = -1350.0
+offset_right = 1416.0
+offset_bottom = -696.0
+color = Color(0.32549, 0.462745, 0.713726, 1)
+
 [node name="WaterBody" parent="." instance=ExtResource("1_2h55a")]
 position = Vector2(-192, -696)
 scale = Vector2(1.33372, 1.20018)
@@ -61,6 +68,7 @@ spring_number = 100
 depth = 1000000
 
 [node name="Map" parent="." instance=ExtResource("3_2npin")]
+position = Vector2(-88, 88)
 
 [node name="God" parent="." instance=ExtResource("11_xjrug")]
 position = Vector2(344, -960)
