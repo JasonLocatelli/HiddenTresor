@@ -118,3 +118,11 @@ func stopMusicMainMenu():
 # Méthode chargée de jouer l'audio de selection.
 func playAudioSelect():
 	$AudioSelect.play()
+
+# Méthode chargée de jouer l'audio quand l'attaque du joueur est un succès.
+func playAudioSlash():
+	$AudioSlash.play()
+	
+# Méthode chargée de jouer l'audio quand l'attaque du joueur touche l'ennemi n'est ne fait pas de dégats.
+func playAudioHit():
+	$AudioHit.play()

@@ -119,6 +119,5 @@ func playAnimationAttack():
 func _on_range_attack_under_water_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Make damage")
-	elif body.is_in_group("diodon") && body.isVulnerable():
-		print("Make damage")
+	elif body.is_in_group("diodon"):
 		body.takeDamage(damage)
