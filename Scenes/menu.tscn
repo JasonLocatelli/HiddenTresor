@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpe3kl3r754cx"]
+[gd_scene load_steps=5 format=3 uid="uid://dpe3kl3r754cx"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_vylkw"]
+[ext_resource type="Texture2D" uid="uid://ddd68ewihpcvm" path="res://Sprites/title.png" id="2_fvde3"]
+[ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_ogprb"]
+[ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_diblf"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -10,6 +13,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vylkw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0235294, 0.156863, 0.254902, 1)
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -27,38 +39,122 @@ alignment = 1
 layout_mode = 2
 
 [node name="MainMenu" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
-custom_minimum_size = Vector2(0, 50)
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
-text = "Hidden Tresor"
-horizontal_alignment = 1
+texture = ExtResource("2_fvde3")
+expand_mode = 5
+stretch_mode = 3
 
 [node name="NewGame" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
+size_flags_stretch_ratio = 20.0
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "NEW GAME"
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="LoadGame" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "LOAD GAME"
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Option" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 disabled = true
 text = "OPTIONS"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Credits" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
+disabled = true
+text = "CREDITS"
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Exit" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu"]
 layout_mode = 2
-focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "EXIT"
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="LoadMenu" type="VBoxContainer" parent="AspectRatioContainer"]
 visible = false
@@ -67,6 +163,8 @@ alignment = 1
 
 [node name="StateGame" type="Label" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
@@ -76,13 +174,36 @@ alignment = 1
 [node name="Game1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "GAME 1"
+flat = true
+icon_alignment = 1
 
 [node name="deleteSave1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "X"
+flat = true
+icon_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
@@ -91,13 +212,36 @@ alignment = 1
 [node name="Game2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "GAME 2"
+flat = true
+icon_alignment = 1
 
 [node name="deleteSave2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "X"
+flat = true
+icon_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
@@ -106,18 +250,56 @@ alignment = 1
 [node name="Game3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "GAME 3"
+flat = true
+icon_alignment = 1
 
 [node name="deleteSave3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "X"
+flat = true
+icon_alignment = 1
 
 [node name="Return" type="Button" parent="AspectRatioContainer/LoadMenu"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.969137, 0.969137, 0.969137, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "RETURN TO MAIN MENU"
+flat = true
+icon_alignment = 1
 
 [node name="comfirmation" type="VBoxContainer" parent="AspectRatioContainer"]
 visible = false
@@ -126,12 +308,16 @@ alignment = 1
 
 [node name="DeleteComfirmation" type="Label" parent="AspectRatioContainer/comfirmation"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 30
 text = "ARE YOU SURE YOU WANT TO
  DELETE THIS FILE ?"
 horizontal_alignment = 1
 
 [node name="FileNumber" type="Label" parent="AspectRatioContainer/comfirmation"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 30
 text = "FILE 1"
 horizontal_alignment = 1
 
@@ -142,12 +328,42 @@ alignment = 1
 [node name="Yes" type="Button" parent="AspectRatioContainer/comfirmation/Answer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "YES"
+flat = true
+icon_alignment = 1
 
 [node name="No" type="Button" parent="AspectRatioContainer/comfirmation/Answer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("4_diblf")
 text = "NO"
+flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame" to="." method="_on_load_game_pressed"]
