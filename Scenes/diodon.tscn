@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="3_cqc65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xq8wo"]
-radius = 20.0
+radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bs0ib"]
 radius = 42.0476
