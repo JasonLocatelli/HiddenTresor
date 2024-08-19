@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="3_cqc65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xq8wo"]
-radius = 20.0
+radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bs0ib"]
 radius = 42.0476
@@ -172,6 +172,8 @@ attenuation = 18.0
 panning_strength = 1.5
 bus = &"SFX"
 
+[node name="TimerMakeAttackPoison" type="Timer" parent="."]
+
 [connection signal="body_entered" from="RangeDetect" to="." method="_on_range_detect_body_entered"]
 [connection signal="body_exited" from="RangeDetect" to="." method="_on_range_detect_body_exited"]
 [connection signal="timeout" from="TimerWaitToMove" to="." method="_on_timer_wait_to_move_timeout"]
@@ -182,3 +184,4 @@ bus = &"SFX"
 [connection signal="timeout" from="TimerReloadPoison" to="." method="_on_timer_reload_poison_timeout"]
 [connection signal="timeout" from="TimerPuffy" to="." method="_on_timer_puffy_timeout"]
 [connection signal="timeout" from="TimerVulnerable" to="." method="_on_timer_vulnerable_timeout"]
+[connection signal="timeout" from="TimerMakeAttackPoison" to="." method="_on_make_attack_poison_timeout"]

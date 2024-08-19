@@ -13,12 +13,12 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_re38b"]
 radius = 1.0
 
-[sub_resource type="Animation" id="Animation_ghecu"]
+[sub_resource type="Animation" id="Animation_0o25q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudToxic/CloudPoisonParticules:emitting")
+tracks/0/path = NodePath("CloudPoisonParticules:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudToxic/rangeParticle:scale:x")
+tracks/1/path = NodePath("rangeParticle/CollisionShape2D:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +41,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudToxic/rangeParticle:scale:y")
+tracks/2/path = NodePath("rangeParticle/CollisionShape2D:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -52,7 +52,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CloudToxic/rangeParticle/CollisionShape2D:disabled")
+tracks/3/path = NodePath("rangeParticle/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,17 +62,18 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_54385"]
+[sub_resource type="Animation" id="Animation_cj4fl"]
 resource_name = "playParticle"
 length = 10.0
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CloudToxic/CloudPoisonParticules:emitting")
+tracks/0/path = NodePath("CloudPoisonParticules:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667),
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -80,42 +81,42 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CloudToxic/rangeParticle:scale:x")
+tracks/1/path = NodePath("rangeParticle/CollisionShape2D:scale:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 23, -0.25, 0, 0.25, 0, 38, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.0666667, 5.66667, 10)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 1, 2.5, 27.5, -0.25, 0, 0.25, 0, 103.5, -0.25, 0, 0.25, 0, 111.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 8.75, 9.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CloudToxic/rangeParticle:scale:y")
+tracks/2/path = NodePath("rangeParticle/CollisionShape2D:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 23, -0.25, 0, 0.25, 0, 38, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.0666667, 5.66667, 10)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 1, 1, 2.5, -5.5, -0.25, 0, 0.25, 2.5, 27.5, -0.25, 0, 0.25, 0, 103.5, -0.25, 0, 0.25, 0, 111.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.001, 2, 8.75, 9.5)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CloudToxic/rangeParticle/CollisionShape2D:disabled")
+tracks/3/path = NodePath("rangeParticle/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.0666667, 9.6),
+"times": PackedFloat32Array(0, 9.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wkosg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ruym5"]
 _data = {
-"RESET": SubResource("Animation_ghecu"),
-"playParticle": SubResource("Animation_54385")
+"RESET": SubResource("Animation_0o25q"),
+"playParticle": SubResource("Animation_cj4fl")
 }
 
 [node name="CloudToxic" type="Node2D"]
@@ -146,18 +147,16 @@ scale_amount_curve = SubResource("Curve_3fh5k")
 color_ramp = SubResource("Gradient_f6car")
 
 [node name="rangeParticle" type="Area2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rangeParticle"]
-scale = Vector2(3, 3)
+scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CircleShape2D_re38b")
 
 [node name="TimerPoison" type="Timer" parent="."]
 
 [node name="AnimationPlayerParticles" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_wkosg")
+"": SubResource("AnimationLibrary_ruym5")
 }
 
 [node name="AudioGas" type="AudioStreamPlayer2D" parent="."]
