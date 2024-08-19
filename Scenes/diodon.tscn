@@ -172,6 +172,8 @@ attenuation = 18.0
 panning_strength = 1.5
 bus = &"SFX"
 
+[node name="TimerMakeAttackPoison" type="Timer" parent="."]
+
 [connection signal="body_entered" from="RangeDetect" to="." method="_on_range_detect_body_entered"]
 [connection signal="body_exited" from="RangeDetect" to="." method="_on_range_detect_body_exited"]
 [connection signal="timeout" from="TimerWaitToMove" to="." method="_on_timer_wait_to_move_timeout"]
@@ -182,3 +184,4 @@ bus = &"SFX"
 [connection signal="timeout" from="TimerReloadPoison" to="." method="_on_timer_reload_poison_timeout"]
 [connection signal="timeout" from="TimerPuffy" to="." method="_on_timer_puffy_timeout"]
 [connection signal="timeout" from="TimerVulnerable" to="." method="_on_timer_vulnerable_timeout"]
+[connection signal="timeout" from="TimerMakeAttackPoison" to="." method="_on_make_attack_poison_timeout"]

@@ -9,7 +9,7 @@ var target
 @export var timeAttack = 1 # Cooldown de l'attaque du poisson
 @export var dmgPerSecPoison = 1 # Dommage par secondes
 @export var timeAtkPerSecPoison = 1 # Cooldown des dmg du poison
-@export var timeReloadPoison = 7 # Cooldown du rechargement du poisson
+@export var timeReloadPoison = 4 # Cooldown du rechargement du poisson
 @export var timePuffy = 5 # Cooldown en mode "gonflé"
 @export var timeVulnerable = 3 # Cooldown de la vulnérabilité
 
@@ -30,15 +30,21 @@ func _on_range_detect_body_entered(body):
 	if body.is_in_group("player") && $TimerWaitToMove.is_stopped():
 		detect = true
 		startFollowPath = false
+		startTimerMakeAttackPoison()
 		# On gonffle le poisson quand le rechargement du nuage et la vulnérabilité sont arrêté.
 		if $TimerReloadPoison.is_stopped() && $TimerVulnerable.is_stopped():
 			$AnimationPlayer.play("increaseScale")
 
+func startTimerMakeAttackPoison():
+	var rngTime = randi_range(3,12)
+	$TimerMakeAttackPoison.start(rngTime)
+	
 # Méthode chargée de vérifier si le joueur se trouve en dehors de la portée de vue du poisson.
 func _on_range_detect_body_exited(body):
 	# On vérifie si body est un joueur
 	if body.is_in_group("player"):
 		detect = false
+		$TimerMakeAttackPoison.stop()
 		$TimerWaitToMove.start() # On marque un temps d'arrêter au poisson
 
 # Méthode chargée de continuer les mouvements du poisson quand le timer est fini.
@@ -59,21 +65,8 @@ func _on_range_attack_body_entered(body):
 	# On vérifie si body est un joueur
 	if body.is_in_group("player"):
 		$TimerAttack.start() # On démarre le cooldown d'attaque
-		# On vérifie que le nuage toxique et que la vulnerabilité du poisson ne sont pas actifs
-		if $TimerReloadPoison.is_stopped() && $TimerVulnerable.is_stopped():
-			# Instantiation du nuage toxique
-			var cloudToxicInstance = cloudToxic.instantiate()
-			cloudToxicInstance.position = position
-			cloudToxicInstance.dmgPerSecPoison = dmgPerSecPoison
-			cloudToxicInstance.timeAtkPerSecPoison = timeAtkPerSecPoison
-			get_parent().add_child.call_deferred(cloudToxicInstance)
-			# Dégonflement du poisson
-			$AnimationPlayer.play_backwards("decreaseScale", -1)
-			$TimerPuffy.stop()
-			# On démarre le rechargement du nuage toxique
-			$TimerReloadPoison.start()
 		target = body
-		body.takeDamage(damage) # Le joueur perds de l'oxygène
+		#body.takeDamage(damage) # Le joueur perds de l'oxygène
 
 # Méthode chargée d'enlever de l'oxygène lorsque le cooldown de l'attaque est fini.
 func _on_timer_attack_timeout():
@@ -98,6 +91,7 @@ func _on_timer_puffy_timeout():
 func _on_timer_reload_poison_timeout():
 	if detect:
 		$AnimationPlayer.play("increaseScale")
+		startTimerMakeAttackPoison()
 
 # Méthode chargée d'affecter la forme normal au poisson
 # Si le joueur est detecté ALORS cela gonffle le poisson
@@ -113,9 +107,31 @@ func isVulnerable():
 	return !$TimerVulnerable.is_stopped()
 
 func takeDamage(value):
-	life -= value
-	if life <= 0:
-		dead()
-		
+	if isVulnerable():
+		life -= value
+		if life <= 0:
+			dead()
+		AudioManager.playAudioSlash()
+	else:
+		AudioManager.playAudioHit()
+	
+	makeGas()
+
 func dead():
 	queue_free()
+
+func makeGas():
+	# On vérifie que le nuage toxique
+	if $TimerReloadPoison.is_stopped():
+		# Instantiation du nuage toxique
+		var cloudToxicInstance = cloudToxic.instantiate()
+		cloudToxicInstance.position = position
+		cloudToxicInstance.dmgPerSecPoison = dmgPerSecPoison
+		cloudToxicInstance.timeAtkPerSecPoison = timeAtkPerSecPoison
+		get_parent().add_child.call_deferred(cloudToxicInstance)
+		
+		# On démarre le rechargement du nuage toxique
+		$TimerReloadPoison.start()
+		
+func _on_make_attack_poison_timeout():
+	makeGas()

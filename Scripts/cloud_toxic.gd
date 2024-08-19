@@ -3,12 +3,11 @@ extends Node2D
 @export var dmgPerSecPoison = 1
 @export var timeAtkPerSecPoison = 1
 var target
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayerParticles.play("playParticle")
 	$AudioGas.play()
-	
+
 # Méthode chargée de faire perdre de l'oxygène au joueur quand le cooldown du poison est fini.
 func _on_timer_poison_timeout():
 	target.takeDamage(dmgPerSecPoison)
