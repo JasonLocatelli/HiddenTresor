@@ -194,6 +194,10 @@ icon_alignment = 1
 [node name="deleteSave1" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -232,6 +236,10 @@ icon_alignment = 1
 [node name="deleteSave2" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer2"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -270,6 +278,10 @@ icon_alignment = 1
 [node name="deleteSave3" type="Button" parent="AspectRatioContainer/LoadMenu/HBoxContainer3"]
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)

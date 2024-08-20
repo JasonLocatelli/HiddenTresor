@@ -4,7 +4,7 @@ const ICON_PATH = "res://Sprites/Upgrade/"
 
 const UPGRADE = {
 	"CLAW": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"claw.png"),
 		"id":"CLAW",
 		"displayname": "CLAW",
 		"details": "Claw to attack.",
@@ -14,9 +14,9 @@ const UPGRADE = {
 		"prerequisite": [],
 	},
 	"OXYGENE": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"oxygen.png"),
 		"id":"OXYGENE",
-		"displayname": "MORE OXYGENE",
+		"displayname": "GILLS",
 		"details": "More time underwater",
 		"maxLevel" : 30,
 		"priceInital" : 1,
@@ -24,17 +24,17 @@ const UPGRADE = {
 		"prerequisite": [],
 	},
 	"SPEED": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"vitesse.png"),
 		"id":"SPEED",
-		"displayname": "MORE SPEED",
-		"details": "More speed",
+		"displayname": "SPEED",
+		"details": "Gain speed",
 		"maxLevel" : 20,
 		"priceInital" : 10,
 		"priceAugmentationByLv" : 30, 
 		"prerequisite": [],
 	},
 	"DASH": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"dodge.png"),
 		"id":"DASH",
 		"displayname": "DASH",
 		"details": "Learn to dash",
@@ -44,7 +44,7 @@ const UPGRADE = {
 		"prerequisite": ["SWIMMING"],
 	},
 	"SWIMMING": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"swim.png"),
 		"id":"SWIMMING",
 		"displayname": "SWIMMING",
 		"details": "Learn to swim",
@@ -54,7 +54,7 @@ const UPGRADE = {
 		"prerequisite": [],
 	},
 	"RESISTANCE": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"shield.png"),
 		"id":"RESISTANCE",
 		"displayname": "RESISTANCE",
 		"details": "Take less damages",
@@ -64,10 +64,10 @@ const UPGRADE = {
 		"prerequisite": [],
 	},
 	"STRENGH": {
-		"icon": preload(ICON_PATH+"Joint2.png"),
+		"icon": preload(ICON_PATH+"power.png"),
 		"id":"STRENGH",
 		"displayname": "STRENGH",
-		"details": "Increase claw's Strengh.",
+		"details": "Increase claw's strengh.",
 		"maxLevel" : 10,
 		"priceInital" : 20,
 		"priceAugmentationByLv" : 30, 

@@ -3,10 +3,10 @@ extends PanelContainer
 var item = null
 
 func initElement() :
-	#$HbcIcon/ArcIcon/TrIcon.texture = item["icon"]
+	$HbcIcon/ArcIcon/TrIcon.texture = item["icon"]
 	$HbcIcon/McNameDesc/HbcNameDesc/name.text = item["displayname"]
 	$HbcIcon/McNameDesc/HbcNameDesc/description.text = item["details"]
-	#$ColorRect/Sprite2D.scale = Vector2($ColorRect/Sprite2D.texture.get_width(), $ColorRect/Sprite2D.texture.get_height())
+	$HbcIcon/ArcIcon/TrIcon.scale = Vector2($HbcIcon/ArcIcon/TrIcon.texture.get_width(), $HbcIcon/ArcIcon/TrIcon.texture.get_height())
 	updateButton()
 
 func getPrice():
@@ -30,5 +30,5 @@ func updateButton():
 func _on_button_pressed() -> void:
 	AudioManager.playAudioSelect()
 	GameManager.addLevelFromItem(item)
-	GameManager.remove_coins(item["priceInital"])
+	GameManager.remove_coins(max(item["priceInital"], item["priceInital"] + ((GameManager.getLevelFromItem(item)-1) * item["priceAugmentationByLv"])))
 	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
