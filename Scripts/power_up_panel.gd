@@ -19,7 +19,7 @@ func updateButton():
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "BUY"
 		else :
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = true
-			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "SORRY"
+			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "NOT ENOUGH MONEY"
 		$HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn/price.text = str(getPrice())
 		
 	else :

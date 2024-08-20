@@ -1,27 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://f8cc6neari1w"]
+[gd_scene load_steps=5 format=3 uid="uid://f8cc6neari1w"]
 
 [ext_resource type="Script" path="res://Scripts/power_up_panel.gd" id="1_181ki"]
-[ext_resource type="FontFile" uid="uid://dw7cnvc54a7sf" path="res://font/lilita_one_regular.ttf" id="1_tispj"]
 [ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_wans6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0jniv"]
-font = ExtResource("1_tispj")
-font_size = 6
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 14
-
-[sub_resource type="LabelSettings" id="LabelSettings_ypei0"]
-font = ExtResource("1_tispj")
-font_size = 4
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ib8mi"]
-font = ExtResource("1_tispj")
-font_size = 9
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_h001t"]
+[ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="5_o0ltj"]
 
 [node name="powerUpPanel" type="PanelContainer"]
 offset_right = 186.0
@@ -58,15 +40,20 @@ layout_mode = 2
 
 [node name="name" type="Label" parent="HbcIcon/McNameDesc/HbcNameDesc"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h001t")
+theme_override_font_sizes/font_size = 15
 text = "TITRE"
-label_settings = SubResource("LabelSettings_0jniv")
 vertical_alignment = 1
 
 [node name="description" type="Label" parent="HbcIcon/McNameDesc/HbcNameDesc"]
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h001t")
+theme_override_font_sizes/font_size = 20
 text = "GIVE MORE OXYGENE"
-label_settings = SubResource("LabelSettings_ypei0")
+horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="McPriceBtn" type="MarginContainer" parent="HbcIcon"]
 layout_mode = 2
@@ -87,14 +74,18 @@ alignment = 2
 
 [node name="priceTag" type="Label" parent="HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn"]
 layout_mode = 2
-text = "PRICE :"
-label_settings = SubResource("LabelSettings_ib8mi")
+theme_override_fonts/font = ExtResource("3_h001t")
+theme_override_font_sizes/font_size = 20
+text = "PRICE : "
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="price" type="Label" parent="HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h001t")
+theme_override_font_sizes/font_size = 20
 text = "18"
-label_settings = SubResource("LabelSettings_ib8mi")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="HbcIcon/McPriceBtn/VbcPriceBtn"]
@@ -103,10 +94,22 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_tispj")
-theme_override_font_sizes/font_size = 8
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_h001t")
+theme_override_font_sizes/font_size = 20
+theme_override_icons/icon = ExtResource("5_o0ltj")
 text = "BUY"
+flat = true
 icon_alignment = 1
 
 [connection signal="pressed" from="HbcIcon/McPriceBtn/VbcPriceBtn/Button" to="." method="_on_button_pressed"]
