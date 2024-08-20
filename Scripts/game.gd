@@ -6,6 +6,7 @@ func _ready():
 	AudioManager.audioSplash = $TriggerWaterZone/AudioSplash
 	GameManager.posEntranceBoss1 = $EntranceBoss1
 	AudioServer.set_bus_effect_enabled(AudioManager.SFX_BUS_ID, 0, false)
+	AudioManager.setVolumeAudioProcedural(0)
 	AudioManager.play_music_outwater()
 	AudioManager.play_ambient_outdoor()
 	AudioManager.stopMusicGameOver()

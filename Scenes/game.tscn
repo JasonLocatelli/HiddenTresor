@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://d7d2plglxi1t" path="res://SFX/Sounds/445244__matrixxx__vibrations-01.mp3" id="13_nvj5j"]
 [ext_resource type="AudioStream" uid="uid://gvjhlr5drlcl" path="res://SFX/Sounds/434978__felixblume__water-splash.mp3" id="13_qme6o"]
 [ext_resource type="AudioStream" uid="uid://dxkybxn5bq787" path="res://SFX/Sounds/lake-wavelet-27909.mp3" id="14_0qdnv"]
-[ext_resource type="PackedScene" path="res://Scenes/Spikodon.tscn" id="14_x8df5"]
+[ext_resource type="PackedScene" uid="uid://ceoq2jly2fys3" path="res://Scenes/Spikodon.tscn" id="14_x8df5"]
 
 [sub_resource type="Resource" id="Resource_o2xsg"]
 script = ExtResource("6_mhwr4")
