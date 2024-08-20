@@ -44,6 +44,7 @@ func _on_btn_quit_pressed():
 func update_coins_quantity():
 	%numberOfCoins.text = str(GameManager.coins)
 	resetAllButtonActivation()
+
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value
 
@@ -51,9 +52,7 @@ func storeVisibility(visibleChange):
 	$store.visible = visibleChange
 	
 func fillStore():
-	print("Filling the store...")
 	for key in PowerDb.UPGRADE :
-		print("Adding item:", key)
 		var powerUp = PowerDb.UPGRADE[key]
 		var option_choice = itemOptions.instantiate()
 		option_choice.item = powerUp

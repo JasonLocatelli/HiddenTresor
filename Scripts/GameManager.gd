@@ -6,7 +6,7 @@ var timer : Timer
 var firstGame : bool = true
 var gameSlot : int = 0
 # Pieces posséder
-var coins : int = 0
+var coins : int = 900
 # Niveau de la mutation pour chaque amélioration diferrent
 var clawLevel = 0
 var speedLevel = 0

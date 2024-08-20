@@ -11,10 +11,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -194.5
-offset_top = -44.5
-offset_right = 101.5
-offset_bottom = 23.5
+offset_left = -148.0
+offset_top = -34.0
+offset_right = 148.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -56,6 +56,7 @@ theme_override_constants/margin_right = 5
 
 [node name="HbcNameDesc" type="VBoxContainer" parent="HbcIcon/McNameDesc"]
 layout_mode = 2
+alignment = 1
 
 [node name="name" type="Label" parent="HbcIcon/McNameDesc/HbcNameDesc"]
 layout_mode = 2
@@ -66,10 +67,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="description" type="Label" parent="HbcIcon/McNameDesc/HbcNameDesc"]
-custom_minimum_size = Vector2(40, 20)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h001t")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "GIVE MORE OXYGENE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -99,7 +100,7 @@ alignment = 1
 [node name="priceTag" type="Label" parent="HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h001t")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "PRICE : "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -107,14 +108,14 @@ vertical_alignment = 1
 [node name="price" type="Label" parent="HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h001t")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "18"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="HbcIcon/McPriceBtn/VbcPriceBtn"]
 clip_contents = true
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(20, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

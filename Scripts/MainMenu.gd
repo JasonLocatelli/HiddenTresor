@@ -131,3 +131,12 @@ func _on_delete_save_3_pressed() -> void:
 	GameManager.gameSlot = 3
 	AudioManager.playAudioSelect()
 	_onFileDeletion()
+
+func _on_return_menu_pressed() -> void:
+	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
+	$AspectRatioContainer/Credit.visible = false
+
+
+func _on_credits_pressed() -> void:
+	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
+	$AspectRatioContainer/Credit.visible = true
