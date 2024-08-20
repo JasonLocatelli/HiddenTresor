@@ -19,7 +19,7 @@ var sourceDrowningVoice = ["res://SFX/Sounds/488957-muses212-drowning-man_1.mp3"
 
 # Méthode chargée de jouer la musique sous l'eau
 func play_music_outwater():
-	$AudioMusicProcedural.stream.set_sync_stream_volume(0, -40)
+	$AudioMusicProcedural.stream.set_sync_stream_volume(0, -10)
 	$AudioMusicProcedural.stream.set_sync_stream_volume(1, -40)
 	$AudioMusicProcedural.play()
 	music_outwater()
@@ -121,6 +121,7 @@ func stopMusicInGame():
 	$AmbientUnderWater.stop()
 	$AudioMusicProcedural.stop()
 	$AudioGameOver.stop()
+	$AudioMusicBoss1.stop()
 	
 # Méthode chargée d'arrêter la musique procédural.
 func stopMusicProcedural():
@@ -151,3 +152,26 @@ func playAudioSwim():
 
 func stopAudioSwim():
 	$AudioSwim.play()
+
+func stopAudioBoss1():
+	$AudioMusicBoss1.stop()
+
+func audioUnderwaterToBoss1():
+	# On enlève les anciens "Tween"
+	cleanTween() 
+	tween = get_tree().create_tween()
+	tween.tween_property($AudioMusicProcedural, "volume_db", -40, 0.5)
+	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -10, 5).set_trans(Tween.TRANS_SINE)
+	$AudioMusicBoss1.play()
+	
+func audioBoss1ToUnderwater():
+	# On enlève les anciens "Tween"
+	cleanTween() 
+	tween = get_tree().create_tween()
+	tween.tween_property($AudioMusicProcedural, "volume_db", -10, 1)
+	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -40, 5).set_trans(Tween.TRANS_SINE)
+	tween.tween_callback(stopAudioBoss1)
+
+# Méthode chargée de changer le pitch de la musique du premier boss.
+func editPitchAudioMusicBoss1(value):
+	$AudioMusicBoss1.pitch_scale = value

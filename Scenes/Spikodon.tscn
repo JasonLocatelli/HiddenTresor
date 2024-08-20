@@ -1,0 +1,1238 @@
+[gd_scene load_steps=119 format=3 uid="uid://ceoq2jly2fys3"]
+
+[ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="1_fdvuu"]
+[ext_resource type="Script" path="res://Scripts/spikodon.gd" id="1_fuyfp"]
+[ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="2_oee5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccete"]
+radius = 35.0143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w86al"]
+radius = 50.0899
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ahv2t"]
+var/var/name = &"var"
+var/var/type = 3
+var/var/value = 0.0
+var/var/hint = 0
+var/var/hint_string = ""
+
+[sub_resource type="BBNode" id="BBNode_x4tq8"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_whjns"]
+animation_player = SubResource("BBNode_x4tq8")
+animation_name = &"enter"
+
+[sub_resource type="BTWait" id="BTWait_obqxl"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_5lth8"]
+children = [SubResource("BTPlayAnimation_whjns"), SubResource("BTWait_obqxl")]
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_3r3gm"]
+children = [SubResource("BTSequence_5lth8")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_7nu3g"]
+text = "Début pattern"
+
+[sub_resource type="BBVariant" id="BBVariant_gkq4n"]
+type = 2
+saved_value = 20
+resource_name = "20"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_u2w77"]
+property = &"life"
+check_type = 3
+value = SubResource("BBVariant_gkq4n")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_niyun"]
+text = "Phase 1"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_ltolj"]
+text = "Pattern 1 a"
+
+[sub_resource type="BBNode" id="BBNode_23pb6"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6ahq5"]
+animation_player = SubResource("BBNode_23pb6")
+animation_name = &"pattern1_a"
+
+[sub_resource type="BBNode" id="BBNode_rmv52"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_smith"]
+animation_player = SubResource("BBNode_rmv52")
+animation_name = &"pattern1_a"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_yryw0"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_sa40u"]
+custom_name = "Pattern 1 a"
+children = [SubResource("BTConsolePrint_ltolj"), SubResource("BTPlayAnimation_6ahq5"), SubResource("BTAwaitAnimation_smith"), SubResource("BTWait_yryw0")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_xlrej"]
+text = "Pattern 1 b"
+
+[sub_resource type="BBNode" id="BBNode_285of"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ah8kp"]
+animation_player = SubResource("BBNode_285of")
+animation_name = &"pattern1_b"
+
+[sub_resource type="BBNode" id="BBNode_l832m"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_mxuij"]
+animation_player = SubResource("BBNode_l832m")
+animation_name = &"pattern1_b"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_ytr87"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_y0ps3"]
+custom_name = "Pattern 1 b"
+children = [SubResource("BTConsolePrint_xlrej"), SubResource("BTPlayAnimation_ah8kp"), SubResource("BTAwaitAnimation_mxuij"), SubResource("BTWait_ytr87")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_t0a4r"]
+custom_name = "Pattern 1"
+children = [SubResource("BTSequence_sa40u"), SubResource("BTSequence_y0ps3")]
+
+[sub_resource type="BBVariant" id="BBVariant_7e8o0"]
+type = 2
+saved_value = 20
+resource_name = "20"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_imr66"]
+property = &"life"
+check_type = 3
+value = SubResource("BBVariant_7e8o0")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_6c703"]
+text = "Pattern 2 b"
+
+[sub_resource type="BBNode" id="BBNode_eyti8"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_8fup4"]
+animation_player = SubResource("BBNode_eyti8")
+animation_name = &"pattern2_b"
+
+[sub_resource type="BBNode" id="BBNode_wg2lm"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_762sq"]
+animation_player = SubResource("BBNode_wg2lm")
+animation_name = &"pattern2_b"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_mkggm"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_mk7l7"]
+custom_name = "Pattern 2 b"
+children = [SubResource("BTConsolePrint_6c703"), SubResource("BTPlayAnimation_8fup4"), SubResource("BTAwaitAnimation_762sq"), SubResource("BTWait_mkggm")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_mwl7e"]
+text = "Pattern 2 a"
+
+[sub_resource type="BBNode" id="BBNode_xilrp"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_cg87e"]
+animation_player = SubResource("BBNode_xilrp")
+animation_name = &"pattern2_a"
+
+[sub_resource type="BBNode" id="BBNode_k85y4"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_g08ml"]
+animation_player = SubResource("BBNode_k85y4")
+animation_name = &"pattern2_a"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_s0hkf"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_vf1ix"]
+custom_name = "Pattern 2 a"
+children = [SubResource("BTConsolePrint_mwl7e"), SubResource("BTPlayAnimation_cg87e"), SubResource("BTAwaitAnimation_g08ml"), SubResource("BTWait_s0hkf")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_6np7e"]
+custom_name = "Pattern 2"
+children = [SubResource("BTSequence_mk7l7"), SubResource("BTSequence_vf1ix")]
+
+[sub_resource type="BBVariant" id="BBVariant_v4djt"]
+type = 2
+saved_value = 20
+resource_name = "20"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_udw7a"]
+property = &"life"
+check_type = 3
+value = SubResource("BBVariant_v4djt")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_mlque"]
+text = "Pattern 3 a"
+
+[sub_resource type="BBNode" id="BBNode_pq4hq"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_no750"]
+animation_player = SubResource("BBNode_pq4hq")
+animation_name = &"pattern3_a"
+
+[sub_resource type="BBNode" id="BBNode_qfbw3"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_7s3hc"]
+animation_player = SubResource("BBNode_qfbw3")
+animation_name = &"pattern3_a"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_cip23"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_dyv3k"]
+custom_name = "Pattern 3 a"
+children = [SubResource("BTConsolePrint_mlque"), SubResource("BTPlayAnimation_no750"), SubResource("BTAwaitAnimation_7s3hc"), SubResource("BTWait_cip23")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_0yvlk"]
+text = "Pattern 3 b"
+
+[sub_resource type="BBNode" id="BBNode_k8ljc"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_eir8k"]
+animation_player = SubResource("BBNode_k8ljc")
+animation_name = &"pattern3_b"
+
+[sub_resource type="BBNode" id="BBNode_0xdta"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_ampay"]
+animation_player = SubResource("BBNode_0xdta")
+animation_name = &"pattern3_b"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_7g8ub"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_ind04"]
+custom_name = "Pattern 3 b"
+children = [SubResource("BTConsolePrint_0yvlk"), SubResource("BTPlayAnimation_eir8k"), SubResource("BTAwaitAnimation_ampay"), SubResource("BTWait_7g8ub")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_2h5by"]
+custom_name = "Pattern 3"
+children = [SubResource("BTSequence_dyv3k"), SubResource("BTSequence_ind04")]
+
+[sub_resource type="BTWait" id="BTWait_jsfd8"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_3m4je"]
+custom_name = "Phase 1"
+children = [SubResource("BTCheckAgentProperty_u2w77"), SubResource("BTConsolePrint_niyun"), SubResource("BTRandomSelector_t0a4r"), SubResource("BTCheckAgentProperty_imr66"), SubResource("BTRandomSelector_6np7e"), SubResource("BTCheckAgentProperty_udw7a"), SubResource("BTRandomSelector_2h5by"), SubResource("BTWait_jsfd8")]
+
+[sub_resource type="BBVariant" id="BBVariant_wm8xn"]
+type = 2
+saved_value = 20
+resource_name = "20"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_iq6ss"]
+property = &"life"
+check_type = 2
+value = SubResource("BBVariant_wm8xn")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_12cat"]
+text = "Phase 2"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_58e1q"]
+text = "Pattern 4 a"
+
+[sub_resource type="BBNode" id="BBNode_k8a3b"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h2dsi"]
+animation_player = SubResource("BBNode_k8a3b")
+animation_name = &"pattern4_a"
+
+[sub_resource type="BBNode" id="BBNode_24aa0"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_d5j2p"]
+animation_player = SubResource("BBNode_24aa0")
+animation_name = &"pattern4_a"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_6p6q6"]
+
+[sub_resource type="BTSequence" id="BTSequence_tms8r"]
+custom_name = "Pattern 4 a"
+children = [SubResource("BTConsolePrint_58e1q"), SubResource("BTPlayAnimation_h2dsi"), SubResource("BTAwaitAnimation_d5j2p"), SubResource("BTWait_6p6q6")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_2chjx"]
+text = "Pattern 4 b"
+
+[sub_resource type="BBNode" id="BBNode_snxfy"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_j5hf1"]
+animation_player = SubResource("BBNode_snxfy")
+animation_name = &"pattern4_b"
+
+[sub_resource type="BBNode" id="BBNode_q8cdp"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_hjkq7"]
+animation_player = SubResource("BBNode_q8cdp")
+animation_name = &"pattern4_b"
+max_time = 40.0
+
+[sub_resource type="BTWait" id="BTWait_3yo22"]
+
+[sub_resource type="BTSequence" id="BTSequence_texwn"]
+custom_name = "Pattern 4 b"
+children = [SubResource("BTConsolePrint_2chjx"), SubResource("BTPlayAnimation_j5hf1"), SubResource("BTAwaitAnimation_hjkq7"), SubResource("BTWait_3yo22")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_xrvhb"]
+custom_name = "Pattern 4"
+children = [SubResource("BTSequence_tms8r"), SubResource("BTSequence_texwn")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_h5ckf"]
+text = "Pattern 5 a"
+
+[sub_resource type="BBNode" id="BBNode_ymcwy"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_37cks"]
+animation_player = SubResource("BBNode_ymcwy")
+animation_name = &"pattern5_a"
+
+[sub_resource type="BBNode" id="BBNode_llt81"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_0yte1"]
+animation_player = SubResource("BBNode_llt81")
+animation_name = &"pattern5_a"
+max_time = 40.0
+
+[sub_resource type="BTSequence" id="BTSequence_yr163"]
+custom_name = "Pattern 5 a"
+children = [SubResource("BTConsolePrint_h5ckf"), SubResource("BTPlayAnimation_37cks"), SubResource("BTAwaitAnimation_0yte1")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_cnf0n"]
+text = "Pattern 5 b"
+
+[sub_resource type="BBNode" id="BBNode_hteyn"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_dtfov"]
+animation_player = SubResource("BBNode_hteyn")
+animation_name = &"pattern5_b"
+
+[sub_resource type="BBNode" id="BBNode_t6rr5"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_ehnxn"]
+animation_player = SubResource("BBNode_t6rr5")
+animation_name = &"pattern5_b"
+max_time = 40.0
+
+[sub_resource type="BTSequence" id="BTSequence_1h5ty"]
+custom_name = "Pattern 5 b"
+children = [SubResource("BTConsolePrint_cnf0n"), SubResource("BTPlayAnimation_dtfov"), SubResource("BTAwaitAnimation_ehnxn")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_w3nfm"]
+custom_name = "Pattern 5"
+children = [SubResource("BTSequence_yr163"), SubResource("BTSequence_1h5ty")]
+
+[sub_resource type="BTWait" id="BTWait_qbhvm"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_fegcy"]
+custom_name = "Phase 2"
+children = [SubResource("BTCheckAgentProperty_iq6ss"), SubResource("BTConsolePrint_12cat"), SubResource("BTRandomSelector_xrvhb"), SubResource("BTRandomSelector_w3nfm"), SubResource("BTWait_qbhvm")]
+
+[sub_resource type="BTSelector" id="BTSelector_ocxfe"]
+children = [SubResource("BTSequence_3m4je"), SubResource("BTSequence_fegcy")]
+
+[sub_resource type="BTSequence" id="BTSequence_luf65"]
+children = [SubResource("BTConsolePrint_7nu3g"), SubResource("BTSelector_ocxfe")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_hwlj7"]
+forever = true
+children = [SubResource("BTSequence_luf65")]
+
+[sub_resource type="BTSequence" id="BTSequence_28khi"]
+custom_name = "Player enter on room"
+children = [SubResource("BTRunLimit_3r3gm"), SubResource("BTRepeat_hwlj7")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_dujtn"]
+blackboard_plan = SubResource("BlackboardPlan_ahv2t")
+root_task = SubResource("BTSequence_28khi")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_geyp0"]
+
+[sub_resource type="Animation" id="Animation_4upey"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7n3fl"]
+resource_name = "enter"
+length = 2.0
+step = 0.25
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 1.13333, 5, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="Animation" id="Animation_xeemx"]
+resource_name = "pattern1_a"
+length = 6.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2.6, 3, 3.8, 4.2, 4.9, 5.33333, 5.96667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2.6, 3, 3.8, 5.33333, 5.96667)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.2, 5.33333, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c2lf1"]
+resource_name = "pattern1_b"
+length = 6.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2.6, 3, 3.8, 4.2, 4.9, 5.33333, 5.96667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2.6, 3, 3.8, 5.33333, 5.96667)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.2, 5.33333, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hbafj"]
+resource_name = "pattern2_a"
+length = 5.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ppnyw"]
+resource_name = "pattern2_b"
+length = 5.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jevdr"]
+resource_name = "pattern3_a"
+length = 5.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.3, 2.36667, 3.2, 4, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.3, 2.36667, 3.2, 4, 5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 1.3, 2.36667, 3.2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qckd3"]
+resource_name = "pattern3_b"
+length = 5.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.3, 2.36667, 3.2, 4, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.3, 2.36667, 3.2, 4, 5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 1.3, 2.36667, 3.2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2m2rq"]
+resource_name = "pattern4_a"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.266667, 3, -150, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.5, 3.2, 5.2, 5.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.0666666, -36, 0.3, 98, 148, -0.266667, -3, 0.25, 0, 148, -0.266667, -3, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.5, 3.2, 5.2, 5.9)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.13333, 2.86667, 3.2, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.3, 2.7, 3, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7w1x1"]
+resource_name = "pattern4_b"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.266667, 3, 150, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.5, 3.2, 5.2, 5.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0, 0, -0.0666666, -36, 0.3, 98, 148, -0.266667, -3, 0.25, 0, 148, -0.266667, -3, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.5, 3.2, 5.2, 5.9)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.13333, 2.86667, 3.2, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.3, 2.7, 3, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeGas"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_snkfu"]
+resource_name = "pattern5_a"
+length = 20.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -250, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0, -250, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 6, 7, 9, 11, 13, 15, 17)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 9)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7, 9, 17, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0cb62"]
+resource_name = "pattern5_b"
+length = 20.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0, -250, -0.25, 0, 0.25, 0, 250, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 6, 7, 9, 11, 13, 15, 17)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.25, 0, 200, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4, 6, 7, 9)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7, 9, 17, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}, {
+"args": [],
+"method": &"startVulnerable"
+}, {
+"args": [],
+"method": &"stopVulnerable"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeGas"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}, {
+"args": [],
+"method": &"makeExplosionSpike"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ylqj"]
+_data = {
+"RESET": SubResource("Animation_4upey"),
+"enter": SubResource("Animation_7n3fl"),
+"pattern1_a": SubResource("Animation_xeemx"),
+"pattern1_b": SubResource("Animation_c2lf1"),
+"pattern2_a": SubResource("Animation_hbafj"),
+"pattern2_b": SubResource("Animation_ppnyw"),
+"pattern3_a": SubResource("Animation_jevdr"),
+"pattern3_b": SubResource("Animation_qckd3"),
+"pattern4_a": SubResource("Animation_2m2rq"),
+"pattern4_b": SubResource("Animation_7w1x1"),
+"pattern5_a": SubResource("Animation_snkfu"),
+"pattern5_b": SubResource("Animation_0cb62")
+}
+
+[node name="Spikodon" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(0, 250)
+script = ExtResource("1_fuyfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fdvuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ccete")
+
+[node name="RangeAttack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeAttack"]
+shape = SubResource("CircleShape2D_w86al")
+
+[node name="TimerAttack" type="Timer" parent="."]
+
+[node name="AudioNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_oee5o")
+volume_db = -10.0
+autoplay = true
+attenuation = 18.0
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_dujtn")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_geyp0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ylqj")
+}
+
+[connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
+[connection signal="body_exited" from="RangeAttack" to="." method="_on_range_attack_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]

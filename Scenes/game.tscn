@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=31 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://d7d2plglxi1t" path="res://SFX/Sounds/445244__matrixxx__vibrations-01.mp3" id="13_nvj5j"]
 [ext_resource type="AudioStream" uid="uid://gvjhlr5drlcl" path="res://SFX/Sounds/434978__felixblume__water-splash.mp3" id="13_qme6o"]
 [ext_resource type="AudioStream" uid="uid://dxkybxn5bq787" path="res://SFX/Sounds/lake-wavelet-27909.mp3" id="14_0qdnv"]
+[ext_resource type="PackedScene" uid="uid://ceoq2jly2fys3" path="res://Scenes/Spikodon.tscn" id="14_x8df5"]
 
 [sub_resource type="Resource" id="Resource_o2xsg"]
 script = ExtResource("6_mhwr4")
@@ -25,27 +26,51 @@ ease = 2
 
 [sub_resource type="Curve2D" id="Curve2D_c854m"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -115, 41, 0, 0, 0, 0, 49.3429, 40.9746, 0, 0, 0, 0, 64.5561, 40.5779, 0, 0, 0, 0, 96, 40)
+"points": PackedVector2Array(0, 0, 0, 0, -115, 40, 0, 0, 0, 0, 96, 40)
 }
-point_count = 4
+point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_i1qeh"]
+[sub_resource type="Curve2D" id="Curve2D_3aj6q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 326, 42, 0, 0, 0, 0, 144, 40)
+"points": PackedVector2Array(0, 0, 0, 0, 705, -1352, 0, 0, 0, 0, 525, -1352)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_uqnoe"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, -423, 0, 0, 0, 0, 424, -351, 0, 0, 0, 0, 688, -423, 0, 0, 0, 0, 688, -671, 0, 0, 0, 0, 536, -799, 0, 0, 0, 0, 288, -799, 0, 0, 0, 0, 168, -655, 0, 0, 0, 0, 200, -423)
+"points": PackedVector2Array(0, 0, 0, 0, 1007, -1145, 0, 0, 0, 0, 698, -1148, 0, 0, 0, 0, 684, -1284, 0, 0, 0, 0, 509, -1391)
 }
-point_count = 8
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_uh12j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 731, -201, 0, 0, 0, 0, 775, -201)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_i1qeh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 377, -132, 0, 0, 0, 0, 336, -132)
+}
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqhq8"]
 size = Vector2(272, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11ce8"]
+size = Vector2(94, 57)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gu60"]
 size = Vector2(19, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gdhi"]
+size = Vector2(307, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3otf"]
+size = Vector2(83, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqyk"]
+size = Vector2(12, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
 size = Vector2(308, 9)
@@ -54,11 +79,14 @@ size = Vector2(308, 9)
 position = Vector2(24, -16)
 script = ExtResource("1_uraxx")
 
+[node name="EntranceBoss1" type="Marker2D" parent="."]
+position = Vector2(732.345, -453.534)
+
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1590.0
-offset_top = -2438.0
-offset_right = 2272.0
-offset_bottom = 2015.0
+offset_left = -1568.0
+offset_top = -2449.0
+offset_right = 2294.0
+offset_bottom = 2004.0
 color = Color(0.32549, 0.462745, 0.713726, 1)
 
 [node name="WaterBody" parent="." instance=ExtResource("1_2h55a")]
@@ -67,11 +95,11 @@ distance_between_springs = 30
 spring_number = 200
 depth = 5000
 
-[node name="God" parent="." instance=ExtResource("11_xjrug")]
-position = Vector2(786, -2381)
-
 [node name="Map" parent="." instance=ExtResource("3_2npin")]
 position = Vector2(-104, 144)
+
+[node name="God" parent="." instance=ExtResource("11_xjrug")]
+position = Vector2(784, -2360)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
 position = Vector2(904, -2288)
@@ -132,21 +160,20 @@ position = Vector2(497, -89)
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="PathUrchin1" type="Path2D" parent="Paths"]
-position = Vector2(376, -1392)
+position = Vector2(380, -1394)
 curve = SubResource("Curve2D_c854m")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathUrchin1"]
-position = Vector2(-115, 41)
-rotation = -0.000154544
+position = Vector2(-115, 40)
 loop = false
 
 [node name="PathUrchin2" type="Path2D" parent="Paths"]
-position = Vector2(376, -1392)
-curve = SubResource("Curve2D_i1qeh")
+position = Vector2(-1, -2)
+curve = SubResource("Curve2D_3aj6q")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathUrchin2"]
-position = Vector2(326, 42)
-rotation = -3.1306
+position = Vector2(705, -1352)
+rotation = 3.14159
 loop = false
 
 [node name="PathDiodon1" type="Path2D" parent="Paths"]
@@ -154,26 +181,51 @@ position = Vector2(336, 687)
 curve = SubResource("Curve2D_uqnoe")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathDiodon1"]
-position = Vector2(200, -423)
-rotation = 0.310998
+position = Vector2(1007, -1145)
+rotation = -3.13188
+loop = false
+
+[node name="PathUrchin3" type="Path2D" parent="Paths"]
+position = Vector2(-54, 0)
+curve = SubResource("Curve2D_uh12j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathUrchin3"]
+position = Vector2(731, -201)
+loop = false
+
+[node name="PathUrchin4" type="Path2D" parent="Paths"]
+position = Vector2(439, -69)
+curve = SubResource("Curve2D_i1qeh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/PathUrchin4"]
+position = Vector2(377, -132)
+rotation = 3.14159
 loop = false
 
 [node name="Ennemies" type="Node2D" parent="."]
 
 [node name="Urchin" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
-position = Vector2(264, -1352)
+position = Vector2(264, -1354)
 pathFollow = NodePath("../../Paths/PathUrchin1/PathFollow2D")
 
 [node name="Urchin2" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
-position = Vector2(704, -1352)
+position = Vector2(704, -1354)
 pathFollow = NodePath("../../Paths/PathUrchin2/PathFollow2D")
 
 [node name="Diodon" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("11_ltnvu")]
-position = Vector2(536, 264)
+position = Vector2(856, -688)
 pathFollow = NodePath("../../Paths/PathDiodon1/PathFollow2D")
 loop = true
 startFollowPath = true
 speed = 0.1
+
+[node name="Urchin3" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
+position = Vector2(679, -201)
+pathFollow = NodePath("../../Paths/PathUrchin3/PathFollow2D")
+
+[node name="Urchin4" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
+position = Vector2(814, -201)
+pathFollow = NodePath("../../Paths/PathUrchin4/PathFollow2D")
 
 [node name="Triggers" type="Node2D" parent="."]
 
@@ -184,14 +236,52 @@ scale = Vector2(0.99853, 0.98633)
 position = Vector2(496.73, -1330.18)
 shape = SubResource("RectangleShape2D_jqhq8")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Triggers/TriggerStart"]
+position = Vector2(498.733, -1368.71)
+scale = Vector2(1.00147, 1.01386)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerStart/StaticBody2D"]
+position = Vector2(3, -23.5)
+shape = SubResource("RectangleShape2D_11ce8")
+disabled = true
+
 [node name="TriggerImpactStart" type="Area2D" parent="Triggers"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerImpactStart"]
-position = Vector2(495, -1352)
+position = Vector2(502, -1352)
 shape = SubResource("RectangleShape2D_4gu60")
 
 [node name="AudioImpact" type="AudioStreamPlayer2D" parent="Triggers/TriggerImpactStart"]
 position = Vector2(495, -1352)
+stream = ExtResource("13_nvj5j")
+volume_db = 10.0
+max_distance = 1000.0
+attenuation = 11.7127
+panning_strength = 1.5
+bus = &"SFX"
+
+[node name="TriggerBoss1" type="Area2D" parent="Triggers"]
+position = Vector2(741, -73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerBoss1"]
+position = Vector2(5.5, -51)
+shape = SubResource("RectangleShape2D_7gdhi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Triggers/TriggerBoss1"]
+position = Vector2(3, -126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerBoss1/StaticBody2D"]
+position = Vector2(0.5, -15)
+shape = SubResource("RectangleShape2D_s3otf")
+disabled = true
+
+[node name="TriggerImpactBoss1" type="Area2D" parent="Triggers"]
+position = Vector2(744, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerImpactBoss1"]
+shape = SubResource("RectangleShape2D_yuqyk")
+
+[node name="AudioImpact" type="AudioStreamPlayer2D" parent="Triggers/TriggerImpactBoss1"]
 stream = ExtResource("13_nvj5j")
 volume_db = 10.0
 max_distance = 1000.0
@@ -231,6 +321,13 @@ panning_strength = 1.5
 position = Vector2(497, -2080)
 shape = SubResource("RectangleShape2D_rn5n3")
 
+[node name="Boss1" type="Node2D" parent="."]
+position = Vector2(746.79, 95.2)
+
+[node name="Spikodon" parent="Boss1" instance=ExtResource("14_x8df5")]
+
 [connection signal="body_entered" from="Triggers/TriggerStart" to="." method="_on_trigger_start_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerImpactStart" to="." method="_on_trigger_impact_start_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerBoss1" to="." method="_on_trigger_boss_1_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerImpactBoss1" to="." method="_on_trigger_impact_boss_1_body_entered"]
 [connection signal="body_entered" from="TriggerWaterZone" to="." method="_on_trigger_water_zone_body_entered"]
