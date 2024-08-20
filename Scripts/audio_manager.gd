@@ -175,3 +175,6 @@ func audioBoss1ToUnderwater():
 # Méthode chargée de changer le pitch de la musique du premier boss.
 func editPitchAudioMusicBoss1(value):
 	$AudioMusicBoss1.pitch_scale = value
+
+func setVolumeAudioProcedural(value):
+	$AudioMusicProcedural.volume_db = value
