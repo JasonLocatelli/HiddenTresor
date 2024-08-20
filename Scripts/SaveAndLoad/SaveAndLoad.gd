@@ -24,7 +24,8 @@ func saveData(pPath : String):
 			"clawLevel": GameManager.clawLevel,
 			"dashLevel": GameManager.dashLevel,
 			"swimmingLevel": GameManager.swimmingLevel,
-			"strenghLevel": GameManager.strenghLevel
+			"strenghLevel": GameManager.strenghLevel,
+			"firstTime": GameManager.firstGame
 		}
 	} 
 	var json_string = JSON.stringify(data, "\t")
@@ -64,6 +65,7 @@ func extractData(data):
 	GameManager.clawLevel = data.playerData.clawLevel
 	GameManager.swimmingLevel = data.playerData.swimmingLevel
 	GameManager.strenghLevel = data.playerData.strenghLevel
+	GameManager.firstGame = data.playerData.firstTime
 	
 func deleteFile(pPath : String):
 	if FileAccess.file_exists(pPath):
