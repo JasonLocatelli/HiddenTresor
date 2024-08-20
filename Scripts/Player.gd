@@ -119,6 +119,8 @@ func dead():
 	timerOxygene.stop()
 	$AnimatedSprite2D.pause()
 	AudioManager.play_human_drowning()
+	if GameManager.firstGame :
+		GameManager.firstGame = false
 	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
 	GameManager.hud.displayGameOver()
 

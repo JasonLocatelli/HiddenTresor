@@ -1,13 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=15 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 [ext_resource type="Texture2D" uid="uid://bbt3klw77ykst" path="res://Sprites/UI/uiBarreO2-O2.png" id="2_7knyx"]
-[ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
-[ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_20xto"]
-[ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_1uju1"]
 [ext_resource type="Texture2D" uid="uid://1gvfsffdm7ht" path="res://Sprites/UI/uiBarreO2-Barre.png" id="2_byo8b"]
+[ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_20xto"]
 [ext_resource type="Texture2D" uid="uid://bhdvp8s876buo" path="res://Sprites/UI/uiBarreO2-BarreFill.png" id="3_d55ks"]
-[ext_resource type="FontFile" uid="uid://dw7cnvc54a7sf" path="res://font/lilita_one_regular.ttf" id="3_kn2ru"]
+[ext_resource type="Texture2D" uid="uid://cpbrr7tyeb5fd" path="res://Sprites/UI/uiBarreO2-under.png" id="3_egikh"]
+[ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_1uju1"]
+[ext_resource type="Texture2D" uid="uid://dd0padpi7vubp" path="res://Sprites/UI/UI-tresorDansSac.png" id="5_bg4n8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xvpdv"]
+font = ExtResource("3_20xto")
+font_size = 33
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61ct5"]
 bg_color = Color(0, 0, 0, 0.388235)
@@ -168,34 +174,36 @@ expand_mode = 3
 [node name="PbOxygen" type="TextureProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 step = 0.0
-value = 1.0
+value = 25.0
+texture_under = ExtResource("3_egikh")
 texture_over = ExtResource("2_byo8b")
 texture_progress = ExtResource("3_d55ks")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/MarginContainer"]
-clip_contents = true
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer2"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
-texture = ExtResource("2_77em6")
+texture = ExtResource("5_bg4n8")
 expand_mode = 3
 
-[node name="X" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="numberOfCoins" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "X"
-
-[node name="numberOfCoins" type="Label" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_20xto")
+theme_override_font_sizes/font_size = 33
 text = "0"
+label_settings = SubResource("LabelSettings_xvpdv")
 
 [node name="GameOver" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -222,16 +230,16 @@ alignment = 1
 
 [node name="LbGameOver" type="Label" parent="GameOver/Panel/MarginContainer/VboxBtn"]
 self_modulate = Color(1, 1, 1, 0)
-clip_contents = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 7
 theme_override_fonts/font = ExtResource("3_20xto")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "YOU DIED"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BtnRestart" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
 self_modulate = Color(1, 1, 1, 0)
@@ -284,6 +292,7 @@ libraries = {
 }
 
 [node name="store" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
@@ -316,6 +325,7 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="store/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="store/MarginContainer/VBoxContainer/ScrollContainer"]
 clip_contents = true

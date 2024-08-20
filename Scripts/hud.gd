@@ -42,7 +42,7 @@ func _on_btn_quit_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func update_coins_quantity():
-	$VBoxContainer/HBoxContainer2/numberOfCoins.text = str(GameManager.coins)
+	%numberOfCoins.text = str(GameManager.coins)
 	resetAllButtonActivation()
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value

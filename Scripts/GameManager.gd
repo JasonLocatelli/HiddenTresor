@@ -3,6 +3,7 @@ extends Node
 var player : CharacterBody2D
 var hud : HUD
 var timer : Timer
+var firstGame : bool = true
 var gameSlot : int = 0
 # Pieces posséder
 var coins : int = 0
@@ -79,6 +80,7 @@ func addLevelFromItem(item):
 			strenghLevel += 1
 
 func resetElement():
+	firstGame = true
 	coins = 0
 	clawLevel = 0
 	speedLevel = 0

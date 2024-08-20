@@ -67,11 +67,11 @@ distance_between_springs = 30
 spring_number = 200
 depth = 5000
 
+[node name="God" parent="." instance=ExtResource("11_xjrug")]
+position = Vector2(786, -2381)
+
 [node name="Map" parent="." instance=ExtResource("3_2npin")]
 position = Vector2(-104, 144)
-
-[node name="God" parent="." instance=ExtResource("11_xjrug")]
-position = Vector2(784, -2360)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_3m4wa")]
 position = Vector2(904, -2288)
