@@ -132,6 +132,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../LbGameOver2:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lngvl"]
 _data = {
@@ -206,7 +218,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_xvpdv")
 
 [node name="GameOver" type="PanelContainer" parent="."]
-self_modulate = Color(1, 1, 1, 0)
+visible = false
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
@@ -229,8 +241,7 @@ theme_override_constants/separation = 13
 alignment = 1
 
 [node name="LbGameOver" type="Label" parent="GameOver/Panel/MarginContainer/VboxBtn"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -239,10 +250,22 @@ theme_override_fonts/font = ExtResource("3_20xto")
 theme_override_font_sizes/font_size = 40
 text = "YOU DIED"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="LbGameOver2" type="Label" parent="GameOver/Panel/MarginContainer/VboxBtn"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("3_20xto")
+theme_override_font_sizes/font_size = 25
+text = "\"NO MORE OXYGEN\""
+horizontal_alignment = 1
 
 [node name="BtnRestart" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -264,7 +287,6 @@ flat = true
 icon_alignment = 1
 
 [node name="BtnQuit" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)

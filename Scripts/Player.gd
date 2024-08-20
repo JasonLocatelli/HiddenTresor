@@ -102,6 +102,15 @@ func _physics_process(delta):
 		# Appliquer le mouvement au personnage en utilisant la fonction 'move_and_slide()'.
 		# Cette fonction gère automatiquement les collisions et permet au personnage de glisser le long des surfaces.
 		move_and_slide()
+	else :
+		if not is_on_floor():
+			velocity.x = 0
+			velocity.y += gravityOnWater * delta
+			velocity.y = clamp(velocity.y, -max_speed_fall_on_water, max_speed_fall_on_water)
+			move_and_slide()
+		else :
+			velocity.y = 0
+			move_and_slide()
 
 # Méthode chargée de démarrer le timer d'oxygène.
 func start_timer_oxygen():
@@ -118,7 +127,7 @@ func stop_timer_oxygen():
 
 func dead():
 	isDead = true
-	$CollisionShape2D.queue_free()
+	#CollisionShape2D.queue_free()
 	timerOxygene.stop()
 	$AnimatedSprite2D.pause()
 	AudioManager.play_human_drowning()
@@ -135,7 +144,7 @@ func takeDamage(pValue):
 	if newTime > 0:
 		timerOxygene.start(timerOxygene.time_left - pValue)
 		AudioManager.play_human_hurt()
-	else:
+	elif !isDead:
 		dead()
 
 func takeDamageTotal(pValue):

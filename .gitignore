@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+
+addons/limboai/bin/~liblimboai.windows.editor.x86_64.dll
