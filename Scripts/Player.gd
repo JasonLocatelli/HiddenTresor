@@ -6,7 +6,7 @@ const JUMP_VELOCITY_ON_WATER = -80.0
 
 const UP_VELOCITY_ON_SWIMMING = -55.0
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
-@export var initTimerOxygen = 5
+@export var initTimerOxygen = 10
 # Initialisation du temps de dash
 @export var initTimeDash = 4
 # Initialisation de la resistance
@@ -58,6 +58,9 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && !$AnimationPlayer.is_playing():
 				$AnimationPlayer.play("attack")
 
+		if Input.is_action_just_pressed("entranceBoss1"):
+			position = GameManager.posEntranceBoss1.global_position
+			
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
 		var x_dir = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
@@ -165,6 +168,4 @@ func playAnimationAttack():
 
 func _on_range_attack_under_water_body_entered(body):
 	if body.is_in_group("enemy"):
-		print("Make damage")
-	elif body.is_in_group("diodon"):
 		body.takeDamage(getMaxStrengh())

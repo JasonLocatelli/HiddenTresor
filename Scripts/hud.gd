@@ -28,8 +28,8 @@ func updateMaxValuePbOxygen(value : float):
 # Méthode chargée d'activer l'animation pour afficher le game over.
 func displayGameOver():
 	animGameOver.play("displayGameOver")
+	AudioManager.stopMusicInGame()
 	AudioManager.playGameOver()
-	AudioManager.stopMusicProcedural()
 
 # Méthode chargée s'assigner un evènement au bouton "Restart".
 func _on_btn_restart_pressed():
