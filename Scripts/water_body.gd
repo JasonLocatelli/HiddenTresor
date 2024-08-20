@@ -80,6 +80,7 @@ func draw_water_body():
 	var water_polygon_points = points
 	var first_index = 0
 	var last_index = water_polygon_points.size() - 1
+	bottom = target_height + depth # Position de la limite inférieure de l'eau
 	water_polygon_points.append(Vector2(water_polygon_points[last_index].x, bottom))
 	water_polygon_points.append(Vector2(water_polygon_points[first_index].x, bottom))
 	water_polygon_points = PackedVector2Array(water_polygon_points)
@@ -103,6 +104,7 @@ func _on_water_body_area_body_entered(body):
 		body.start_timer_oxygen() # Commence le timer d'oxygène
 		body.max_speed = body.max_speed / 2 # Réduit la vitesse maximale du joueur
 		AudioManager.audioSplash.position.x = body.global_position.x
+		AudioManager.audioSplash.position.y = body.global_position.y
 		AudioManager.music_outwater()
 		AudioManager.play_audio_splash()
 

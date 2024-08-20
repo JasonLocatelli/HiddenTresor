@@ -1,21 +1,26 @@
 extends Control
 class_name HUD
 
-var progressbarOxygen : ProgressBar
+var progressbarOxygen : TextureProgressBar
 var animGameOver : AnimationPlayer
 
 @onready var itemOptions = preload("res://Scenes/power_up_panel.tscn")
 
 func _ready():
-	progressbarOxygen = $PbOxygen
+	progressbarOxygen = $VBoxContainer/MarginContainer/HBoxContainer/PbOxygen
 	animGameOver = $GameOver/AnimationPlayer
 	update_coins_quantity()
 	fillStore()
 
-# Met a jour la valeur de l'oxygene
+# Met a jour la valeur de l'oxygene 
 func updateValuePbOxygen(value):
-	progressbarOxygen.value = value
-
+	if value == 0 && !GameManager.player.isDead:
+		progressbarOxygen.value = progressbarOxygen.max_value
+	elif value == 0 && GameManager.player.isDead:
+		progressbarOxygen.value = value
+	else:
+		progressbarOxygen.value = value
+		
 # Met a jour la valeur max de l'oxygene
 func updateMaxValuePbOxygen(value : float):
 	progressbarOxygen.max_value = value
@@ -23,8 +28,8 @@ func updateMaxValuePbOxygen(value : float):
 # Méthode chargée d'activer l'animation pour afficher le game over.
 func displayGameOver():
 	animGameOver.play("displayGameOver")
-	set_visible_pb_oxygen(false)
 	AudioManager.playGameOver()
+	AudioManager.stopMusicProcedural()
 
 # Méthode chargée s'assigner un evènement au bouton "Restart".
 func _on_btn_restart_pressed():
@@ -37,7 +42,7 @@ func _on_btn_quit_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func update_coins_quantity():
-	$MarginContainer/HBoxContainer/numberOfCoins.text = str(GameManager.coins)
+	$VBoxContainer/HBoxContainer2/numberOfCoins.text = str(GameManager.coins)
 	resetAllButtonActivation()
 func set_visible_pb_oxygen(value : bool):
 	progressbarOxygen.visible = value
@@ -53,9 +58,9 @@ func fillStore():
 		var option_choice = itemOptions.instantiate()
 		option_choice.item = powerUp
 		option_choice.initElement()
-		$store/MarginContainer/VBoxContainer.add_child(option_choice)
+		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(option_choice)
 		
 func resetAllButtonActivation():
-	for element in $store/MarginContainer/VBoxContainer.get_children() :
+	for element in $store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_children() :
 		if element is PanelContainer :
 			element.updateButton()

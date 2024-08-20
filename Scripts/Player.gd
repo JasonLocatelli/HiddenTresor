@@ -3,8 +3,14 @@ extends CharacterBody2D
 # Vélocité de saut, définie comme une constante pour être utilisée lors de la détection du saut.
 const JUMP_VELOCITY = -300.0
 const JUMP_VELOCITY_ON_WATER = -80.0
+
+const UP_VELOCITY_ON_SWIMMING = -55.0
 # Initialisation du temps d'oxygène restant appliqué à TimerOxygen
 @export var initTimerOxygen = 5
+# Initialisation du temps de dash
+@export var initTimeDash = 4
+# Initialisation de la resistance
+@export var initResistance = 0
 # Vitesse maximale du personnage en pixels par seconde.
 var max_speed = 225
 # Vitesse de chute dans l'eau
@@ -14,9 +20,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gravityOnWater = 80
 # Valeur en temps reel de l'oxygène
 var enableOxygen = false
+# Valeur pour activer l'attaque
+var enableAttack = false
 # Si <code>true<code> alors il est en vie sinon mort
 var isDead = false
 var damage = 2
+var resistance = 0
+var tween
+var dash = false
+var dashVelocity = 12
+var dashVelocityOutWater = 4
 @onready var timerOxygene = $TimerOxygen
 
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
@@ -39,18 +52,37 @@ func _physics_process(delta):
 			else:
 				velocity.y = JUMP_VELOCITY_ON_WATER
 		
-		if Input.is_action_just_pressed("attack") && !$AnimationPlayer.is_playing():
-				$AnimationPlayer.play("attack")
+		if Input.is_action_pressed("jump") && !is_on_floor() && enableOxygen && GameManager.swimmingLevel > 0:
+			velocity.y = UP_VELOCITY_ON_SWIMMING
 		
+		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && !$AnimationPlayer.is_playing():
+				$AnimationPlayer.play("attack")
+
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
-		var x_dir = 0
-		x_dir = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+		var x_dir = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+		
 		# Appliquer la vitesse horizontale en fonction de la direction détectée.
 		# La vitesse est divisée par 1.5 pour un contrôle plus précis du personnage.
-		velocity.x = x_dir * getMaxSpeed() / 1.5
+		# On applique la velocité du dash quand il est en cours d'execution.
+		if dash:
+			# On applique pas la même velocity du dash en dehors et dans l'eau.
+			if enableOxygen:
+				velocity.x = x_dir * ((getMaxSpeed() / 1.5) * dashVelocity)
+			else:
+				velocity.x = x_dir * ((getMaxSpeed() / 1.5) * dashVelocityOutWater)
+		else:
+			velocity.x = x_dir * ((getMaxSpeed() / 1.5))
 		
-		
+		if GameManager.dashLevel > 0 && Input.is_action_just_pressed("dash") && $TimerDash.is_stopped():
+			dash = true
+			if tween:
+				tween.stop()
+			tween = create_tween()
+			$AudioDash.play()
+			tween.tween_property(self, "dash", false, 0.2).set_ease(Tween.EASE_OUT)
+			$TimerDash.start(getMaxDashTime())
+			
 		if x_dir == 1:
 			$AnimatedSprite2D.flip_h = false
 			$rangeAttackUnderWater.scale.x = x_dir
@@ -75,7 +107,7 @@ func start_timer_oxygen():
 	GameManager.hud.updateMaxValuePbOxygen(getMaxOxygene())	
 	GameManager.hud.set_visible_pb_oxygen(true)
 	enableOxygen = true
-
+	
 # Méthode chargée d'arrêter le timer d'oxygène.
 func stop_timer_oxygen():
 	$TimerOxygen.stop()
@@ -86,6 +118,7 @@ func dead():
 	$CollisionShape2D.queue_free()
 	timerOxygene.stop()
 	$AnimatedSprite2D.pause()
+	AudioManager.play_human_drowning()
 	SaveAndLoad.saveDataFromSaveFile(GameManager.gameSlot)
 	GameManager.hud.displayGameOver()
 
@@ -93,12 +126,15 @@ func _on_timer_oxygen_timeout():
 	dead()
 	
 func takeDamage(pValue):
-	var newTime = timerOxygene.time_left - pValue
+	var newTime = timerOxygene.time_left - takeDamageTotal(pValue)
 	if newTime > 0:
 		timerOxygene.start(timerOxygene.time_left - pValue)
 		AudioManager.play_human_hurt()
 	else:
 		dead()
+
+func takeDamageTotal(pValue):
+	return max(1,pValue - getMaxResistance())
 
 func _on_area_2d_body_entered(body):
 	if body is CPUParticles2D:
@@ -113,6 +149,15 @@ func getMaxSpeed():
 func getMaxOxygene():
 	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)
 
+func getMaxDashTime():
+	return max (initTimeDash, initTimeDash * GameManager.dashLevel)
+	
+func getMaxResistance():
+	return max (initResistance,initResistance + GameManager.resistanceLevel + 3)
+	
+func getMaxStrengh():
+	return max(damage, damage + GameManager.strenghLevel + 3)
+	
 func playAnimationAttack():
 	$AnimationPlayer.play("attack")
 
@@ -120,4 +165,4 @@ func _on_range_attack_under_water_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Make damage")
 	elif body.is_in_group("diodon"):
-		body.takeDamage(damage)
+		body.takeDamage(getMaxStrengh())

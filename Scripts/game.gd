@@ -3,12 +3,13 @@ var blockStart
 
 func _ready():
 	GameManager.find_nodes()
-	AudioManager.audioSplash = $AudioSplash
+	AudioManager.audioSplash = $TriggerWaterZone/AudioSplash
 	AudioServer.set_bus_effect_enabled(AudioManager.SFX_BUS_ID, 0, false)
 	AudioManager.play_music_outwater()
 	AudioManager.play_ambient_outdoor()
+	AudioManager.stopMusicGameOver()
 	AudioManager.stopMusicMainMenu()
-	
+
 # Méthode chargée d'activer le bloquage du passage par les oursins.
 func _on_trigger_start_body_entered(body):
 	if body.is_in_group("player") && !blockStart:

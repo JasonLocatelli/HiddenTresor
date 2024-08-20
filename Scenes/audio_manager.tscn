@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7jh3ypa2rla3"]
+[gd_scene load_steps=15 format=3 uid="uid://b7jh3ypa2rla3"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y6pe1"]
 [ext_resource type="AudioStream" uid="uid://db7ob0n77b5ad" path="res://SFX/Musics/Jason_Locatelli_Discovery.mp3" id="2_yhoks"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cjwl06cgguun1" path="res://SFX/Sounds/253168__suntemple__sfx-ui-button-click.mp3" id="10_msvle"]
 [ext_resource type="AudioStream" uid="uid://c0xwitir8kphl" path="res://SFX/Sounds/442903__qubodup__slash_1.mp3" id="11_gn2dt"]
 [ext_resource type="AudioStream" uid="uid://bsrc571eih56g" path="res://SFX/Sounds/442769__qubodup__sword-hit.mp3" id="12_4very"]
+[ext_resource type="AudioStream" uid="uid://12epgndgsi1f" path="res://SFX/Sounds/484184__sieuamthanh__duoi-mat-bien.mp3" id="13_sskef"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1r2sy"]
 stream_count = 3
@@ -57,9 +58,13 @@ stream = ExtResource("10_msvle")
 [node name="AudioSlash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_gn2dt")
 volume_db = -15.0
-bus = &"SFX"
 
 [node name="AudioHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_4very")
 volume_db = -15.0
+bus = &"SFX"
+
+[node name="AudioSwim" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sskef")
+volume_db = -30.0
 bus = &"SFX"

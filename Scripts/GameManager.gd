@@ -7,11 +7,13 @@ var gameSlot : int = 0
 # Pieces posséder
 var coins : int = 0
 # Niveau de la mutation pour chaque amélioration diferrent
-var powerLevel = 0
+var clawLevel = 0
 var speedLevel = 0
 var oxygeneLevel = 0
 var dashLevel = 0
-
+var swimmingLevel = 0
+var resistanceLevel = 0
+var strenghLevel = 0
 
 # Méthode chargée de chercher les nodes afin de les affecter.
 func find_nodes():
@@ -48,25 +50,40 @@ func getLevelFromItem(item):
 			return  speedLevel
 		PowerDb.UPGRADE.DASH : 
 			return  dashLevel
-		PowerDb.UPGRADE.POWER : 
-			return  powerLevel
+		PowerDb.UPGRADE.CLAW : 
+			return  clawLevel
 		PowerDb.UPGRADE.OXYGENE : 
 			return  oxygeneLevel
+		PowerDb.UPGRADE.SWIMMING : 
+			return  swimmingLevel
+		PowerDb.UPGRADE.RESISTANCE : 
+			return  resistanceLevel
+		PowerDb.UPGRADE.STRENGH : 
+			return  strenghLevel
 
 func addLevelFromItem(item):
 	match item :
 		PowerDb.UPGRADE.SPEED : 
-			speedLevel = speedLevel + 1
+			speedLevel += 1
 		PowerDb.UPGRADE.DASH : 
-			dashLevel = dashLevel + 1
-		PowerDb.UPGRADE.POWER : 
-			powerLevel = powerLevel + 1
+			dashLevel += 1
+		PowerDb.UPGRADE.CLAW : 
+			clawLevel += 1
 		PowerDb.UPGRADE.OXYGENE : 
-			oxygeneLevel = oxygeneLevel + 1
+			oxygeneLevel += 1
+		PowerDb.UPGRADE.SWIMMING : 
+			swimmingLevel += 1
+		PowerDb.UPGRADE.RESISTANCE : 
+			resistanceLevel += 1
+		PowerDb.UPGRADE.STRENGH : 
+			strenghLevel += 1
 
 func resetElement():
 	coins = 0
-	powerLevel = 0
+	clawLevel = 0
 	speedLevel = 0
 	oxygeneLevel = 0
 	dashLevel = 0
+	swimmingLevel = 0
+	resistanceLevel = 0
+	strenghLevel = 0

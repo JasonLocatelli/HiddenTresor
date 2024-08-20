@@ -11,7 +11,7 @@ void fragment() {
 	color= mix(color, tint, 0.3);
 	color = mix(vec4(0.5), color,1.4);
 	COLOR = color;
-	
+
 }
 
 //void light() {

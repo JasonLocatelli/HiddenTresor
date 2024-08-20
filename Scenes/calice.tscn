@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqk2m4e57ukj1"]
+
+[ext_resource type="Script" path="res://Scripts/calice.gd" id="1_3w4pg"]
+[ext_resource type="Texture2D" uid="uid://lpowcd3odmf6" path="res://Sprites/Treasure/CALICE.png" id="2_v4xsl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pkwh"]
+radius = 12.0
+height = 32.0
+
+[node name="Calice" type="Area2D"]
+script = ExtResource("1_3w4pg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v4xsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2pkwh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

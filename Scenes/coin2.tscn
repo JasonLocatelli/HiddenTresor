@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq7pgxqmmmrk2"]
+
+[ext_resource type="Script" path="res://Scripts/coin_2.gd" id="1_4ds2j"]
+[ext_resource type="Texture2D" uid="uid://c0lg756joc0tj" path="res://Sprites/Treasure/coins2.png" id="1_x1f4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1a4bx"]
+
+[node name="Coin2" type="Area2D"]
+script = ExtResource("1_4ds2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1f4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.225)
+shape = SubResource("CircleShape2D_1a4bx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
