@@ -91,6 +91,7 @@ follow_damping_value = Vector2(0.3, 0.3)
 dead_zone_width = 0.22
 dead_zone_height = 0.25
 show_viewfinder_in_play = true
+draw_limits = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1

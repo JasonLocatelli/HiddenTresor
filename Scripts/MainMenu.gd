@@ -101,6 +101,9 @@ func _on_yes_pressed() -> void:
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
 		$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.disabled = !SaveAndLoad.fileExist(1)
 		$AspectRatioContainer/LoadMenu/HBoxContainer2/Game2.disabled = !SaveAndLoad.fileExist(2)
+		$AspectRatioContainer/LoadMenu/HBoxContainer3/Game3.disabled = !SaveAndLoad.fileExist(3)
+		$AspectRatioContainer/LoadMenu/HBoxContainer/deleteSave1.disabled = !SaveAndLoad.fileExist(1)
+		$AspectRatioContainer/LoadMenu/HBoxContainer2/deleteSave2.disabled = !SaveAndLoad.fileExist(2)
 		$AspectRatioContainer/LoadMenu/HBoxContainer3/deleteSave3.disabled = !SaveAndLoad.fileExist(3)
 		gameState = GAME_STATE.LOAD
 		$AspectRatioContainer/LoadMenu.visible = true
