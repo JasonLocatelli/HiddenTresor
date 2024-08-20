@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 [ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
-[ext_resource type="FontFile" uid="uid://dw7cnvc54a7sf" path="res://font/lilita_one_regular.ttf" id="3_kn2ru"]
+[ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_20xto"]
+[ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_1uju1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7srlu"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0.843137)
@@ -149,11 +150,6 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al5wh"]
 bg_color = Color(0, 0, 0, 0.298039)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6aw53"]
-font = ExtResource("3_kn2ru")
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
 [node name="HUD" type="Control" groups=["hud"]]
 layout_mode = 3
 anchors_preset = 15
@@ -238,6 +234,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("3_20xto")
 theme_override_font_sizes/font_size = 32
 text = "YOU DIED"
 horizontal_alignment = 1
@@ -246,15 +243,45 @@ horizontal_alignment = 1
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_20xto")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("4_1uju1")
 disabled = true
 text = "RESTART"
+flat = true
+icon_alignment = 1
 
 [node name="BtnQuit" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_20xto")
+theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("4_1uju1")
 disabled = true
 text = "QUIT"
+flat = true
+icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
 root_node = NodePath("../Panel/MarginContainer/VboxBtn/LbGameOver")
@@ -287,8 +314,9 @@ alignment = 1
 
 [node name="Label" type="Label" parent="store/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_20xto")
+theme_override_font_sizes/font_size = 30
 text = "STORE"
-label_settings = SubResource("LabelSettings_6aw53")
 horizontal_alignment = 1
 vertical_alignment = 1
 
