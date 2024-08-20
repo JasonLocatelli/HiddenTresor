@@ -13,6 +13,10 @@ var sourceJumpVoice = ["res://SFX/Sounds/609789-volvion-man-jumping-noises_1.mp3
 var sourceHurtVoice = ["res://SFX/Sounds/609784-volvion-man-hurt-noises_1.mp3","res://SFX/Sounds/609784-volvion-man-hurt-noises_2.mp3", 
 "res://SFX/Sounds/609784-volvion-man-hurt-noises_3.mp3", "res://SFX/Sounds/609784-volvion-man-hurt-noises_4.mp3"]
 
+# Tableau avec les références de différentes voix de souffrance
+var sourceDrowningVoice = ["res://SFX/Sounds/488957-muses212-drowning-man_1.mp3", "res://SFX/Sounds/488957-muses212-drowning-man_2.mp3",
+"res://SFX/Sounds/488957-muses212-drowning-man_3.mp3"]
+
 # Méthode chargée de jouer la musique sous l'eau
 func play_music_outwater():
 	$AudioMusicProcedural.stream.set_sync_stream_volume(0, -40)
@@ -41,6 +45,7 @@ func music_outwater():
 	tween.set_parallel().tween_property($AudioMusicProcedural.stream, "stream_1/volume", -40, 1.5)
 	$AmbientUnderWater.stream_paused = true
 	$AudioMusicProcedural.stream.set_sync_stream_volume(2, -60)
+	
 # Méthode chargée de faire la transition de la musique en dehors de l'eau vers la musique de la boutique.
 func music_outwater_to_shop():
 	# On enlève les anciens "Tween"
@@ -57,7 +62,6 @@ func music_shop_to_outwater():
 	tween.tween_property($AudioMusicProcedural.stream, "stream_0/volume", -10, 0.5)
 	tween.set_parallel().tween_property($AudioMusicProcedural.stream, "stream_2/volume", -40, 1.5)
 
-
 # Méthode chargée de jouer le sons du personnage qui saute.
 func play_human_jump():
 	sourceJumpVoice.shuffle()
@@ -72,6 +76,13 @@ func play_human_hurt():
 	$AudioVoice.set_stream(audioStream)
 	$AudioVoice.play()
 	
+# Méthode chargée de jouer le sons du personnage qui se noye
+func play_human_drowning():
+	sourceDrowningVoice.shuffle()
+	var audioStream = load(sourceDrowningVoice[randi_range(0,sourceDrowningVoice.size()-1)])
+	$AudioVoice.set_stream(audioStream)
+	$AudioVoice.play()
+
 # Méthode chargée de jouer le son d'ambiance en dehors de l'eau.
 func play_ambient_outdoor():
 	$AudioAmbientOutdoor.play()
@@ -99,13 +110,21 @@ func cleanTween():
 
 # Méthode chargée de jouer la musique du game over.
 func playGameOver():
+	$AudioGameOver.play()
+	
+# Méthode chargée d'arrêter la musique du game over.
+func stopMusicGameOver():
 	$AudioGameOver.stop()
-
+	
 # Méthode chargée d'arrêter les musiques qui sont trouve dans la partie.
 func stopMusicInGame():
 	$AmbientUnderWater.stop()
 	$AudioMusicProcedural.stop()
 	$AudioGameOver.stop()
+	
+# Méthode chargée d'arrêter la musique procédural.
+func stopMusicProcedural():
+	$AudioMusicProcedural.stop()
 
 # Méthode chargée de jouer la musique du menu principal.
 func playMusicMainMenu():
@@ -126,3 +145,9 @@ func playAudioSlash():
 # Méthode chargée de jouer l'audio quand l'attaque du joueur touche l'ennemi n'est ne fait pas de dégats.
 func playAudioHit():
 	$AudioHit.play()
+
+func playAudioSwim():
+	$AudioSwim.play()
+
+func stopAudioSwim():
+	$AudioSwim.play()

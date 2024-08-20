@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://h226rc4u0u8i"]
+[gd_scene load_steps=19 format=3 uid="uid://h226rc4u0u8i"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_a1cli"]
 [ext_resource type="Texture2D" uid="uid://dn13o7afw8y8e" path="res://Sprites/NageX2Right1.png" id="3_fnvrs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cb7hsdjykbdwt" path="res://Sprites/MeleeAttack/SFX304_04.png" id="8_o5n6l"]
 [ext_resource type="Texture2D" uid="uid://8xhghyoixm0i" path="res://Sprites/MeleeAttack/SFX304_05.png" id="9_ba8tt"]
 [ext_resource type="AudioStream" uid="uid://bnth1hb5a8udd" path="res://SFX/Sounds/60030__qubodup__swosh-whoosh-air-cut.mp3" id="10_18i2u"]
+[ext_resource type="AudioStream" uid="uid://dabyguv4yhwjl" path="res://SFX/Sounds/243400-freakinbehemoth-woosh_0owfybvs.mp3" id="11_qwc45"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otb2t"]
 radius = 6.0208
@@ -205,6 +206,14 @@ libraries = {
 
 [node name="AudioAttackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_18i2u")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="TimerDash" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qwc45")
 volume_db = -10.0
 bus = &"SFX"
 

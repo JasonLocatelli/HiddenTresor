@@ -20,7 +20,11 @@ func saveData(pPath : String):
 		"playerData": {
 			"coins": GameManager.coins,
 			"speedLevel": GameManager.speedLevel,
-			"oxygeneLevel": GameManager.oxygeneLevel
+			"oxygeneLevel": GameManager.oxygeneLevel,
+			"clawLevel": GameManager.clawLevel,
+			"dashLevel": GameManager.dashLevel,
+			"swimmingLevel": GameManager.swimmingLevel,
+			"strenghLevel": GameManager.strenghLevel
 		}
 	} 
 	var json_string = JSON.stringify(data, "\t")
@@ -57,6 +61,9 @@ func extractData(data):
 	GameManager.coins = data.playerData.coins
 	GameManager.speedLevel = data.playerData.speedLevel
 	GameManager.oxygeneLevel = data.playerData.oxygeneLevel
+	GameManager.clawLevel = data.playerData.clawLevel
+	GameManager.swimmingLevel = data.playerData.swimmingLevel
+	GameManager.strenghLevel = data.playerData.strenghLevel
 	
 func deleteFile(pPath : String):
 	if FileAccess.file_exists(pPath):

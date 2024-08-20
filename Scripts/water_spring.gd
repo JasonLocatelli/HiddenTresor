@@ -35,7 +35,7 @@ func initialize(x_position, id):
 # Définit la largeur de la collision en fonction d'une valeur donnée
 func set_collision_width(value):
 	var extents = collision.shape.size # Récupère les dimensions actuelles de la forme de collision
-	var new_extents = Vector2(value/1.5, extents.y) # Calcule les nouvelles dimensions avec la largeur donnée
+	var new_extents = Vector2(value/1.3, extents.y) # Calcule les nouvelles dimensions avec la largeur donnée
 	collision.shape.size = new_extents # Applique les nouvelles dimensions à la forme de collision
 
 # Fonction appelée lorsqu'un corps entre en collision avec la zone 2D

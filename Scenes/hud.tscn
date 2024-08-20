@@ -1,14 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=13 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
+[ext_resource type="Texture2D" uid="uid://bbt3klw77ykst" path="res://Sprites/UI/uiBarreO2-O2.png" id="2_7knyx"]
 [ext_resource type="Texture2D" uid="uid://vnha3gb6oqce" path="res://Sprites/Joint.png" id="2_77em6"]
+[ext_resource type="Texture2D" uid="uid://1gvfsffdm7ht" path="res://Sprites/UI/uiBarreO2-Barre.png" id="2_byo8b"]
+[ext_resource type="Texture2D" uid="uid://bhdvp8s876buo" path="res://Sprites/UI/uiBarreO2-BarreFill.png" id="3_d55ks"]
 [ext_resource type="FontFile" uid="uid://dw7cnvc54a7sf" path="res://font/lilita_one_regular.ttf" id="3_kn2ru"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7srlu"]
-bg_color = Color(0.105882, 0.105882, 0.105882, 0.843137)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyhe6"]
-bg_color = Color(0.333333, 0.501961, 1, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61ct5"]
 bg_color = Color(0, 0, 0, 0.388235)
@@ -106,34 +103,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../../../../../PbOxygen:self_modulate")
+tracks/5/path = NodePath("../BtnRestart:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../BtnRestart:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../BtnQuit:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../BtnQuit:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -163,47 +148,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_amwu5")
 
-[node name="PbOxygen" type="ProgressBar" parent="."]
-visible = false
-layout_mode = 2
-offset_right = 480.0
-offset_bottom = 10.0
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_7srlu")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wyhe6")
-max_value = 30.0
-step = 0.0
-value = 30.0
-show_percentage = false
-
-[node name="MarginContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 38.0
-alignment = 2
+offset_right = 492.0
+offset_bottom = 69.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_7knyx")
+expand_mode = 3
+
+[node name="PbOxygen" type="TextureProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+step = 0.0
+value = 1.0
+texture_over = ExtResource("2_byo8b")
+texture_progress = ExtResource("3_d55ks")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/MarginContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 texture = ExtResource("2_77em6")
 expand_mode = 3
 
-[node name="X" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="X" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "X"
 
-[node name="numberOfCoins" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="numberOfCoins" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "0"
 
@@ -263,7 +256,6 @@ libraries = {
 }
 
 [node name="store" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
@@ -291,6 +283,16 @@ text = "STORE"
 label_settings = SubResource("LabelSettings_6aw53")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="store/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="store/MarginContainer/VBoxContainer/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
 
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnRestart" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VboxBtn/BtnQuit" to="." method="_on_btn_quit_pressed"]
