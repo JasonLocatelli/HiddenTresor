@@ -1,0 +1,147 @@
+[gd_scene load_steps=17 format=3 uid="uid://di7mpj0er7wmr"]
+
+[ext_resource type="Texture2D" uid="uid://34qjcnkewjj4" path="res://Sprites/Boss2/bossPieuvre1.png" id="1_d5lpu"]
+[ext_resource type="Script" path="res://Scripts/daredevil_squid.gd" id="1_nl6sa"]
+[ext_resource type="Texture2D" uid="uid://dt5ljldjvprbk" path="res://Sprites/Boss2/bossPieuvre2.png" id="2_gfbrl"]
+[ext_resource type="Texture2D" uid="uid://cp4w21gg1d7xs" path="res://Sprites/Boss2/bossPieuvre5.png" id="3_lsm2x"]
+[ext_resource type="Texture2D" uid="uid://ncheo36t1i40" path="res://Sprites/Boss2/bossPieuvre6.png" id="4_nr3l5"]
+[ext_resource type="Texture2D" uid="uid://cajn4b1u10kld" path="res://Sprites/Boss2/bossPieuvre3.png" id="5_kxrv2"]
+[ext_resource type="Texture2D" uid="uid://bkb5cd8rh7ien" path="res://Sprites/Boss2/bossPieuvre4.png" id="6_0pa1y"]
+[ext_resource type="BehaviorTree" uid="uid://bqxfuptei1hbf" path="res://ai/trees/02_agent_charger.tres" id="8_rt2ap"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5iua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d5lpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gfbrl")
+}],
+"loop": true,
+"name": &"100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lsm2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nr3l5")
+}],
+"loop": true,
+"name": &"25",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kxrv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0pa1y")
+}],
+"loop": true,
+"name": &"50",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pft0"]
+radius = 41.1096
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0rag"]
+radius = 60.075
+
+[sub_resource type="Animation" id="Animation_mxcx8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gmqf6"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.247059), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sby3r"]
+resource_name = "launchBall"
+length = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"launchBubble"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86puk"]
+_data = {
+"RESET": SubResource("Animation_mxcx8"),
+"enter": SubResource("Animation_gmqf6"),
+"launchBall": SubResource("Animation_sby3r")
+}
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8gkfe"]
+
+[node name="DaredevilSquid" type="CharacterBody2D" groups=["enemy"]]
+self_modulate = Color(1, 1, 1, 0.0901961)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nl6sa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8.56, 27.685)
+sprite_frames = SubResource("SpriteFrames_j5iua")
+animation = &"100"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1pft0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o0rag")
+
+[node name="TimerAttack" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86puk")
+}
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("8_rt2ap")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_8gkfe")
+
+[node name="TimerShoot" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]

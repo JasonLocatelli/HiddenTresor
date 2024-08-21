@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=34 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_uraxx"]
 [ext_resource type="PackedScene" uid="uid://h226rc4u0u8i" path="res://Scenes/player.tscn" id="2_3m4wa"]
 [ext_resource type="PackedScene" uid="uid://eqypoyb5ohmw" path="res://Scenes/map.tscn" id="3_2npin"]
+[ext_resource type="PackedScene" uid="uid://di7mpj0er7wmr" path="res://Scenes/daredevil_squid.tscn" id="4_71apl"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_ha2y5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_mhwr4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_d3870"]
@@ -72,6 +73,12 @@ size = Vector2(83, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqyk"]
 size = Vector2(11, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11dn5"]
+size = Vector2(111.5, 6.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we4nd"]
+size = Vector2(111, 38)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
 size = Vector2(308, 9)
 
@@ -97,6 +104,17 @@ depth = 5000
 
 [node name="Map" parent="." instance=ExtResource("3_2npin")]
 position = Vector2(-104, 144)
+
+[node name="Boss2" type="Node2D" parent="Map"]
+position = Vector2(-763, 1449)
+
+[node name="EntranceBoss2" type="Marker2D" parent="Map/Boss2"]
+unique_name_in_owner = true
+position = Vector2(0, -440)
+
+[node name="DaredevilSquid" parent="Map/Boss2" instance=ExtResource("4_71apl")]
+unique_name_in_owner = true
+position = Vector2(0, 8)
 
 [node name="God" parent="." instance=ExtResource("11_xjrug")]
 position = Vector2(784, -2360)
@@ -290,6 +308,25 @@ attenuation = 11.7127
 panning_strength = 1.5
 bus = &"SFX"
 
+[node name="TriggerBoss2" type="Area2D" parent="Triggers"]
+position = Vector2(-852, 776)
+
+[node name="CollisionShape2DBoss2" type="CollisionShape2D" parent="Triggers/TriggerBoss2"]
+unique_name_in_owner = true
+position = Vector2(-12, 450)
+shape = SubResource("RectangleShape2D_11dn5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Triggers/TriggerBoss2"]
+position = Vector2(-12, 496)
+collision_layer = 3
+collision_mask = 3
+
+[node name="csShapeDoorBoss2" type="CollisionShape2D" parent="Triggers/TriggerBoss2/StaticBody2D"]
+unique_name_in_owner = true
+position = Vector2(-1, -73)
+shape = SubResource("RectangleShape2D_we4nd")
+disabled = true
+
 [node name="TriggerWaterZone" type="Area2D" parent="."]
 
 [node name="AudioPointWater" type="AudioStreamPlayer2D" parent="TriggerWaterZone"]
@@ -326,9 +363,11 @@ shape = SubResource("RectangleShape2D_rn5n3")
 position = Vector2(746.79, 95.2)
 
 [node name="Spikodon" parent="Boss1" instance=ExtResource("14_x8df5")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Triggers/TriggerStart" to="." method="_on_trigger_start_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerImpactStart" to="." method="_on_trigger_impact_start_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerBoss1" to="." method="_on_trigger_boss_1_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerImpactBoss1" to="." method="_on_trigger_impact_boss_1_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerBoss2" to="." method="_on_trigger_boss_2_body_entered"]
 [connection signal="body_entered" from="TriggerWaterZone" to="." method="_on_trigger_water_zone_body_entered"]

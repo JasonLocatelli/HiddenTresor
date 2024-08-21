@@ -15,6 +15,12 @@ extends BTAction
 ## Returns [code]SUCCESS[/code] if the elapsed time exceeds [member duration]. [br]
 ## Returns [code]RUNNING[/code] if the elapsed time does not exceed [member duration]. [br]
 
+## Blackboard variable that holds current target (should be a Node2D instance).
+@export var target_var: StringName = &"target"
+
+## Blackboard variable of directionToTarget
+@export var directionVar: StringName = &"dir"
+
 ## Blackboard variable that stores desired speed.
 @export var speed_var: StringName = &"speed"
 
@@ -29,11 +35,22 @@ func _generate_name() -> String:
 
 # Called each time this task is ticked (aka executed).
 func _tick(_delta: float) -> Status:
+	var target := blackboard.get_var(target_var) as Node2D
+	var direction = blackboard.get_var(directionVar)
+
+	if not is_instance_valid(target):
+		return FAILURE
+	
 	var facing: float = agent.get_facing()
-	var speed: float = blackboard.get_var(speed_var, 100.0)
-	var desired_velocity: Vector2 = Vector2.RIGHT * facing * speed
-	agent.move(desired_velocity)
-	agent.update_facing()
+	var speed: float = blackboard.get_var(speed_var, 500.0)
+	var desired_velocity: Vector2 = agent.global_position * speed
+	
+	agent.move(desired_velocity,direction)
+	
+	if agent.isCollideWall():
+		return SUCCESS
+	
+	#agent.update_facing()
 	if elapsed_time > duration:
 		return SUCCESS
 	return RUNNING

@@ -16,7 +16,7 @@ var life = 40 # Vie du poisson
 
 @onready var cloudToxic = load("res://Scenes/cloud_toxic.tscn")
 @onready var main = get_tree().get_root().get_node("Game")
-@onready var projectile = load("res://Scenes/projectile.tscn")
+@onready var projectile = load("res://Scenes/Spike.tscn")
 
 @onready var spikeNormal = load("res://Sprites/Boss1/spike1.png")
 @onready var spikeOrange = load("res://Sprites/Boss1/spike2.png")
@@ -82,6 +82,7 @@ func takeDamage(value):
 
 func dead():
 	AudioManager.playAudioWin()
+	AudioManager.playMusicProcedural()
 	AudioManager.audioBoss1ToUnderwater()
 	queue_free()
 
@@ -92,7 +93,7 @@ func makeGas():
 	cloudToxicInstance.dmgPerSecPoison = dmgPerSecPoison
 	cloudToxicInstance.timeAtkPerSecPoison = timeAtkPerSecPoison
 	get_parent().add_child.call_deferred(cloudToxicInstance)
-		
+	
 func startVulnerable():
 	isVulnerable = true
 	$AnimatedSprite2D.self_modulate = Color.PALE_TURQUOISE
@@ -113,8 +114,10 @@ func makeExplosionSpike():
 	var direction = 0
 	for i in range(12):
 		var instance = projectile.instantiate()
+		var newSprite = Sprite2D.new()
 		if i >= 6:
 			instance.texture = spikeOrange
+			
 		instance.dir = direction
 		instance.spawnPos = global_position
 		instance.spawnRot = direction

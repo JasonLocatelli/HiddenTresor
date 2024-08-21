@@ -17,6 +17,7 @@ var resistanceLevel = 0
 var strenghLevel = 0
 
 var posEntranceBoss1 : Marker2D
+var posEntranceBoss2 : Marker2D
 # Méthode chargée de chercher les nodes afin de les affecter.
 func find_nodes():
 	player = get_tree().get_first_node_in_group("player")

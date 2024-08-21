@@ -34,18 +34,7 @@ enum AgentSide {
 @export var range_max: int = 400
 
 ## Blackboard variable that will be used to store selected position.
-@export var position_var: StringName = &"pos"
-
-
-# Display a customized name (requires @tool).
-func _generate_name() -> String:
-	return "SelectFlankingPos  target: %s  range: [%s, %s]  side: %s  ➜%s" % [
-		LimboUtility.decorate_var(target_var),
-		range_min,
-		range_max,
-		AgentSide.keys()[flank_side],
-		LimboUtility.decorate_var(position_var)]
-
+@export var directionVar: StringName = &"dir"
 
 # Called each time this task is ticked (aka executed).
 func _tick(_delta: float) -> Status:
@@ -53,22 +42,9 @@ func _tick(_delta: float) -> Status:
 	if not is_instance_valid(target):
 		return FAILURE
 
-	var dir: float  # 1.0 is right, -1.0 is left (relative to target)
-	match flank_side:
-		AgentSide.FARTHEST:
-			dir = signf(target.global_position.x - agent.global_position.x)
-		AgentSide.CLOSEST :
-			dir = -signf(target.global_position.x - agent.global_position.x)
-		AgentSide.BACK:
-			dir = -target.get_facing()
-		AgentSide.FRONT:
-			dir = target.get_facing()
-
-	var flank_pos: Vector2
-	var offset := Vector2(dir * randf_range(range_min, range_max), 0.0)
-	flank_pos = target.global_position + offset
-	if not agent.is_good_position(flank_pos):
+	var directionToTarget = agent.global_position.direction_to(target.position).angle()
+	#if not agent.is_good_position(flank_pos):
 		# Choose the opposite side if the preferred side is not good (i.e., inside a collision shape).
-		flank_pos = target.global_position - offset
-	blackboard.set_var(position_var, flank_pos)
+#		flank_pos = target.global_position - offset
+	blackboard.set_var(directionVar,directionToTarget+deg_to_rad(90))
 	return SUCCESS

@@ -1,28 +1,17 @@
 extends CharacterBody2D
-
-@export var SPEED = 150
-
-@export var texture = null
-var damage = 4
+class_name Projectile
+@export var speed = 150
+@export var timerExist = 20
+@export var damage = 4
+@export var texture : Texture2D
 var dir : float
 var spawnPos : Vector2
 var spawnRot : float
-var timerExist = 20
 
 func _ready():
-	if texture != null:
-		$Sprite2D.texture = texture
 	global_position = spawnPos
 	global_rotation = spawnRot
 	
 func _physics_process(delta):
-	velocity = Vector2(0, -SPEED).rotated(dir)
+	velocity = Vector2(0, -speed).rotated(dir)
 	move_and_slide()
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		body.takeDamage(damage)
-		queue_free()
-
-func _on_timer_exist_timeout():
-	queue_free()

@@ -24,6 +24,10 @@ func play_music_outwater():
 	$AudioMusicProcedural.play()
 	music_outwater()
 	
+# Méthode chargée de jouer l'ensemble des musiques qui sert au procédural.
+func playMusicProcedural():
+	$AudioMusicProcedural.play()
+	
 # Méthode chargée de faire la transition vers la musique sous l'eau
 func music_underwater():
 	# On enlève les anciens "Tween"
@@ -166,8 +170,9 @@ func audioUnderwaterToBoss1():
 	# On enlève les anciens "Tween"
 	cleanTween() 
 	tween = get_tree().create_tween()
-	tween.tween_property($AudioMusicProcedural, "volume_db", -40, 0.5)
-	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -10, 5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($AudioMusicProcedural, "volume_db", -40, 2)
+	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -10, 4).set_trans(Tween.TRANS_SINE)
+	tween.tween_callback(AudioManager.stopMusicProcedural).set_delay(4)
 	$AudioMusicBoss1.play()
 	
 func audioBoss1ToUnderwater():

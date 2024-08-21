@@ -8,6 +8,8 @@ texture = ExtResource("1_0p820")
 
 [node name="RightSide" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightSide"]
 position = Vector2(-112, -880)
@@ -16,6 +18,8 @@ polygon = PackedVector2Array(196.667, 1, 196.667, 257, 305.556, 257, 305.556, 28
 
 [node name="LeftSide" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftSide"]
 position = Vector2(454, -869)
@@ -25,6 +29,8 @@ polygon = PackedVector2Array(237.778, -90, 237.778, -10, -130, -11, -130, 150, -
 
 [node name="center2ndSide" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="center2ndSide"]
 position = Vector2(218, 180)
@@ -34,6 +40,8 @@ polygon = PackedVector2Array(-30, -37, -30, -69, 7.77777, -69, 7.77777, -37, 43.
 
 [node name="centerRectangleSide2" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangleSide2"]
 position = Vector2(106, 309)
@@ -43,6 +51,8 @@ polygon = PackedVector2Array(63.3333, -6, 63.3333, 30, -83.3333, 30, -83.3333, -
 
 [node name="centerRectangleSide3" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangleSide3"]
 position = Vector2(37.6875, 740.183)
@@ -52,6 +62,8 @@ polygon = PackedVector2Array(58.625, -6.36511, 58.625, 29.6349, -77.375, 29.6349
 
 [node name="centerRectangle" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle"]
 position = Vector2(305, 382)
@@ -61,6 +73,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle2" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle2"]
 position = Vector2(389, 558)
@@ -70,6 +84,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle3" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle3"]
 position = Vector2(203, 910)
@@ -79,6 +95,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle5" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle5"]
 position = Vector2(209, 813)
@@ -88,6 +106,8 @@ polygon = PackedVector2Array(-88.8889, -14, 20, -14, 20, 20, -33.3333, 20, -33.3
 
 [node name="centerRectangle10" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle10"]
 position = Vector2(543, 711)
@@ -97,6 +117,8 @@ polygon = PackedVector2Array(-145.556, -8, 20, -8, 20, 11, 34.4445, 11, 34.4445,
 
 [node name="centerRectangle17" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle17"]
 position = Vector2(1237, 2082)
@@ -106,6 +128,8 @@ polygon = PackedVector2Array(-162, -10, 27.0001, -10, 27.0001, 1, 69.0001, 1, 69
 
 [node name="centerRectangle4" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle4"]
 position = Vector2(902, 781)
@@ -115,6 +139,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle11" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle11"]
 position = Vector2(1155, 2202)
@@ -124,6 +150,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle12" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle12"]
 position = Vector2(225, 1980)
@@ -133,6 +161,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 21, -20, 21)
 
 [node name="centerRectangle13" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle13"]
 position = Vector2(401, 1956)
@@ -142,6 +172,8 @@ polygon = PackedVector2Array(-20, -15, 17.7778, -15, 17.7778, 17, 144.444, 17, 1
 
 [node name="centerRectangle15" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle15"]
 position = Vector2(1016, 1870)
@@ -151,6 +183,8 @@ polygon = PackedVector2Array(-20, 19, 38.8888, 19, 38.8888, 35, 73.3333, 35, 73.
 
 [node name="centerRectangle16" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle16"]
 position = Vector2(1363, 2227)
@@ -160,6 +194,8 @@ polygon = PackedVector2Array(-20, 15, 126.667, 15, 126.667, 51, -20, 51)
 
 [node name="centerRectangle18" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle18"]
 position = Vector2(-611, 1812)
@@ -169,6 +205,8 @@ polygon = PackedVector2Array(-20, 15, 126.667, 15, 126.667, 51, -20, 51)
 
 [node name="centerRectangle20" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle20"]
 position = Vector2(-1151, 1808)
@@ -178,6 +216,8 @@ polygon = PackedVector2Array(53.3334, 64, 53.3334, 3, 15.5556, 3, 15.5556, -15, 
 
 [node name="centerRectangle19" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle19"]
 position = Vector2(-383, 1991)
@@ -187,6 +227,8 @@ polygon = PackedVector2Array(-20, 15, 35.5556, 15, 35.5556, -15, -2.22219, -15, 
 
 [node name="centerRectangle14" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle14"]
 position = Vector2(807, 2062)
@@ -196,6 +238,8 @@ polygon = PackedVector2Array(-20, -17, 55.5555, -17, 55.5555, 15, 211.111, 15, 2
 
 [node name="centerRectangle6" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle6"]
 position = Vector2(1169, 590)
@@ -205,6 +249,8 @@ polygon = PackedVector2Array(-20, -15, 20, -15, 20, 3, 37.7778, 3, 37.7778, 19, 
 
 [node name="centerRectangle9" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle9"]
 position = Vector2(899, 940)
@@ -214,6 +260,8 @@ polygon = PackedVector2Array(-20, -15, -1.11121, -15, -1.11121, -47, 72.2221, -4
 
 [node name="centerRectangle8" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle8"]
 position = Vector2(1263, 718)
@@ -223,6 +271,8 @@ polygon = PackedVector2Array(-53.3333, -15, 20, -15, 20, 3, 75.5555, 3, 75.5555,
 
 [node name="centerRectangle7" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerRectangle7"]
 position = Vector2(1025, 638)
@@ -232,6 +282,8 @@ polygon = PackedVector2Array(-37.7777, -15, 37.7778, -15, 37.7778, 3, 20, 3, 20,
 
 [node name="smallLeft" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="smallLeft"]
 position = Vector2(88, 505)
@@ -241,6 +293,8 @@ polygon = PackedVector2Array(-20, -15, 32.2222, -15, 32.2222, -47, 107.778, -47,
 
 [node name="left" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="left"]
 position = Vector2(-122, 377)
@@ -250,6 +304,8 @@ polygon = PackedVector2Array(-78.8889, -42, 47.7777, -42, 47.7777, 90, 32.2222, 
 
 [node name="centerBig" type="StaticBody2D" parent="."]
 position = Vector2(397, -1449)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="centerBig"]
 position = Vector2(783, 409)

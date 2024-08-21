@@ -187,6 +187,8 @@ animation = &"swim"
 frame_progress = 0.836506
 
 [node name="rangeAttackUnderWater" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="rangeAttackUnderWater"]
 visible = false
@@ -219,3 +221,4 @@ bus = &"SFX"
 
 [connection signal="timeout" from="TimerOxygen" to="." method="_on_timer_oxygen_timeout"]
 [connection signal="body_entered" from="rangeAttackUnderWater" to="." method="_on_range_attack_under_water_body_entered"]
+[connection signal="animation_finished" from="rangeAttackUnderWater/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]
