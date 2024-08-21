@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED = 150
 
+@export var texture = null
 var damage = 4
 var dir : float
 var spawnPos : Vector2
@@ -9,6 +10,8 @@ var spawnRot : float
 var timerExist = 20
 
 func _ready():
+	if texture != null:
+		$Sprite2D.texture = texture
 	global_position = spawnPos
 	global_rotation = spawnRot
 	
