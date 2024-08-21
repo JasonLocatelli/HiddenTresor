@@ -32,6 +32,7 @@ var dashVelocity = 12
 var dashVelocityOutWater = 4
 @onready var timerOxygene = $TimerOxygen
 
+var touchedTarget
 # Fonction principale appelée à chaque frame, dédiée à la physique du jeu.
 # 'delta' est le temps écoulé depuis la dernière frame, utilisé pour garantir des mouvements indépendants de la performance.
 func _physics_process(delta):
@@ -55,11 +56,14 @@ func _physics_process(delta):
 		if Input.is_action_pressed("jump") && !is_on_floor() && enableOxygen && GameManager.swimmingLevel > 0:
 			velocity.y = UP_VELOCITY_ON_SWIMMING
 		
-		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && !$AnimationPlayer.is_playing():
+		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && $rangeAttackUnderWater/CollisionShape2D.disabled:
 				$AnimationPlayer.play("attack")
 
 		if Input.is_action_just_pressed("entranceBoss1"):
 			position = GameManager.posEntranceBoss1.global_position
+		
+		if Input.is_action_just_pressed("entranceBoss2"):
+			position = GameManager.posEntranceBoss2.global_position
 			
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
@@ -159,7 +163,7 @@ func play_pick_up_coin():
 
 func getMaxSpeed():
 	return max (max_speed,max_speed + max_speed * GameManager.speedLevel)
-	
+
 func getMaxOxygene():
 	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)
 
@@ -177,4 +181,9 @@ func playAnimationAttack():
 
 func _on_range_attack_under_water_body_entered(body):
 	if body.is_in_group("enemy"):
+		touchedTarget = true
 		body.takeDamage(getMaxStrengh())
+
+
+func _on_animated_sprite_2d_2_animation_finished():
+	touchedTarget = false

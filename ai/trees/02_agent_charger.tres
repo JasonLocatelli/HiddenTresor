@@ -1,0 +1,57 @@
+[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://bqxfuptei1hbf"]
+
+[ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_657p6"]
+[ext_resource type="Script" path="res://demo/ai/tasks/select_flanking_pos.gd" id="2_t3udh"]
+[ext_resource type="Script" path="res://demo/ai/tasks/move_forward.gd" id="5_ucvak"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_qd806"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 400.0
+var/speed/hint = 1
+var/speed/hint_string = "10,1000,10"
+var/charge_speed/name = &"charge_speed"
+var/charge_speed/type = 3
+var/charge_speed/value = 1000.0
+var/charge_speed/hint = 1
+var/charge_speed/hint_string = "10,1000,10"
+
+[sub_resource type="BTAction" id="BTAction_7yy32"]
+script = ExtResource("1_657p6")
+group = &"player"
+output_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_8owkr"]
+custom_name = "Attribute direction to target"
+script = ExtResource("2_t3udh")
+target_var = &"target"
+flank_side = 0
+range_min = 500
+range_max = 600
+directionVar = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_kk522"]
+script = ExtResource("5_ucvak")
+target_var = &"target"
+directionVar = &"dir"
+speed_var = &"charge_speed"
+duration = 4.0
+
+[sub_resource type="BTWait" id="BTWait_0n1wq"]
+
+[sub_resource type="BTSequence" id="BTSequence_itg7g"]
+custom_name = "Charge!"
+children = [SubResource("BTAction_7yy32"), SubResource("BTAction_8owkr"), SubResource("BTAction_kk522"), SubResource("BTWait_0n1wq")]
+
+[sub_resource type="BTSequence" id="BTSequence_16how"]
+custom_name = "Charge Attack"
+children = [SubResource("BTSequence_itg7g")]
+
+[sub_resource type="BTSequence" id="BTSequence_pjuov"]
+custom_name = "Player entrance in the room"
+children = [SubResource("BTSequence_16how")]
+
+[resource]
+description = "A [dec]Decorator[/dec] is a type of task that typically has only one child. Decorators are commonly used to alter the behavior or status of their child task. In this behavior tree, the [dec]TimeLimit[/dec] decorator sets a maximum time for the [act]Arrive[/act] action to complete its work. If the child task exceeds this time limit without finishing, it will be aborted, and the TimeLimit decorator will return [FAILURE]."
+blackboard_plan = SubResource("BlackboardPlan_qd806")
+root_task = SubResource("BTSequence_pjuov")

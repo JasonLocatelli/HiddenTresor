@@ -1,32 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsooew73ogo1f"]
+[gd_scene load_steps=2 format=3 uid="uid://bsooew73ogo1f"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_1hk1m"]
-[ext_resource type="Texture2D" uid="uid://bwwvjbylrkymh" path="res://Sprites/Boss1/spike1.png" id="2_0pv54"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_81t2o"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o56uw"]
-radius = 4.0
-height = 20.0
-
-[node name="Spike" type="CharacterBody2D"]
+[node name="Projectile" type="Node2D"]
 script = ExtResource("1_1hk1m")
-SPEED = 200
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0pv54")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_81t2o")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CapsuleShape2D_o56uw")
-
-[node name="TimerExist" type="Timer" parent="."]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="TimerExist" to="." method="_on_timer_exist_timeout"]

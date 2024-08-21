@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccupk05qfc4un"]
+
+[ext_resource type="Script" path="res://Scripts/bubble_poison.gd" id="1_ytqq0"]
+[ext_resource type="Texture2D" uid="uid://ckk2hu4yrk83s" path="res://Sprites/Projectiles/bulleBossPieuvre.png" id="2_yq30p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81t2o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o56uw"]
+radius = 22.0
+height = 44.0
+
+[node name="BubblePoison" type="CharacterBody2D"]
+script = ExtResource("1_ytqq0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yq30p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_81t2o")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_o56uw")
+
+[node name="TimerExist" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="TimerExist" to="." method="_on_timer_exist_timeout"]

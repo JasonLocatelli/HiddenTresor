@@ -1,10 +1,13 @@
 extends Node2D
 var blockStart
 var blockPassBoss1
+var blockPassBoss2
+
 func _ready():
 	GameManager.find_nodes()
 	AudioManager.audioSplash = $TriggerWaterZone/AudioSplash
 	GameManager.posEntranceBoss1 = $EntranceBoss1
+	GameManager.posEntranceBoss2 = %EntranceBoss2
 	AudioManager.stopMusicInGame()
 	AudioManager.resetAudios()
 	AudioManager.play_music_outwater()
@@ -41,3 +44,10 @@ func _on_trigger_boss_1_body_entered(body):
 func _on_trigger_impact_boss_1_body_entered(body):
 	if body.is_in_group("urchin"):
 		$Triggers/TriggerImpactBoss1/AudioImpact.play()
+		
+func _on_trigger_boss_2_body_entered(body):
+	if body.is_in_group("player") && !blockPassBoss2:
+		%CollisionShape2DBoss2.set_deferred("disabled", false)
+		$"%DaredevilSquid".enableDareDevilSquid()
+		$"%csShapeDoorBoss2".set_deferred("disabled", false)
+		blockPassBoss2 = true
