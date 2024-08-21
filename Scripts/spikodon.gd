@@ -3,6 +3,7 @@ extends CharacterBody2D
 var detect
 var target
 var isVulnerable
+var animReverse
 @export var initLife = 40 # Vie du poisson
 
 var life = 40 # Vie du poisson
@@ -16,6 +17,9 @@ var life = 40 # Vie du poisson
 @onready var cloudToxic = load("res://Scenes/cloud_toxic.tscn")
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://Scenes/projectile.tscn")
+
+@onready var spikeNormal = load("res://Sprites/Boss1/spike1.png")
+@onready var spikeOrange = load("res://Sprites/Boss1/spike2.png")
 
 func _ready():
 	life = initLife
@@ -38,6 +42,7 @@ func _on_timer_attack_timeout():
 
 func _on_range_attack_body_entered(body):
 	if body.is_in_group("player"):
+		target = body
 		$TimerAttack.start()
 
 # Méthode chargée d'arrêter le cooldown de l'attaque quand il quitte la portée de son attaque.
@@ -76,6 +81,7 @@ func takeDamage(value):
 	makeGas()
 
 func dead():
+	AudioManager.playAudioWin()
 	AudioManager.audioBoss1ToUnderwater()
 	queue_free()
 
@@ -89,11 +95,10 @@ func makeGas():
 		
 func startVulnerable():
 	isVulnerable = true
-	$Sprite2D.self_modulate = Color.GREEN
-	
+	$AnimatedSprite2D.self_modulate = Color.PALE_TURQUOISE
 func stopVulnerable():
 	isVulnerable = false
-	$Sprite2D.self_modulate = Color.WHITE
+	$AnimatedSprite2D.self_modulate = Color.WHITE
 	
 func _on_make_attack_poison_timeout():
 	makeGas()
@@ -103,11 +108,21 @@ func enableSpikodon():
 	AudioManager.audioUnderwaterToBoss1()
 
 func makeExplosionSpike():
+	$AnimatedSprite2D.play("default")
+	animReverse = false
 	var direction = 0
 	for i in range(12):
 		var instance = projectile.instantiate()
+		if i >= 6:
+			instance.texture = spikeOrange
 		instance.dir = direction
 		instance.spawnPos = global_position
 		instance.spawnRot = direction
 		direction += 22.5
 		main.add_child.call_deferred(instance)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if $AnimatedSprite2D.animation == "default" && !animReverse:
+		$AnimatedSprite2D.play("default", -1.0,true)
+		animReverse = true

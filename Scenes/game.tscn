@@ -61,7 +61,7 @@ size = Vector2(272, 24)
 size = Vector2(94, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gu60"]
-size = Vector2(19, 49)
+size = Vector2(14.5, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gdhi"]
 size = Vector2(307, 23.5)
@@ -70,7 +70,7 @@ size = Vector2(307, 23.5)
 size = Vector2(83, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqyk"]
-size = Vector2(12, 56)
+size = Vector2(11, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
 size = Vector2(308, 9)
@@ -248,7 +248,7 @@ disabled = true
 [node name="TriggerImpactStart" type="Area2D" parent="Triggers"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerImpactStart"]
-position = Vector2(502, -1352)
+position = Vector2(499.75, -1352)
 shape = SubResource("RectangleShape2D_4gu60")
 
 [node name="AudioImpact" type="AudioStreamPlayer2D" parent="Triggers/TriggerImpactStart"]
@@ -279,6 +279,7 @@ disabled = true
 position = Vector2(744, -200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerImpactBoss1"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_yuqyk")
 
 [node name="AudioImpact" type="AudioStreamPlayer2D" parent="Triggers/TriggerImpactBoss1"]

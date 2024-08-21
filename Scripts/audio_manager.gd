@@ -123,6 +123,12 @@ func stopMusicInGame():
 	$AudioGameOver.stop()
 	$AudioMusicBoss1.stop()
 	
+# Méthode chargée de reinitialiser les musiques comme à leurs première apparition:
+func resetAudios():
+	setVolumeAudioProcedural(0)
+	AudioServer.set_bus_effect_enabled(AudioManager.SFX_BUS_ID, 0, false)
+	editPitchAudioMusicBoss1(1)
+	
 # Méthode chargée d'arrêter la musique procédural.
 func stopMusicProcedural():
 	$AudioMusicProcedural.stop()
@@ -168,8 +174,8 @@ func audioBoss1ToUnderwater():
 	# On enlève les anciens "Tween"
 	cleanTween() 
 	tween = get_tree().create_tween()
-	tween.tween_property($AudioMusicProcedural, "volume_db", -10, 1)
-	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -40, 5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($AudioMusicProcedural, "volume_db", -10, 5)
+	tween.set_parallel().tween_property($AudioMusicBoss1, "volume_db", -40, 2).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(stopAudioBoss1)
 
 # Méthode chargée de changer le pitch de la musique du premier boss.
@@ -178,3 +184,6 @@ func editPitchAudioMusicBoss1(value):
 
 func setVolumeAudioProcedural(value):
 	$AudioMusicProcedural.volume_db = value
+
+func playAudioWin():
+	$AudioWin.play()

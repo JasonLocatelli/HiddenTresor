@@ -1,14 +1,65 @@
-[gd_scene load_steps=119 format=3 uid="uid://ceoq2jly2fys3"]
+[gd_scene load_steps=127 format=3 uid="uid://ceoq2jly2fys3"]
 
 [ext_resource type="Texture2D" uid="uid://bifvgd77gnbpw" path="res://Sprites/oursin128.png" id="1_fdvuu"]
 [ext_resource type="Script" path="res://Scripts/spikodon.gd" id="1_fuyfp"]
+[ext_resource type="Texture2D" uid="uid://cwo3aduso27cn" path="res://Sprites/Boss1/boss1-Sheet.png" id="2_kwlxe"]
 [ext_resource type="AudioStream" uid="uid://cmvqxim5y7j1x" path="res://SFX/Sounds/531704__rickplayer__underwatersound.mp3" id="2_oee5o"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yufab"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmes3"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7sdu"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_637n8"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7sht"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsr34"]
+atlas = ExtResource("2_kwlxe")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfbgo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yufab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmes3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7sdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_637n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7sht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsr34")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccete"]
-radius = 35.0143
+radius = 42.107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w86al"]
-radius = 50.0899
+radius = 56.0089
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ahv2t"]
 var/var/name = &"var"
@@ -1202,7 +1253,11 @@ _data = {
 position = Vector2(0, 250)
 script = ExtResource("1_fuyfp")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vfbgo")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_fdvuu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1233,6 +1288,7 @@ libraries = {
 "": SubResource("AnimationLibrary_2ylqj")
 }
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
 [connection signal="body_exited" from="RangeAttack" to="." method="_on_range_attack_body_exited"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]

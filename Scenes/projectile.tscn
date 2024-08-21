@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsooew73ogo1f"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_1hk1m"]
-[ext_resource type="Texture2D" uid="uid://ciwm6aao8r64g" path="res://Sprites/Projectiles/spike.png" id="2_22djr"]
+[ext_resource type="Texture2D" uid="uid://bwwvjbylrkymh" path="res://Sprites/Boss1/spike1.png" id="2_0pv54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_81t2o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o56uw"]
 radius = 4.0
-height = 26.0
+height = 20.0
 
 [node name="Spike" type="CharacterBody2D"]
 script = ExtResource("1_1hk1m")
 SPEED = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_22djr")
+texture = ExtResource("2_0pv54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
