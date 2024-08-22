@@ -57,6 +57,7 @@ duration = 3.0
 [sub_resource type="BBVariant" id="BBVariant_t7igx"]
 type = 2
 saved_value = 0
+resource_name = "0"
 
 [sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_fhmyw"]
 property = &"countToStone"

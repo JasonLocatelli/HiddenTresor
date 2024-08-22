@@ -4,7 +4,7 @@ class_name Porcupinefish
 var detect
 var target
 
-@export var life = 5 # Vie du poisson
+@export var life = 10 # Vie du poisson
 @export var damage = 3 # Dommage du poisson
 @export var timeAttack = 1 # Cooldown de l'attaque du poisson
 @export var dmgPerSecPoison = 1 # Dommage par secondes

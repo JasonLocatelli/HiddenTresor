@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfyghw0o2fkf3"]
+
+[ext_resource type="Texture2D" uid="uid://m2mhyxanjfok" path="res://Sprites/Creature/meduse-Sheet.png" id="1_bxm8a"]
+[ext_resource type="Script" path="res://Scripts/jellyfish.gd" id="1_srhqi"]
+[ext_resource type="AudioStream" uid="uid://bp0tl8qkava64" path="res://SFX/Sounds/Hidden_Tresor_jellyfishSound.mp3" id="3_weh6i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6kk5p"]
+radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duwkq"]
+atlas = ExtResource("1_bxm8a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3r5m"]
+atlas = ExtResource("1_bxm8a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovo2l"]
+atlas = ExtResource("1_bxm8a")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpyfu"]
+atlas = ExtResource("1_bxm8a")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4e8v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duwkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3r5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovo2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpyfu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sa1y"]
+radius = 115.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wopcr"]
+radius = 39.0128
+
+[node name="Jellyfish" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
+platform_on_leave = 2
+script = ExtResource("1_srhqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6kk5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4e8v3")
+frame_progress = 0.641694
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="RangeDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RangeDetect"]
+shape = SubResource("CircleShape2D_4sa1y")
+
+[node name="TimerAttack" type="Timer" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 3.14159
+collision_mask = 6
+
+[node name="RangeAttack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeAttack"]
+shape = SubResource("CircleShape2D_wopcr")
+
+[node name="AudioNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_weh6i")
+volume_db = -10.0
+autoplay = true
+attenuation = 18.0
+panning_strength = 2.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="RangeDetect" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="RangeDetect" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
+[connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
