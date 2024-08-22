@@ -18,6 +18,11 @@ var strenghLevel = 0
 
 var posEntranceBoss1 : Marker2D
 var posEntranceBoss2 : Marker2D
+
+var doorEndBoss1 : StaticBody2D
+var doorEndBoss2 : StaticBody2D
+var canOpenChest = false
+
 # Méthode chargée de chercher les nodes afin de les affecter.
 func find_nodes():
 	player = get_tree().get_first_node_in_group("player")
@@ -92,3 +97,9 @@ func resetElement():
 	swimmingLevel = 0
 	resistanceLevel = 0
 	strenghLevel = 0
+
+func deleteDoorBoss1():
+	doorEndBoss1.queue_free()
+	
+func deleteDoorBoss2():
+	doorEndBoss2.queue_free()

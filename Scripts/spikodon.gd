@@ -84,6 +84,7 @@ func dead():
 	AudioManager.playAudioWin()
 	AudioManager.playMusicProcedural()
 	AudioManager.audioBoss1ToUnderwater()
+	GameManager.deleteDoorBoss1()
 	queue_free()
 
 func makeGas():
