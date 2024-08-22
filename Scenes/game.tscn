@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=44 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
@@ -71,6 +71,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_ygocx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 160, -1186, 0, 0, 0, 0, 159, -943)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_aq5s4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 982, -1293, 0, 0, 0, 0, 982, -1146)
+}
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqhq8"]
 size = Vector2(272, 24)
 
@@ -94,6 +106,12 @@ size = Vector2(111.5, 6.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we4nd"]
 size = Vector2(111, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgvgr"]
+size = Vector2(36, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_supxk"]
+size = Vector2(37, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
 size = Vector2(308, 9)
@@ -122,9 +140,6 @@ depth = 5000
 z_index = 1
 position = Vector2(-104, 144)
 navigation_polygon = SubResource("NavigationPolygon_ja8cb")
-
-[node name="Jellyfish" parent="NavigationRegion2D" instance=ExtResource("5_hmd2m")]
-position = Vector2(1568, -924)
 
 [node name="Map" parent="NavigationRegion2D" instance=ExtResource("3_2npin")]
 position = Vector2(0, 0)
@@ -288,6 +303,24 @@ position = Vector2(377, -132)
 rotation = 3.14159
 loop = false
 
+[node name="PathUrchin10" type="Path2D" parent="Paths"]
+position = Vector2(-102, 144)
+curve = SubResource("Curve2D_ygocx")
+
+[node name="PathFollow2D_10" type="PathFollow2D" parent="Paths/PathUrchin10"]
+position = Vector2(160, -1186)
+rotation = 1.57491
+loop = false
+
+[node name="PathUrchin11" type="Path2D" parent="Paths"]
+position = Vector2(-104, 144)
+curve = SubResource("Curve2D_aq5s4")
+
+[node name="PathFollow2D_11" type="PathFollow2D" parent="Paths/PathUrchin11"]
+position = Vector2(982, -1293)
+rotation = 1.5708
+loop = false
+
 [node name="Ennemies" type="Node2D" parent="."]
 
 [node name="Urchin" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
@@ -312,6 +345,21 @@ pathFollow = NodePath("../../Paths/PathUrchin3/PathFollow2D")
 [node name="Urchin4" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
 position = Vector2(814, -201)
 pathFollow = NodePath("../../Paths/PathUrchin4/PathFollow2D")
+
+[node name="Urchin11" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
+position = Vector2(879, -1148)
+pathFollow = NodePath("../../Paths/PathUrchin11/PathFollow2D_11")
+
+[node name="Urchin10" parent="Ennemies" node_paths=PackedStringArray("pathFollow") instance=ExtResource("10_dxaiu")]
+position = Vector2(57, -1044)
+pathFollow = NodePath("../../Paths/PathUrchin10/PathFollow2D_10")
+
+[node name="Jellyfish" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(1210, -1040)
+
+[node name="Jellyfish2" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(1665, -622)
+damage = 3
 
 [node name="Triggers" type="Node2D" parent="."]
 
@@ -395,6 +443,20 @@ position = Vector2(-1, -73)
 shape = SubResource("RectangleShape2D_we4nd")
 disabled = true
 
+[node name="TriggerUrchin10" type="Area2D" parent="Triggers"]
+position = Vector2(70, -927)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerUrchin10"]
+position = Vector2(-12, 29.5)
+shape = SubResource("RectangleShape2D_jgvgr")
+
+[node name="TriggerUrchin11" type="Area2D" parent="Triggers"]
+position = Vector2(877, -1090)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerUrchin11"]
+position = Vector2(-1.5, 54.5)
+shape = SubResource("RectangleShape2D_supxk")
+
 [node name="TriggerWaterZone" type="Area2D" parent="."]
 
 [node name="AudioPointWater" type="AudioStreamPlayer2D" parent="TriggerWaterZone"]
@@ -439,4 +501,6 @@ unique_name_in_owner = true
 [connection signal="body_entered" from="Triggers/TriggerBoss1" to="." method="_on_trigger_boss_1_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerImpactBoss1" to="." method="_on_trigger_impact_boss_1_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerBoss2" to="." method="_on_trigger_boss_2_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerUrchin10" to="." method="_on_trigger_urchin_10_body_entered"]
+[connection signal="body_entered" from="Triggers/TriggerUrchin11" to="." method="_on_trigger_urchin_11_body_entered"]
 [connection signal="body_entered" from="TriggerWaterZone" to="." method="_on_trigger_water_zone_body_entered"]

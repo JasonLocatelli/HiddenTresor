@@ -6,17 +6,21 @@ var gameState : GAME_STATE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"%NewGame".grab_focus()
 	gameState = GAME_STATE.NONE
 	AudioManager.stopMusicInGame()
 	AudioManager.playMusicMainMenu()
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
-		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = false
+		%LoadGame.disabled = false
+		$"%LoadGame".focus_mode = FocusMode.FOCUS_ALL
 	else :
-		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
+		%LoadGame.disabled = true
+		$"%LoadGame".focus_mode = FocusMode.FOCUS_NONE
 	
 func _on_new_game_pressed() -> void:
 	gameState = GAME_STATE.NEW
 	AudioManager.playAudioSelect()
+	$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.grab_focus()
 	$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.disabled = false
 	$AspectRatioContainer/LoadMenu/HBoxContainer2/Game2.disabled = false
 	$AspectRatioContainer/LoadMenu/HBoxContainer3/Game3.disabled = false
@@ -30,6 +34,7 @@ func _on_new_game_pressed() -> void:
 func _on_load_game_pressed() -> void:
 	gameState = GAME_STATE.LOAD
 	AudioManager.playAudioSelect()
+	$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.grab_focus()
 	$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.disabled = !SaveAndLoad.fileExist(1)
 	$AspectRatioContainer/LoadMenu/HBoxContainer2/Game2.disabled = !SaveAndLoad.fileExist(2)
 	$AspectRatioContainer/LoadMenu/HBoxContainer3/Game3.disabled = !SaveAndLoad.fileExist(3)
@@ -45,13 +50,14 @@ func _on_load_game_pressed() -> void:
 
 func _on_return_pressed() -> void:
 	gameState = GAME_STATE.NONE
+	$"%NewGame".grab_focus()
 	AudioManager.playAudioSelect()
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 	$AspectRatioContainer/LoadMenu.visible = false
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
-		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = false
+		%LoadGame.disabled = false
 	else :
-		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
+		%LoadGame.disabled = true
 	
 func _on_exit_pressed() -> void:
 	AudioManager.playAudioSelect()
@@ -108,7 +114,8 @@ func _on_yes_pressed() -> void:
 		gameState = GAME_STATE.LOAD
 		$AspectRatioContainer/LoadMenu.visible = true
 	else :
-		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/LoadGame.disabled = true
+		$"%LoadGame".focus_mode = FocusMode.FOCUS_NONE
+		%LoadGame.disabled = true
 		$AspectRatioContainer/LoadMenu.visible = false
 		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 	
@@ -133,10 +140,13 @@ func _on_delete_save_3_pressed() -> void:
 	_onFileDeletion()
 
 func _on_return_menu_pressed() -> void:
+	$"%Credits".grab_focus()
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 	$AspectRatioContainer/Credit.visible = false
 
 
 func _on_credits_pressed() -> void:
+	$AspectRatioContainer/Credit/ReturnMenu.grab_focus()
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
 	$AspectRatioContainer/Credit.visible = true
+	AudioManager.playAudioSelect()

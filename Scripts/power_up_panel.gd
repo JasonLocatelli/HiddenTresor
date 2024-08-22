@@ -1,8 +1,10 @@
 extends PanelContainer
 
 var item = null
+var button
 
 func initElement() :
+	button = $HbcIcon/McPriceBtn/VbcPriceBtn/Button
 	$HbcIcon/ArcIcon/TrIcon.texture = item["icon"]
 	$HbcIcon/McNameDesc/HbcNameDesc/name.text = item["displayname"]
 	$HbcIcon/McNameDesc/HbcNameDesc/description.text = item["details"]
@@ -17,14 +19,17 @@ func updateButton():
 		if getPrice() <= GameManager.coins :
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = false
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "BUY"
+			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.focus_mode = FocusMode.FOCUS_ALL
 		else :
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = true
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "NOT ENOUGH MONEY"
+			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.focus_mode = FocusMode.FOCUS_NONE
 		$HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn/price.text = str(getPrice())
 		
 	else :
 		$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = true
 		$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "OUT OF STOCK"
+		$HbcIcon/McPriceBtn/VbcPriceBtn/Button.focus_mode = FocusMode.FOCUS_NONE
 		$HbcIcon/McPriceBtn/VbcPriceBtn/HbcPriceBtn/price.text = "--"
 
 func _on_button_pressed() -> void:

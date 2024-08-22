@@ -28,6 +28,7 @@ func updateMaxValuePbOxygen(value : float):
 # Méthode chargée d'activer l'animation pour afficher le game over.
 func displayGameOver():
 	animGameOver.play("displayGameOver")
+	$GameOver/Panel/MarginContainer/VboxBtn/BtnRestart.grab_focus()
 	AudioManager.stopMusicInGame()
 	AudioManager.playGameOver()
 
@@ -50,6 +51,8 @@ func set_visible_pb_oxygen(value : bool):
 
 func storeVisibility(visibleChange):
 	$store.visible = visibleChange
+	if visibleChange:
+		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_child(0).button.grab_focus()
 	
 func fillStore():
 	for key in PowerDb.UPGRADE :
@@ -59,6 +62,7 @@ func fillStore():
 		option_choice.initElement()
 		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(option_choice)
 		
+	$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_child(0).button.grab_focus()
 func resetAllButtonActivation():
 	for element in $store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_children() :
 		if element is PanelContainer :

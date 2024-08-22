@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clxrufp2gfhb2"]
+[gd_scene load_steps=19 format=3 uid="uid://clxrufp2gfhb2"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_amwu5"]
 [ext_resource type="Texture2D" uid="uid://bbt3klw77ykst" path="res://Sprites/UI/uiBarreO2-O2.png" id="2_7knyx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cpbrr7tyeb5fd" path="res://Sprites/UI/uiBarreO2-under.png" id="3_egikh"]
 [ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_1uju1"]
 [ext_resource type="Texture2D" uid="uid://dd0padpi7vubp" path="res://Sprites/UI/UI-tresorDansSac.png" id="5_bg4n8"]
+[ext_resource type="Texture2D" uid="uid://kk6rcybtq4qs" path="res://Sprites/bandeau2.png" id="8_gqtpf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xvpdv"]
 font = ExtResource("3_20xto")
@@ -17,6 +18,15 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61ct5"]
 bg_color = Color(0, 0, 0, 0.388235)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djn5l"]
+texture = ExtResource("8_gqtpf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6uy0b"]
+texture = ExtResource("4_1uju1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sx8f"]
+texture = ExtResource("4_1uju1")
 
 [sub_resource type="Animation" id="Animation_scuje"]
 length = 0.001
@@ -267,7 +277,6 @@ horizontal_alignment = 1
 
 [node name="BtnRestart" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -280,15 +289,15 @@ theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_fonts/font = ExtResource("3_20xto")
 theme_override_font_sizes/font_size = 30
-theme_override_icons/icon = ExtResource("4_1uju1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_djn5l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6uy0b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8sx8f")
 disabled = true
 text = "RESTART"
-flat = true
 icon_alignment = 1
 
 [node name="BtnQuit" type="Button" parent="GameOver/Panel/MarginContainer/VboxBtn"]
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -301,10 +310,11 @@ theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_fonts/font = ExtResource("3_20xto")
 theme_override_font_sizes/font_size = 30
-theme_override_icons/icon = ExtResource("4_1uju1")
+theme_override_styles/focus = SubResource("StyleBoxTexture_djn5l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6uy0b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8sx8f")
 disabled = true
 text = "QUIT"
-flat = true
 icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
@@ -347,6 +357,7 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="store/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="store/MarginContainer/VBoxContainer/ScrollContainer"]
