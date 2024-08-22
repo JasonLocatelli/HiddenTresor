@@ -99,6 +99,8 @@ func dead():
 	AudioManager.playMusicProcedural()
 	AudioManager.playAudioWin()
 	AudioManager.audioBoss1ToUnderwater()
+	GameManager.deleteDoorBoss2()
+	GameManager.canOpenChest = true
 	queue_free()
 
 func launchBubble():

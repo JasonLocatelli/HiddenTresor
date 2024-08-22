@@ -13,7 +13,10 @@ func _ready():
 	AudioManager.play_music_outwater()
 	AudioManager.play_ambient_outdoor()
 	AudioManager.stopMusicMainMenu()
-	#GameManager.add_coins(1000)
+	GameManager.doorEndBoss1 = $"%EndDoorBoss1"
+	GameManager.doorEndBoss2 = $"%EndDoorBoss2"
+	GameManager.canOpenChest = false
+	GameManager.add_coins(1000)
 # Méthode chargée d'activer le bloquage du passage par les oursins.
 func _on_trigger_start_body_entered(body):
 	if body.is_in_group("player") && !blockStart:
@@ -51,3 +54,9 @@ func _on_trigger_boss_2_body_entered(body):
 		$"%DaredevilSquid".enableDareDevilSquid()
 		$"%csShapeDoorBoss2".set_deferred("disabled", false)
 		blockPassBoss2 = true
+
+
+func _on_trigger_chest_body_entered(body):
+	if body.is_in_group("player") && GameManager.canOpenChest:
+		print("Afficher credit")
+		
