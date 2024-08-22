@@ -13,7 +13,7 @@ var life = 30
 var _frames_since_facing_update: int = 0
 var _is_dead: bool = false
 var _moved_this_frame: bool = false
-
+var countToStone = 0
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var bubblePoison = load("res://Scenes/bubblePoison.tscn")
 
@@ -74,6 +74,8 @@ func isCollideWall():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision != null && !collision.get_collider().is_in_group("player"):
+			countToStone += 1
+			print(countToStone)
 			return true
 	return false
 

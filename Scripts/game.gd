@@ -13,7 +13,7 @@ func _ready():
 	AudioManager.play_music_outwater()
 	AudioManager.play_ambient_outdoor()
 	AudioManager.stopMusicMainMenu()
-	GameManager.add_coins(1000)
+	#GameManager.add_coins(1000)
 # Méthode chargée d'activer le bloquage du passage par les oursins.
 func _on_trigger_start_body_entered(body):
 	if body.is_in_group("player") && !blockStart:

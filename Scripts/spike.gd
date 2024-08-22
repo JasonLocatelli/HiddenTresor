@@ -8,6 +8,10 @@ func _ready():
 	
 func _physics_process(delta):
 	super._physics_process(delta)
+	#for i in get_slide_collision_count():
+	#	var collision = get_slide_collision(i)
+	#	if collision != null && !collision.get_collider().is_in_group("player"):
+	#		queue_free()
 
 func _on_timer_exist_timeout():
 	queue_free()
