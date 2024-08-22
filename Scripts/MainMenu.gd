@@ -65,7 +65,7 @@ func _on_game_1_pressed() -> void:
 		get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()  
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")
 
 func _on_game_2_pressed() -> void:
 	GameManager.gameSlot = 2
@@ -75,7 +75,7 @@ func _on_game_2_pressed() -> void:
 		get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()  
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")
 
 func _on_game_3_pressed() -> void:
 	GameManager.gameSlot = 3
@@ -85,7 +85,7 @@ func _on_game_3_pressed() -> void:
 		get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")
 
 
 func _onFileDeletion() -> void:
