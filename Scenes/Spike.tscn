@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/spike.gd" id="1_xveke"]
 [ext_resource type="Texture2D" uid="uid://bwwvjbylrkymh" path="res://Sprites/Boss1/spike1.png" id="2_vq2y2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6mbbu"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs03g"]
+radius = 4.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdlrn"]
 radius = 4.0
@@ -16,8 +18,9 @@ script = ExtResource("1_xveke")
 texture = ExtResource("2_vq2y2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_6mbbu")
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CapsuleShape2D_hs03g")
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]

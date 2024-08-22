@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://bqxfuptei1hbf"]
+[gd_resource type="BehaviorTree" load_steps=19 format=3 uid="uid://bqxfuptei1hbf"]
 
 [ext_resource type="Script" path="res://demo/ai/tasks/get_first_in_group.gd" id="1_657p6"]
 [ext_resource type="Script" path="res://demo/ai/tasks/select_flanking_pos.gd" id="2_t3udh"]
@@ -39,9 +39,35 @@ duration = 4.0
 
 [sub_resource type="BTWait" id="BTWait_0n1wq"]
 
+[sub_resource type="BBVariant" id="BBVariant_eq7me"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_1od6s"]
+property = &"countToStone"
+value = SubResource("BBVariant_eq7me")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_dgc57"]
+text = "boss 2 stone"
+
+[sub_resource type="BTWait" id="BTWait_udlb7"]
+duration = 3.0
+
+[sub_resource type="BBVariant" id="BBVariant_t7igx"]
+type = 2
+saved_value = 0
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_fhmyw"]
+property = &"countToStone"
+value = SubResource("BBVariant_t7igx")
+
+[sub_resource type="BTSequence" id="BTSequence_5gv0e"]
+children = [SubResource("BTCheckAgentProperty_1od6s"), SubResource("BTConsolePrint_dgc57"), SubResource("BTWait_udlb7"), SubResource("BTSetAgentProperty_fhmyw")]
+
 [sub_resource type="BTSequence" id="BTSequence_itg7g"]
 custom_name = "Charge!"
-children = [SubResource("BTAction_7yy32"), SubResource("BTAction_8owkr"), SubResource("BTAction_kk522"), SubResource("BTWait_0n1wq")]
+children = [SubResource("BTAction_7yy32"), SubResource("BTAction_8owkr"), SubResource("BTAction_kk522"), SubResource("BTWait_0n1wq"), SubResource("BTSequence_5gv0e")]
 
 [sub_resource type="BTSequence" id="BTSequence_16how"]
 custom_name = "Charge Attack"

@@ -105,6 +105,7 @@ func _on_water_body_area_body_entered(body):
 		body.max_speed = body.max_speed / 2 # Réduit la vitesse maximale du joueur
 		AudioManager.audioSplash.position.x = body.global_position.x
 		AudioManager.audioSplash.position.y = body.global_position.y
+		GameManager.player.updateAnimation()
 		AudioManager.music_outwater()
 		AudioManager.play_audio_splash()
 

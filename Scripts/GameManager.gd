@@ -65,6 +65,7 @@ func getLevelFromItem(item):
 			return  strenghLevel
 
 func addLevelFromItem(item):
+	player.updateAnimation()
 	match item :
 		PowerDb.UPGRADE.SPEED : 
 			speedLevel += 1
