@@ -60,3 +60,14 @@ func _on_trigger_chest_body_entered(body):
 	if body.is_in_group("player") && GameManager.canOpenChest:
 		print("Afficher credit")
 		
+
+func _on_trigger_urchin_10_body_entered(body):
+	if body.is_in_group("player"):
+		$Ennemies/Urchin10.startFollowPath = true
+		$Triggers/TriggerUrchin10.queue_free()
+
+
+func _on_trigger_urchin_11_body_entered(body):
+	if body.is_in_group("player"):
+		$Ennemies/Urchin11.startFollowPath = true
+		$Triggers/TriggerUrchin11.queue_free()

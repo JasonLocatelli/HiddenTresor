@@ -1,8 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfiar0ek2akay"]
+[gd_scene load_steps=11 format=3 uid="uid://cgv8lco0wyus5"]
 
 [ext_resource type="Script" path="res://Scripts/intro_scene.gd" id="1_d5oca"]
 [ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="1_gxnss"]
 [ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="2_w1f1b"]
+[ext_resource type="Texture2D" uid="uid://kk6rcybtq4qs" path="res://Sprites/bandeau2.png" id="3_8ycvr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnilx"]
+texture = ExtResource("3_8ycvr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nucng"]
+texture = ExtResource("2_w1f1b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_377f6"]
+texture = ExtResource("2_w1f1b")
+
+[sub_resource type="Animation" id="Animation_1dl8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, -440)]
+}
 
 [sub_resource type="Animation" id="Animation_5dsw2"]
 resource_name = "scrolling"
@@ -18,21 +43,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(10, 199), Vector2(10, -436)]
-}
-
-[sub_resource type="Animation" id="Animation_1dl8e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(12, -440)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq4r5"]
@@ -117,14 +127,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -77.0
+offset_left = -82.0
 offset_top = -58.0
-offset_right = 149.0
+offset_right = 179.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.629351, 0.793227)
-focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
@@ -137,9 +146,10 @@ theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
 theme_override_fonts/font = ExtResource("1_gxnss")
 theme_override_font_sizes/font_size = 40
-theme_override_icons/icon = ExtResource("2_w1f1b")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dnilx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nucng")
+theme_override_styles/normal = SubResource("StyleBoxTexture_377f6")
 text = "SKIP"
-flat = true
 icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
