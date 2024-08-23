@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnq6e7yowktum"]
+[gd_scene load_steps=4 format=3 uid="uid://dmt3y5l2boopr"]
 
 [ext_resource type="Script" path="res://Scripts/lingot.gd" id="1_70d4c"]
 [ext_resource type="Texture2D" uid="uid://drq5thwmj6c82" path="res://Sprites/Treasure/lingot2.png" id="2_eximu"]

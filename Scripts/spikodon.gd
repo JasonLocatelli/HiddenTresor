@@ -74,8 +74,8 @@ func takeDamage(value):
 		AudioManager.playAudioSlash()
 	else:
 		AudioManager.playAudioHit()
-	print(initLife/2)
-	if life <= (initLife/2):
+	print(initLife/2.0)
+	if life <= (initLife/2.0):
 		AudioManager.editPitchAudioMusicBoss1(1.1)
 		
 	makeGas()
@@ -115,7 +115,6 @@ func makeExplosionSpike():
 	var direction = 0
 	for i in range(12):
 		var instance = projectile.instantiate()
-		var newSprite = Sprite2D.new()
 		if i >= 6:
 			instance.texture = spikeOrange
 			

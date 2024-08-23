@@ -11,7 +11,6 @@ var life = 30
 @export var timeAttack = 1 # Cooldown de l'attaque du poisson
 @export var timeShoot = 0.65 # Cooldown de l'attaque du poisson
 var _frames_since_facing_update: int = 0
-var _is_dead: bool = false
 var _moved_this_frame: bool = false
 var countToStone = 0
 @onready var main = get_tree().get_root().get_node("Game")
@@ -36,7 +35,7 @@ func _post_physics_process() -> void:
 		velocity = lerp(velocity, Vector2.ZERO, 0.5)
 	_moved_this_frame = false
 
-func move(p_velocity: Vector2, dir) -> void:
+func move(_p_velocity: Vector2, dir) -> void:
 	velocity = Vector2(0, -SPEED).rotated(dir)
 	move_and_slide()
 	_moved_this_frame = true
@@ -86,8 +85,8 @@ func takeDamage(value):
 	else:
 		AudioManager.playAudioSlash()
 	print(life)
-	var calculPercent25 = life * (25/100)
-	if life > calculPercent25 && life <= initLife/2:
+	var calculPercent25 = life * (25.0/100.0)
+	if life > calculPercent25 && life <= initLife/2.0:
 		AudioManager.editPitchAudioMusicBoss1(1.1)
 		$AnimatedSprite2D.play("50")
 		if $TimerShoot.is_stopped():
