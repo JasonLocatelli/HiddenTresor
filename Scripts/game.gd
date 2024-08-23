@@ -16,7 +16,6 @@ func _ready():
 	GameManager.doorEndBoss1 = $"%EndDoorBoss1"
 	GameManager.doorEndBoss2 = $"%EndDoorBoss2"
 	GameManager.canOpenChest = false
-	GameManager.add_coins(999)
 
 	#GameManager.add_coins(1000)
 # Méthode chargée d'activer le bloquage du passage par les oursins.

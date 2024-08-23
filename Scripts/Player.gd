@@ -60,18 +60,9 @@ func _physics_process(delta):
 				velocity.y = JUMP_VELOCITY
 			else:
 				velocity.y = JUMP_VELOCITY_ON_WATER
-		
-		#if Input.is_action_pressed("jump") && !is_on_floor() && enableOxygen && GameManager.swimmingLevel > 0:
-			#velocity.y += getMaxSpeedUp()
-		
+				
 		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && $rangeAttackUnderWater/CollisionShape2D.disabled:
 				$AnimationPlayer.play("attack")
-
-		if Input.is_action_just_pressed("entranceBoss1"):
-			position = GameManager.posEntranceBoss1.global_position
-		
-		if Input.is_action_just_pressed("entranceBoss2"):
-			position = GameManager.posEntranceBoss2.global_position
 			
 		# Déterminer la direction horizontale en fonction des touches appuyées (droite ou gauche).
 		# La fonction 'int()' convertit la valeur booléenne en entier (1 pour vrai, 0 pour faux).
