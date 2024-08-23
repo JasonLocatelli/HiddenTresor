@@ -41,7 +41,7 @@ func _tick(_delta: float) -> Status:
 	if not is_instance_valid(target):
 		return FAILURE
 	
-	var facing: float = agent.get_facing()
+	var _facing: float = agent.get_facing()
 	var speed: float = blackboard.get_var(speed_var, 500.0)
 	var desired_velocity: Vector2 = agent.global_position * speed
 	

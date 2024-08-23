@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://6pcocsfpfhsy"]
+[gd_scene load_steps=53 format=3 uid="uid://6pcocsfpfhsy"]
 
 [ext_resource type="PackedScene" uid="uid://dxrrerr5bo4jq" path="res://Scenes/water_body.tscn" id="1_2h55a"]
 [ext_resource type="PackedScene" uid="uid://clxrufp2gfhb2" path="res://Scenes/hud.tscn" id="1_nrjld"]
@@ -22,7 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://ceoq2jly2fys3" path="res://Scenes/Spikodon.tscn" id="14_x8df5"]
 [ext_resource type="PackedScene" uid="uid://dq7pgxqmmmrk2" path="res://Scenes/coin2.tscn" id="21_41jfm"]
 [ext_resource type="PackedScene" uid="uid://c2xxfsvwumux5" path="res://Scenes/coin3.tscn" id="22_4lsxx"]
-[ext_resource type="PackedScene" uid="uid://dnq6e7yowktum" path="res://Scenes/lingot.tscn" id="23_pqjdt"]
+[ext_resource type="PackedScene" uid="uid://dmt3y5l2boopr" path="res://Scenes/lingot.tscn" id="23_pqjdt"]
+[ext_resource type="PackedScene" uid="uid://bm713prhggn5r" path="res://Scenes/herbe.tscn" id="24_jlywv"]
+[ext_resource type="PackedScene" uid="uid://bjtavn6jx4x13" path="res://Scenes/redCrab.tscn" id="25_y3v3d"]
+[ext_resource type="PackedScene" uid="uid://cfke7ers6t0h2" path="res://Scenes/orange_crab.tscn" id="26_e0jeq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ja8cb"]
 vertices = PackedVector2Array(2263.66, 1609.56, 944.719, 1366.79, 1213.61, 1407.98, 2205.23, 1276.92, 1311.89, 1216.42, 641.648, 1311.01, -280.781, 1141.22, -257.391, 986.953, 498.469, 983.031, -1140.19, 983.031, -1434.9, 928.789, -1136.51, 438.938, 442.453, 202.469, 591.992, 359.492, 353.57, 403.172, 47.4297, 75.0781, 41.5078, -1246.95, 117.867, -836.883, -204.32, -963.109, 394.211, -213.594, 268.773, -546.109, -884.492, 56.8125, -892.508, 212.188, -999.711, 214.383, 307.078, -1930.88, 210.719, -670.781, -203.992, -656.648, 312.93, -1353.78, 2007.29, 150, 1312.84, 154.922, 1306.14, -273.188, 1919.49, -349.852, 1769.46, -1203.97, 1655.48, -1466.97, 1693.99, -1633.67, 1602.57, -2154.17, 1668.5, -1778.76, 1267.68, -1747.46, 1064, -2165.31, 1064, -1725.03, 1156.3, -1423.3, 925.273, -1463.36, 932.742, -1694.97, 2041, 877, 1884, 839, 2043.01, 836, 2127.79, 836, 2134.99, 877, 504, -1001, 504, -969, 457, -969, 328, -972, 328, -1124, 1156, -876, 1156, -852, 1138, -852, 814, -860, 1122, -876, 1466, -798, 1764.01, -812, 1828, -812, 1828, -738, 1810, -738, 1688, -756, 730, -1092, 674, -1092, 570, -1100, 570, -1156, 642, -1196, 794, -1196, 898, -1124, 1028, -1230, 1208, -1230, 1308, -1124, 745, -579, 745, -494, 730, -494, 628, -508, 628, -564, 634, -606, 961, -636, 1271, -637, 1327, -637, 1554, -604, 1570, -594, 1554, -580, 1371, -566, 1285, -566, 962, -579, 1610, -830, 1538, -830, 2059, 564, 2059, 654, 2025.01, 654, 1879, 613, 2011, 564, 730, -1036, 898, -924, 1466, -836, 1538, -884, 2011, 484, 1879, 556, 1945, 484, -715, 881, -715, 1061.29, -806, 1044.55, -806, 958, -862, 881, -936, 958, -936, 754, -862, 798, -775, 754, -716, 798, -716, 571, -775, 571, 1634, -1004, 1666, -1004, 1666, -878, 1594, -884, 1466, -908, 1466, -994, 1554, -674, 1327, -693, 1028, -1326, 794, -1284, 938, -1326, -630, 434, -574, 388, -470, 388, -446, 412, -446, 484, -462, 526.211, -662, 482, 1764.01, -878, 1610, -866, 1451, 860, 1404, 770, 1404, 618, 1524, 728, 1524, 784, 1521, 860, 1041, -659, 1271, -693, 1041, -716, 717, -745, 717, -661, 634, -660, 516, -660, 474, -684, 474, -722, 560, -881, 1738, -558, 1810, -552, 1736, -498, 1736, -516, 1738, -738, 1498, -446, 1498, -514, 1570, -450, 1570, -390, 1414, -390, 1414, -405, 1315, -446, 1350, -405, 650, 562, 770, 482, 770, 568, 648, 620, 650, 506, 666, 450, 818, 388, 498, 654, 498, 692, 466, 718, 408, 716, 170, 681, 170, 501, 338, 564, 34, 443, -90, 424, 114, 370, 226, 370, 226, 434, 88, 443, -90, 368, 114, 306, 250.297, -1196, 249.297, -1230, 312, -1230, 418, -1156, 418, -1100, 814, -916, 946, -908, 570, -2082, 472, -2082, 472, -2177.57, 706, -2172.73, 706, -2094, 979.188, 1024, 979.813, 1057, 914, 1057, 850, 1024, 2043.01, 756, 1884, 783, 2025.01, 756, 592, -913, 592, -1001, 758, -916, 758, -860, 1385, 482, 1489, 482, 1619, 533, 1555, 558, 1264, 586, 1176, 586, 938, 568, 938, 514, 1238, 484, -716, 372, -716, 413.102, -790, 413.891, -790, 382, -750, 372, -94, 306, -242, 368, 1629, 1181.08, 1535, 1181.91, 1535, 1124, 1615, 1124, 1629, 1164, 1272.07, -1294, 1271.07, -1438, 1333.95, -1438, 1346, -1387, 1346, -1313, 1580, 784, 1580, 728, 1597, 653, 1732, 783, 1732, 839, 1665, 892, 1595, 892, 1133, 1233, 1133, 1310.05, 982, 1310.94, 982, 1257, 1074, 1233, 1051, -178.938, 1222, -179.938, 1222, 40, 1165, 40, 724, -2094, 724, -1986, 642, -1986, 570, -2030, 634, -1828, 642, -1902, 706, -1902, 706, -1870, 634, -1796, 826, -1870, 826, -1900, 898, -1900, 898, -1870, 996, -1870, 996, -1796, 472, -1700, 546, -1740, 578, -1740, 578, -1708, 567.852, -1604, 472, -1604, 664, -1708, 664, -1740, 674, -1740, 674, -1710, 706, -1710, 706, -1678, 642, -1604, 724, -1678, 724, -1644, 802, -1644, 802, -1604, 642, -1516, 836, -1516, 836, -1476, 724, -1476, 724, -1358, 938, -1358, 664, -1284, 664, -1316, 632, -1316, 632, -1348, 578, -1348, 578, -1316, 546, -1316, 546, -1226, 642, -1226, 1208, -1262, 1240, -1262, 1378, -1196, 1240, -1294, 1478, -1620, 1478, -1674, 1629, -1674, 1629, -1596, 1570, -1596, 1570, -1556, 1410, -1556, 1334.95, -1620, 1410, -1420, 1476, -1420, 1476, -1387, 1378, -1313, 1540, -1196, 1540, -1132, 1400, -1028, 1370, -1058, 1666, -1132, 1666, -1060, 1634, -1060, 1400, -994, 1370, -1028, 1308, -1058, 946, -924, 1018, -908, 1018, -924, 1034, -924, 1034, -973, 953, -973, 953, -1068, 1058, -1068, 1058, -1036, 1090, -1036, 1090, -1004, 1122, -1004, 194, -1036, 212, -1036, 212, -1028, 194, -1028, 194, -990, 242, -990, 242, -972, 260, -972, 260, -940, 457, -913, 314, -940, 314, -972, 474, -913, 474, -881, 560, -913, 759, -756, 759, -745, 1242, -866, 1208, -866, 1208, -876, 1242, -876, 1242, -962, 1208, -962, 1208, -974, 1250, -974, 1250, -908, 1594, -866, 1378, -798, 1394, -798, 1394, -764, 1434, -764, 1434, -782, 1450, -782, 1602, -756, 1450, -798, 1688, -738, 1602, -724, 1586, -724, 1586, -692, 1570, -692, 1570, -674, 981, -716, 981, -737, 968, -737, 968, -756, 781, -661, 781, -636, 818, -636, 818, -710, 881, -710, 881, -636, 961, -666, 1004, -666, 1004, -659, 516, -626, 466, -626, 386, -684, 466, -567, 434, -567, 586, -574, 586, -606, 1604, -604, 1604, -594, 1570, -580, 1554, -542, 1586, -542, 1586, -526, 1602, -526, 1602, -500, 1656, -500, 1656, -558, 1682, -516, 1843.99, -552, 1843.99, -530, 1828, -530, 1828, -498, 1403, -514, 1403, -534, 1371, -534, 1285, -534, 1268, -534, 1268, -478, 1315, -478, 1180, -390, 1180, -452, 1350, -390, 1034, -498, 1108, -452, 1108, -434, 1074, -434, 1034, -444, 1074, -398, 979, -398, 979, -444, 1002, -498, 1002, -530, 962, -530, 914, -579, 914, -561, 896, -561, 783, -579, 896, -545, 880, -545, 937, -302, 994, -302, 994, -241, 881, 284, 1051, -241, 994, 223, 1165, 223, 994, 284, 986, 388, 986, 354, 1092, 354, 1092, 484, 1238, 418, 1266, 418, 1266, 444, 1354, 444, 1354, 377, 1437, 377, 1385, 430, 1458, 430, 1437, 351, 1504, 351, 1504, 404, 1489, 446, 1634, 404, 1634, 388, 1658, 388, 1658, 235, 1858, 235, 1858, 284, 1714, 284, 1714, 372, 1755.01, 372, 1755.01, 425, 1838, 425, 1838, 452, 1889, 452, 1889, 370, 1953, 370, 1945, 412, 1953, 354, 1978.99, 354, 1978.99, 412, 1799, 533, 1719, 533, 1458, 446, 1842, 556, 1842, 563, 1799, 563, 1719, 607, 1656, 607, 1656, 533, 1619, 558, 824, 514, 824, 482, 1555, 642, 1597, 642, 1806, 653, 1806, 634, 1819, 634, 1819, 613, 1264, 618, 1176, 674, 1208, 674, 1208, 706, 1294, 706, 1294, 674, 1304, 674, 1304, 704, 1336, 704, 1336, 736, 1244, 790, 1354, 736, 1354, 770, 1256, 851, 1244, 851, 2041, 962, 2117, 962, 2117, 1006, 1985, 1006, 1985, 956, 1931, 956, 1931, 972, 1881.01, 972, 1881.01, 1122, 1928, 1122, 1928, 1188, 1836, 1156, 1775.01, 1188, 1775.01, 1156, 1836, 1004, 1755.01, 1004, 1681, 990, 1755.01, 1077, 1705, 1077, 1681, 1054, 1705, 1164, 1615, 1054, 1665, 990, 1595, 958, 1585, 958, 1585, 910, 1553, 910, 1553, 894, 1537, 894, 1537, 878, 1521, 878, 1451, 884, 1401, 884, 1401, 957, 1213, 957, 1256, 889, 1213, 889, 1018, 652, 1174, 790, 1174, 820, 1069, 820, 1018, 804, 1069, 848, 1018, 848, 1018, 833, 858, 788, 882, 833, 882, 950, 850, 950, 775, 931, 744, 899, 914, 1193, 1074, 1193, 839, 1257, 839, 1075, 775, 1075, 744, 931, 712, 899, 712, 867, 656, 867, 656, 815, 708, 788, 597, 815, 597, 744, 708, 744, 858, 754, 882, 754, 882, 788, 922, 788, 922, 706, 964, 706, 964, 804, 850, 652, 850, 702, 786, 702, 760, 684, 786, 734, 760, 734, 648, 684, 408, 564, 514, 620, 514, 654, 88, 501, 34, 469, 18, 469, -357.992, 434, -242, 424, 18, 485, -14, 485, -326, 478, -14, 523, 2, 523, 2, 537, -14, 547, -198, 590, 36, 537, 36, 547, -14, 617, 2, 617, 2, 635, -150, 686, 18, 635, 18, 667, -102, 813, -150, 772, 34, 667, 34, 699, 24, 862, 120, 699, 120, 681, 258, 732, 196, 812, 148, 860, 532, 692, 532, 718, 466, 764, 408, 764, 306, 716, 306, 732, 258, 802, 276, 802, 276, 812, 196, 860, 148, 892, 100, 892, 100, 908, 68, 908, 68, 926, 24, 926, -102, 862, -188, 813, -188, 894, -248, 894, -248, 772, -198, 686, -246, 590, -246, 542, -326, 542, -375.992, 478, -375.992, 434, -357.992, 382, -375.992, 382, -375.992, 350, -357.992, 350, -357.992, 293, -284, 293, -284, 260, -246, 260, -246, 209, -284, 209, -284, 197, -158, 185, -544, 197, -544, 262, -577, 262, -577, 197, -677, 290, -638, 290, -638, 338, -662, 334, -630, 364, -620.367, 354, -574, 354, -470, 306, -462, 306, -462, 350, -430, 350, -430, 412, -662, 364, -774, 482, -774, 450, -732, 450, -732, 482, -662, 434, -413.992, 484, -413.992, 525.203, -422.008, 690, -422.008, 594, -300, 594, -350, 638, -300, 638, -350, 718, -462, 718, -462, 690, -462, 732, -508, 732, -508, 750, -518, 750, -518, 718, -598, 718, -598, 649, -629.008, 649, -629.008, 622, -644, 622, -644, 537, -682, 537, -682, 555, -700, 555, -700, 571, -791, 571, -791, 555, -809, 555, -809, 537, -966, 466, -847, 537, -847, 622, -862, 622, -982, 556, -1078.01, 466, -862, 649, -893, 649, -982, 640, -893, 677, -1008, 677, -1008, 640, -1078.01, 556, -956, 324, -966, 364, -1048, 364, -1048, 293.641, -1043.95, 287, -956, 287, -892, 324, -892, 340, -840, 340, -840, 324, -792, 324, -750, 334, -792, 290, -732, 290, -732, 179, -822, 179, -822, 144, -811, 144, -811, 119, -760, 119, -760, 144, -677, 197, -461, 144, -461, 95, -399, 95, -399, 144, -284, 144, -284, 125, -158, 125, -46, 185, -46, 254, -94, 254, 258, 434, 258, 516, 338, 516, 408, 516, 456, 516, 456, 450, 508, 450, 508, 484, 594, 506, 566, 484, 566, 450, 666, 388, 818, 284, 703, 284, 703, 223, 532, 223, 532, 40, 646, -179, 475, 40, 475, -179, 646, -241, 703, -241, 703, -302, 760, -302, 760, -364, 817, -364, 817, -545, 801, -545, 801, -561, 783, -561, 730, -467, 699, -467, 699, -412, 621, -412, 621, -462, 572, -508, 578, -462, 394, -482, 578, -433, 548, -433, 548, -420, 394, -420, 344, -482, 344, -572, 394, -572, 434, -515, 394, -626, 296, -626, 296, -668, 330, -668, 330, -722, -8, -722, -8, -738, 99.2891, -748, 264, -748, -78, -738, -78, -706, -147, -706, -147, -830, -92, -814, -92, -830, 0, -814, 0, -782, 264, -782, 360, -782, 360, -834, 312, -834, 312, -866, 248, -866, 248, -882, 202, -882, 202, -930, 138, -930, 138, -1124, 104, -1124, 104, -1134, 120.789, -1134, 138, -1182, 138, -1214, 154, -1214, 162, -1212, 196, -1196, 154, -1230, 162, -1230, 196, -1212, 312, -1262, 472, -1262, 472, -1476, 346, -1476, 346, -1516, 569.148, -1516, 546, -1828, 410, -1700, 410, -1732, 472, -1868, 344, -1732, 344, -1836, 408, -1836, 408, -1868, 472, -2030, 484, -2030, 484, -1996, 536, -1996, 536, -2030, 880, -365.172, 937, -364.172, 121.797, -1182, 1138, -812, 98.2891, -782, 1682, -450, -621.391, 338, 674, -1036, 194, -1124, -846, 382, 1242, -812, 1378, -836, -846, 482, 881, 388, 594, 562, 386, -722, 572, -564, 538, -574, 538, -515)
@@ -255,30 +258,6 @@ script = ExtResource("7_d3870")
 
 [node name="HUD" parent="Camera2D/CanvasLayer" instance=ExtResource("1_nrjld")]
 
-[node name="coins" type="Node2D" parent="."]
-position = Vector2(-242, -255)
-
-[node name="coin" parent="coins" instance=ExtResource("10_mehoh")]
-position = Vector2(743, -1632)
-
-[node name="Calice" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(1091, -1403)
-
-[node name="Calice2" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(1744, -1203)
-
-[node name="Calice3" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(1113, -580)
-
-[node name="Calice4" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(1922, -105)
-
-[node name="Calice5" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(25, -313)
-
-[node name="Calice6" parent="coins" instance=ExtResource("11_t7ljs")]
-position = Vector2(497, -89)
-
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="PathUrchin1" type="Path2D" parent="Paths"]
@@ -433,6 +412,18 @@ loop = true
 startFollowPath = true
 speed = 0.1
 
+[node name="Jellyfish5" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(838, 885)
+
+[node name="Jellyfish6" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(1814, 552)
+
+[node name="Jellyfish7" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(1874, 1036)
+
+[node name="Jellyfish8" parent="Ennemies" instance=ExtResource("5_hmd2m")]
+position = Vector2(380, 634)
+
 [node name="Triggers" type="Node2D" parent="."]
 
 [node name="TriggerStart" type="Area2D" parent="Triggers"]
@@ -567,56 +558,351 @@ position = Vector2(746.79, 95.2)
 [node name="Spikodon" parent="Boss1" instance=ExtResource("14_x8df5")]
 unique_name_in_owner = true
 
-[node name="coin2" parent="." instance=ExtResource("10_mehoh")]
-position = Vector2(1446, 1319)
+[node name="tresor" type="Node2D" parent="."]
 
-[node name="coin3" parent="." instance=ExtResource("10_mehoh")]
-position = Vector2(852, 1196)
-
-[node name="coin4" parent="." instance=ExtResource("10_mehoh")]
-position = Vector2(502, 952)
-
-[node name="Jellyfish" parent="." instance=ExtResource("5_hmd2m")]
-position = Vector2(838, 885)
-
-[node name="Jellyfish2" parent="." instance=ExtResource("5_hmd2m")]
-position = Vector2(1814, 552)
-
-[node name="Jellyfish4" parent="." instance=ExtResource("5_hmd2m")]
-position = Vector2(1874, 1036)
-
-[node name="Jellyfish3" parent="." instance=ExtResource("5_hmd2m")]
-position = Vector2(380, 634)
-
-[node name="Coin3" parent="." instance=ExtResource("21_41jfm")]
+[node name="Coin3" parent="tresor" instance=ExtResource("21_41jfm")]
 position = Vector2(-1160, 694)
 
-[node name="Coin4" parent="." instance=ExtResource("22_4lsxx")]
+[node name="Coin4" parent="tresor" instance=ExtResource("22_4lsxx")]
 position = Vector2(-379, 1115)
 
-[node name="Coin5" parent="." instance=ExtResource("22_4lsxx")]
+[node name="Coin5" parent="tresor" instance=ExtResource("22_4lsxx")]
 position = Vector2(-323, 1033)
 
-[node name="Lingot" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(758, 653)
 
-[node name="Lingot2" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot2" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(1718, 422)
 
-[node name="Lingot3" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot3" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(1993, 1144)
 
-[node name="Lingot4" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot4" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(-1128, 503)
 
-[node name="Lingot5" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot5" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(-423, 777)
 
-[node name="Calice" parent="." instance=ExtResource("11_t7ljs")]
+[node name="Calice" parent="tresor" instance=ExtResource("11_t7ljs")]
 position = Vector2(995, 1450)
 
-[node name="Lingot6" parent="." instance=ExtResource("23_pqjdt")]
+[node name="Lingot6" parent="tresor" instance=ExtResource("23_pqjdt")]
 position = Vector2(1770, 1327)
+
+[node name="coin2" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1446, 1319)
+
+[node name="coin3" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(852, 1196)
+
+[node name="coin5" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1115, 1096)
+
+[node name="coin6" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1448, 863)
+
+[node name="coin7" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1684, 1137)
+
+[node name="coin8" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1318, 559)
+
+[node name="coin9" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(814, 777)
+
+[node name="coin10" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(334, 891)
+
+[node name="coin11" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(22, 627)
+
+[node name="coin12" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(-62, 1055)
+
+[node name="coin13" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(-534, 662)
+
+[node name="coin14" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(-661, 395)
+
+[node name="coin15" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(-841, 543)
+
+[node name="coin16" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(-1063, 799)
+
+[node name="coin17" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(477, -529)
+
+[node name="coin18" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(213, -497)
+
+[node name="coin19" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(375, -831)
+
+[node name="coin20" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(160, -1071)
+
+[node name="coin21" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(596, -959)
+
+[node name="coin22" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(59, -799)
+
+[node name="coin23" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1323, -869)
+
+[node name="coin24" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1355, -1259)
+
+[node name="coin25" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1741, -399)
+
+[node name="coin26" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1399, -261)
+
+[node name="coin27" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1345, -385)
+
+[node name="coin28" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(1491, -460)
+
+[node name="coin29" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(866, -394)
+
+[node name="coin30" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(742, -622)
+
+[node name="coin31" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(394, -1026)
+
+[node name="coin32" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(593, -1155)
+
+[node name="coin33" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(728, -1341)
+
+[node name="coin34" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(253, -1346)
+
+[node name="coin35" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(324, -1568)
+
+[node name="coin4" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(502, 952)
+
+[node name="coin" parent="tresor" instance=ExtResource("10_mehoh")]
+position = Vector2(440, -1950)
+
+[node name="Calice2" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(849, -1658)
+
+[node name="Calice3" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(1502, -1458)
+
+[node name="Calice4" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(871, -835)
+
+[node name="Calice5" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(1680, -360)
+
+[node name="Calice6" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(-217, -568)
+
+[node name="Calice7" parent="tresor" instance=ExtResource("11_t7ljs")]
+position = Vector2(255, -344)
+
+[node name="decoration" type="Node2D" parent="."]
+
+[node name="herbe" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(220, -695)
+
+[node name="herbe2" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(185, -726)
+
+[node name="herbe3" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(159, -727)
+
+[node name="herbe4" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(392, -830)
+
+[node name="herbe5" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(199, -986)
+
+[node name="herbe6" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(114, -985)
+
+[node name="herbe7" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(500, -1209)
+
+[node name="herbe8" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(882, -1657)
+
+[node name="herbe9" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(814, -1657)
+
+[node name="herbe14" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(913, -258)
+
+[node name="herbe15" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1445, -251)
+
+[node name="herbe16" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1158, -252)
+
+[node name="herbe17" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(681, -777)
+
+[node name="herbe18" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1317, -697)
+
+[node name="herbe19" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(495, -425)
+
+[node name="herbe20" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(386, 178)
+
+[node name="herbe21" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1102, 180)
+
+[node name="herbe10" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(403, -1942)
+
+[node name="herbe11" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1556, -922)
+
+[node name="herbe12" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1587, -600)
+
+[node name="herbe13" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1236, -427)
+
+[node name="herbe22" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(756, 1397)
+
+[node name="herbe23" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(783, 1398)
+
+[node name="herbe24" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(808, 1399)
+
+[node name="herbe25" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(833, 1400)
+
+[node name="herbe26" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(681, 1215)
+
+[node name="herbe27" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(869, 1195)
+
+[node name="herbe28" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(896, 1449)
+
+[node name="herbe29" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(957, 1450)
+
+[node name="herbe30" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1023, 1450)
+
+[node name="herbe31" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(992, 1451)
+
+[node name="herbe32" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(836, 1199)
+
+[node name="herbe33" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(802, 969)
+
+[node name="herbe34" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(876, 971)
+
+[node name="herbe35" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(584, 1008)
+
+[node name="herbe36" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1233, 1096)
+
+[node name="herbe37" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1179, 1095)
+
+[node name="herbe38" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1551, 1303)
+
+[node name="herbe39" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(1255, 755)
+
+[node name="herbe40" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(693, 621)
+
+[node name="herbe41" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(551, 823)
+
+[node name="herbe42" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(427, 759)
+
+[node name="herbe43" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(182, 869)
+
+[node name="herbe44" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(234, 854)
+
+[node name="herbe45" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-74, 684)
+
+[node name="herbe46" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-417, 679)
+
+[node name="herbe47" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-287, 824)
+
+[node name="herbe48" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-464, 857)
+
+[node name="herbe49" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-538, 664)
+
+[node name="herbe50" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-142, 1000)
+
+[node name="herbe51" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-770, 677)
+
+[node name="herbe52" parent="decoration" instance=ExtResource("24_jlywv")]
+position = Vector2(-932, 678)
+
+[node name="redCrab" parent="decoration" instance=ExtResource("25_y3v3d")]
+position = Vector2(156, -987)
+
+[node name="redCrab2" parent="decoration" instance=ExtResource("25_y3v3d")]
+position = Vector2(1773, -420)
+
+[node name="redCrab3" parent="decoration" instance=ExtResource("25_y3v3d")]
+position = Vector2(1111, -728)
+
+[node name="redCrab4" parent="decoration" instance=ExtResource("25_y3v3d")]
+position = Vector2(-45, -584)
+
+[node name="redCrab5" parent="decoration" instance=ExtResource("25_y3v3d")]
+position = Vector2(250, -1594)
+
+[node name="orangeCrab" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(435, -279)
+
+[node name="orangeCrab2" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(1281, -266)
+
+[node name="orangeCrab3" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(1867, 550)
+
+[node name="orangeCrab4" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(1380, 1001)
+
+[node name="orangeCrab5" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(166, 952)
+
+[node name="orangeCrab6" parent="decoration" instance=ExtResource("26_e0jeq")]
+position = Vector2(-539, 857)
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/TriggerChest" to="." method="_on_trigger_chest_body_entered"]
 [connection signal="body_entered" from="Triggers/TriggerStart" to="." method="_on_trigger_start_body_entered"]

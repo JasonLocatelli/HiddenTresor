@@ -24,7 +24,7 @@ func attributePosWhenRaycastDetectPlayer():
 	if getCollider != null && getCollider.is_in_group("player"):
 		nav.target_position = target.global_position
 		
-func _physics_process(delta):	
+func _physics_process(_delta):	
 	if target:
 		attributePosWhenRaycastDetectPlayer()
 	if nav.is_navigation_finished():

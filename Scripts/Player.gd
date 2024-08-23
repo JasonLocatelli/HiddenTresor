@@ -187,10 +187,10 @@ func play_pick_up_coin():
 	$AudioPickUpCoin.play()
 
 func getMaxSpeed():
-	return max (max_speed,max_speed + (max_speed/2) * GameManager.speedLevel)
+	return max (max_speed,max_speed + (max_speed/2.0) * GameManager.speedLevel)
 
 func getMaxSpeedDown():
-	return max (down_velocity,down_velocity + (down_velocity/4) * GameManager.speedLevel)
+	return max (down_velocity,down_velocity + (down_velocity/4.0) * GameManager.speedLevel)
 
 func getMaxSpeedUp():
 	return max (up_velocity_on_swimming,up_velocity_on_swimming * (GameManager.speedLevel+1))
