@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dpe3kl3r754cx"]
+[gd_scene load_steps=30 format=3 uid="uid://dpe3kl3r754cx"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_vylkw"]
 [ext_resource type="Texture2D" uid="uid://ddd68ewihpcvm" path="res://Sprites/title.png" id="2_fvde3"]
 [ext_resource type="FontFile" uid="uid://b3620iqlduhpn" path="res://font/line_pixel-7.ttf" id="3_ogprb"]
 [ext_resource type="Texture2D" uid="uid://c616hx8emdpue" path="res://Sprites/bandeau1.png" id="4_diblf"]
 [ext_resource type="Texture2D" uid="uid://kk6rcybtq4qs" path="res://Sprites/bandeau2.png" id="5_h5cdg"]
+[ext_resource type="Texture2D" uid="uid://d1tsy202iq36" path="res://Sprites/UI/tuto.png" id="6_fn5pu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oipgk"]
 texture = ExtResource("5_h5cdg")
@@ -70,6 +71,12 @@ texture = ExtResource("4_diblf")
 texture = ExtResource("5_h5cdg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32mbh"]
+texture = ExtResource("4_diblf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btff7"]
+texture = ExtResource("5_h5cdg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rotl8"]
 texture = ExtResource("4_diblf")
 
 [node name="Menu" type="Control"]
@@ -194,6 +201,30 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_s7xrj")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t6u78")
 disabled = true
 text = "OPTIONS"
+icon_alignment = 1
+expand_icon = true
+
+[node name="tuto" type="Button" parent="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxTexture_oipgk")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_emtr5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s7xrj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t6u78")
+text = "TUTO"
 icon_alignment = 1
 expand_icon = true
 
@@ -545,8 +576,43 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_32mbh")
 text = "RETURN"
 icon_alignment = 1
 
+[node name="tuto" type="VBoxContainer" parent="AspectRatioContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/tuto"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_fn5pu")
+expand_mode = 5
+
+[node name="returnTuto" type="Button" parent="AspectRatioContainer/tuto"]
+custom_minimum_size = Vector2(270, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.984314, 0.94902, 0.211765, 1)
+theme_override_fonts/font = ExtResource("3_ogprb")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxTexture_btff7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rotl8")
+text = "Return"
+flat = true
+icon_alignment = 1
+
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer/tuto" to="." method="_on_tuto_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/LoadMenu/HBoxContainer/Game1" to="." method="_on_game_1_pressed"]
@@ -559,3 +625,4 @@ icon_alignment = 1
 [connection signal="pressed" from="AspectRatioContainer/comfirmation/Answer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/comfirmation/Answer/No" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/Credit/ReturnMenu" to="." method="_on_return_menu_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/tuto/returnTuto" to="." method="_on_return_tuto_pressed"]

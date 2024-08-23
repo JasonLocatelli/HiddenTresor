@@ -95,6 +95,7 @@ func _on_game_3_pressed() -> void:
 
 
 func _onFileDeletion() -> void:
+	$AspectRatioContainer/comfirmation/Answer/Yes.grab_focus()
 	$AspectRatioContainer/comfirmation/FileNumber.text = "File "+str(GameManager.gameSlot)
 	$AspectRatioContainer/LoadMenu.visible = false
 	$AspectRatioContainer/comfirmation.visible = true
@@ -104,6 +105,7 @@ func _on_yes_pressed() -> void:
 	SaveAndLoad.deleteDataFromSaveFile(GameManager.gameSlot)
 	AudioManager.playAudioSelect()
 	$AspectRatioContainer/comfirmation.visible = false
+	$AspectRatioContainer/LoadMenu/HBoxContainer4/Return.grab_focus()
 	if (SaveAndLoad.fileExist(1) or SaveAndLoad.fileExist(2) or SaveAndLoad.fileExist(3)) :
 		$AspectRatioContainer/LoadMenu/HBoxContainer/Game1.disabled = !SaveAndLoad.fileExist(1)
 		$AspectRatioContainer/LoadMenu/HBoxContainer2/Game2.disabled = !SaveAndLoad.fileExist(2)
@@ -120,6 +122,7 @@ func _on_yes_pressed() -> void:
 		$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 	
 func _on_no_pressed() -> void:
+	$AspectRatioContainer/LoadMenu/HBoxContainer4/Return.grab_focus()
 	$AspectRatioContainer/comfirmation.visible = false
 	$AspectRatioContainer/LoadMenu.visible = true
 	AudioManager.playAudioSelect()
@@ -151,3 +154,15 @@ func _on_credits_pressed() -> void:
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
 	$AspectRatioContainer/Credit.visible = true
 	AudioManager.playAudioSelect()
+
+
+func _on_tuto_pressed() -> void:
+	$AspectRatioContainer/tuto.visible = true
+	$AspectRatioContainer/tuto/returnTuto.grab_focus()
+	$AspectRatioContainer/VBoxContainer.visible = false
+	
+func _on_return_tuto_pressed() -> void:
+	%tuto.grab_focus()
+	AudioManager.playAudioSelect()
+	$AspectRatioContainer/VBoxContainer.visible = true
+	$AspectRatioContainer/tuto.visible = false
