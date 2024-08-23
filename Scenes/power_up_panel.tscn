@@ -23,8 +23,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -148.0
 offset_top = -34.0
-offset_right = 148.0
-offset_bottom = 34.0
+offset_right = 152.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -32,6 +32,7 @@ size_flags_vertical = 4
 script = ExtResource("1_181ki")
 
 [node name="HbcIcon" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -150,4 +151,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_6y5cp")
 text = "BUY"
 icon_alignment = 1
 
+[connection signal="focus_entered" from="HbcIcon/McPriceBtn/VbcPriceBtn/Button" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="HbcIcon/McPriceBtn/VbcPriceBtn/Button" to="." method="_on_button_pressed"]

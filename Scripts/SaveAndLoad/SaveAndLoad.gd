@@ -25,6 +25,7 @@ func saveData(pPath : String):
 			"dashLevel": GameManager.dashLevel,
 			"swimmingLevel": GameManager.swimmingLevel,
 			"strenghLevel": GameManager.strenghLevel,
+			"resistanceLevel": GameManager.resistanceLevel,
 			"firstTime": GameManager.firstGame
 		}
 	} 
@@ -66,6 +67,8 @@ func extractData(data):
 	GameManager.swimmingLevel = data.playerData.swimmingLevel
 	GameManager.strenghLevel = data.playerData.strenghLevel
 	GameManager.firstGame = data.playerData.firstTime
+	GameManager.dashLevel = data.playerData.dashLevel
+	GameManager.resistanceLevel = data.playerData.resistanceLevel
 	
 func deleteFile(pPath : String):
 	if FileAccess.file_exists(pPath):

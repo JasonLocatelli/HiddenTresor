@@ -5,6 +5,8 @@ var progressbarOxygen : TextureProgressBar
 var animGameOver : AnimationPlayer
 
 @onready var itemOptions = preload("res://Scenes/power_up_panel.tscn")
+# Liste des boutons pour une navigation facile
+var button_list : Array[Button] = []
 
 func _ready():
 	progressbarOxygen = $VBoxContainer/MarginContainer/HBoxContainer/PbOxygen
@@ -53,7 +55,9 @@ func storeVisibility(visibleChange):
 	$store.visible = visibleChange
 	if visibleChange:
 		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_child(0).button.grab_focus()
-	
+		if $store.visible == true:
+			focus_on_first_enabled_button()
+
 func fillStore():
 	for key in PowerDb.UPGRADE :
 		var powerUp = PowerDb.UPGRADE[key]
@@ -61,8 +65,23 @@ func fillStore():
 		option_choice.item = powerUp
 		option_choice.initElement()
 		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(option_choice)
-		
+		var button = option_choice.get_node("HbcIcon/McPriceBtn/VbcPriceBtn/Button")
+		if button is Button:
+			button_list.append(button)
+
 func resetAllButtonActivation():
 	for element in $store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_children() :
 		if element is PanelContainer :
 			element.updateButton()
+
+# Fonction pour se concentrer sur le premier bouton activé
+func focus_on_first_enabled_button():
+	for btn in button_list:
+		if not btn.disabled:
+			btn.grab_focus()
+			break
+
+# Function to handle when a button gains focus
+func _on_button_focus():
+	if(button_list[0].has_focus()):
+		$store/MarginContainer/VBoxContainer/ScrollContainer.scroll_vertical = 0

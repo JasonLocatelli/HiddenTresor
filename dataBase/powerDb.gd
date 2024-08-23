@@ -63,11 +63,11 @@ const UPGRADE = {
 		"priceAugmentationByLv" : 30, 
 		"prerequisite": [],
 	},
-	"STRENGH": {
+	"STRENGHT": {
 		"icon": preload(ICON_PATH+"power.png"),
-		"id":"STRENGH",
-		"displayname": "STRENGH",
-		"details": "Increase claw's strengh.",
+		"id":"STRENGHT",
+		"displayname": "STRENGHT",
+		"details": "Increase claw's strenght.",
 		"maxLevel" : 10,
 		"priceInital" : 20,
 		"priceAugmentationByLv" : 30, 

@@ -66,7 +66,7 @@ func getLevelFromItem(item):
 			return  swimmingLevel
 		PowerDb.UPGRADE.RESISTANCE : 
 			return  resistanceLevel
-		PowerDb.UPGRADE.STRENGH : 
+		PowerDb.UPGRADE.STRENGHT : 
 			return  strenghLevel
 
 func addLevelFromItem(item):
@@ -84,7 +84,7 @@ func addLevelFromItem(item):
 			swimmingLevel += 1
 		PowerDb.UPGRADE.RESISTANCE : 
 			resistanceLevel += 1
-		PowerDb.UPGRADE.STRENGH : 
+		PowerDb.UPGRADE.STRENGHT : 
 			strenghLevel += 1
 
 func resetElement():

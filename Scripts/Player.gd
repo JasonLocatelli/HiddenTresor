@@ -206,10 +206,10 @@ func getMaxDashTime():
 	return max (initTimeDash, initTimeDash * GameManager.dashLevel)
 	
 func getMaxResistance():
-	return max (initResistance,initResistance + GameManager.resistanceLevel + 3)
+	return max (initResistance,initResistance + GameManager.resistanceLevel * 3)
 	
 func getMaxStrengh():
-	return max(damage, damage + GameManager.strenghLevel + 3)
+	return max(damage, damage + GameManager.strenghLevel * 3)
 	
 func playAnimationAttack():
 	$AnimationPlayer.play("attack")
@@ -218,7 +218,6 @@ func _on_range_attack_under_water_body_entered(body):
 	if body.is_in_group("enemy"):
 		touchedTarget = true
 		body.takeDamage(getMaxStrengh())
-
 
 func _on_animated_sprite_2d_2_animation_finished():
 	touchedTarget = false
