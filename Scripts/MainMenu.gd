@@ -30,6 +30,7 @@ func _on_new_game_pressed() -> void:
 	$AspectRatioContainer/LoadMenu/StateGame.text = "CHOOSE FILE TO START A NEW GAME"
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = false
 	$AspectRatioContainer/LoadMenu.visible = true
+	
 
 func _on_load_game_pressed() -> void:
 	gameState = GAME_STATE.LOAD
@@ -68,7 +69,7 @@ func _on_game_1_pressed() -> void:
 	AudioManager.playAudioSelect()
 	if gameState == GAME_STATE.LOAD :
 		SaveAndLoad.loadDataFromSaveFile(GameManager.gameSlot)
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		Loader.change_level("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()  
 		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")
@@ -78,17 +79,16 @@ func _on_game_2_pressed() -> void:
 	AudioManager.playAudioSelect()
 	if gameState == GAME_STATE.LOAD :
 		SaveAndLoad.loadDataFromSaveFile(GameManager.gameSlot)
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		Loader.change_level("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()  
-		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")
 
 func _on_game_3_pressed() -> void:
 	GameManager.gameSlot = 3
 	AudioManager.playAudioSelect()
 	if gameState == GAME_STATE.LOAD :
 		SaveAndLoad.loadDataFromSaveFile(GameManager.gameSlot)
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		Loader.change_level("res://Scenes/game.tscn")
 	elif gameState == GAME_STATE.NEW:
 		GameManager.resetElement()
 		get_tree().change_scene_to_file("res://Scenes/introScene.tscn")

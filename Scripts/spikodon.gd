@@ -129,3 +129,11 @@ func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "default" && !animReverse:
 		$AnimatedSprite2D.play("default", -1.0,true)
 		animReverse = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	visible = false

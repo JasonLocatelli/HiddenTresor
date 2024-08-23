@@ -135,3 +135,11 @@ func makeGas():
 		
 func _on_make_attack_poison_timeout():
 	makeGas()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	visible = false

@@ -106,7 +106,6 @@ func _on_water_body_area_body_entered(body):
 		AudioManager.audioSplash.position.x = body.global_position.x
 		AudioManager.audioSplash.position.y = body.global_position.y
 		GameManager.player.updateAnimation()
-		AudioManager.music_outwater()
 		AudioManager.play_audio_splash()
 
 # Gère les événements lorsqu'un corps sort de la zone d'eau

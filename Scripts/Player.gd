@@ -23,7 +23,7 @@ var enableAttack = false
 # Valeur de vitesse quand le personnage vas en bas
 var down_velocity = 140.0
 # Si <code>true<code> alors il est en vie sinon mort
-var up_velocity_on_swimming = -55.0
+var up_velocity_on_swimming = -140.0
 var isDead = false
 var damage = 2
 var resistance = 0
@@ -46,7 +46,11 @@ func _physics_process(delta):
 			if !enableOxygen:
 				velocity.y += gravity * delta
 			else:
-				velocity.y += gravityOnWater * delta
+				if Input.is_action_pressed("jump") && GameManager.swimmingLevel > 0:
+					velocity.y += getMaxSpeedUp()
+				else:
+					velocity.y += gravityOnWater * delta
+					
 				velocity.y = clamp(velocity.y, -max_speed_fall_on_water, max_speed_fall_on_water)
 		# Gérer le saut du personnage.
 		# Si le personnage est au sol et que le joueur appuie sur la touche de saut, appliquer la vélocité de saut.
@@ -57,8 +61,8 @@ func _physics_process(delta):
 			else:
 				velocity.y = JUMP_VELOCITY_ON_WATER
 		
-		if Input.is_action_pressed("jump") && !is_on_floor() && enableOxygen && GameManager.swimmingLevel > 0:
-			velocity.y = getMaxSpeedUp()
+		#if Input.is_action_pressed("jump") && !is_on_floor() && enableOxygen && GameManager.swimmingLevel > 0:
+			#velocity.y += getMaxSpeedUp()
 		
 		if Input.is_action_just_pressed("attack") && GameManager.clawLevel > 0 && $rangeAttackUnderWater/CollisionShape2D.disabled:
 				$AnimationPlayer.play("attack")
@@ -193,7 +197,7 @@ func getMaxSpeedDown():
 	return max (down_velocity,down_velocity + (down_velocity/4.0) * GameManager.speedLevel)
 
 func getMaxSpeedUp():
-	return max (up_velocity_on_swimming,up_velocity_on_swimming * (GameManager.speedLevel+1))
+	return max (up_velocity_on_swimming,(up_velocity_on_swimming/3) * (GameManager.speedLevel+1))
 
 func getMaxOxygene():
 	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)

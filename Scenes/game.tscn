@@ -138,7 +138,7 @@ size = Vector2(36, 247)
 size = Vector2(37, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rn5n3"]
-size = Vector2(308, 9)
+size = Vector2(272, 9)
 
 [node name="Game" type="Node2D"]
 position = Vector2(24, -16)
@@ -155,10 +155,12 @@ offset_bottom = 1988.0
 color = Color(0.32549, 0.462745, 0.713726, 1)
 
 [node name="WaterBody" parent="." instance=ExtResource("1_2h55a")]
+light_mask = 8
+visibility_layer = 8
 position = Vector2(-1500, -2096)
 distance_between_springs = 30
 spring_number = 200
-depth = 5000
+depth = 4100
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 z_index = 1
@@ -549,7 +551,7 @@ attenuation = 9.0
 panning_strength = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerWaterZone"]
-position = Vector2(499, -2093)
+position = Vector2(494, -2093)
 shape = SubResource("RectangleShape2D_rn5n3")
 
 [node name="Boss1" type="Node2D" parent="."]
