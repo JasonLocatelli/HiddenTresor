@@ -51,7 +51,7 @@ _data = {
 "scrolling": SubResource("Animation_5dsw2")
 }
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("loadingBar", "lbPercentage")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,6 +59,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d5oca")
+loadingBar = NodePath("VBoxContainer2/ProgressBar")
+lbPercentage = NodePath("VBoxContainer2/VBoxContainer/lbPercentage")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -121,6 +123,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -156,6 +159,40 @@ icon_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_kq4r5")
 }
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+offset_right = 104.0
+grow_vertical = 0
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="lbLoading" type="Label" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "LOADING..."
+horizontal_alignment = 1
+
+[node name="lbPercentage" type="Label" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "0 %"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+show_percentage = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -124,3 +124,11 @@ func _on_timer_attack_timeout():
 
 func _on_timer_shoot_timeout():
 	launchBubble()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	visible = false

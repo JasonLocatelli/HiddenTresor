@@ -40,7 +40,7 @@ func _on_btn_restart_pressed():
 # Méthode chargée d'assigner un evènement au bouton "Quit".
 func _on_btn_quit_pressed():
 	AudioManager.playAudioSelect()
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	Loader.change_level("res://Scenes/menu.tscn")
 
 func update_coins_quantity():
 	%numberOfCoins.text = str(GameManager.coins)

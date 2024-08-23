@@ -38,7 +38,7 @@ func music_underwater():
 	$AudioAmbientOutdoor.stop()
 	# Activation de l'effet "sous l'eau"
 	AudioServer.set_bus_effect_enabled(AudioManager.SFX_BUS_ID, 0, true)
-	$AmbientUnderWater.play()
+	#$AmbientUnderWater.play()
 	
 # Méthode chargée de faire la transition vers la musique hors de l'eau
 func music_outwater():

@@ -25,6 +25,8 @@ spline_length = 10
 color = Color(0, 0.568627, 0.921569, 0.831373)
 
 [node name="Water_body_area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="water_body_collision" type="CollisionShape2D" parent="Water_body_area"]
 shape = SubResource("RectangleShape2D_86ynw")

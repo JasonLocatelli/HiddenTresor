@@ -89,7 +89,13 @@ attenuation = 18.0
 panning_strength = 2.0
 bus = &"SFX"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.90735e-06, -4.5)
+scale = Vector2(5.4, 4.25)
+
 [connection signal="body_entered" from="RangeDetect" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="RangeDetect" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_timer_attack_timeout"]
 [connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
