@@ -62,7 +62,6 @@ func fillStore():
 		option_choice.initElement()
 		$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(option_choice)
 		
-	$store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_child(0).button.grab_focus()
 func resetAllButtonActivation():
 	for element in $store/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.get_children() :
 		if element is PanelContainer :

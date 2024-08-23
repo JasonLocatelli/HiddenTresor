@@ -20,6 +20,7 @@ func updateButton():
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = false
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "BUY"
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.focus_mode = FocusMode.FOCUS_ALL
+			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.grab_focus()
 		else :
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.disabled = true
 			$HbcIcon/McPriceBtn/VbcPriceBtn/Button.text = "NOT ENOUGH MONEY"

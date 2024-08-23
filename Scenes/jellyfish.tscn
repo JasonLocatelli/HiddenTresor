@@ -64,7 +64,6 @@ frame_progress = 0.641694
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
-debug_enabled = true
 
 [node name="RangeDetect" type="Area2D" parent="."]
 
