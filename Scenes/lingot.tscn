@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnq6e7yowktum"]
+
+[ext_resource type="Script" path="res://Scripts/lingot.gd" id="1_70d4c"]
+[ext_resource type="Texture2D" uid="uid://drq5thwmj6c82" path="res://Sprites/Treasure/lingot2.png" id="2_eximu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50d37"]
+size = Vector2(27, 14)
+
+[node name="Lingot" type="Area2D"]
+script = ExtResource("1_70d4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eximu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_50d37")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

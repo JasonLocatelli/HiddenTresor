@@ -37,7 +37,6 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
-		print("test")
 		target = body
 		$RayCast2D.target_position = body.global_position
 
@@ -49,11 +48,14 @@ func _on_area_2d_body_exited(body):
 func _on_range_attack_body_entered(body):
 	if body.is_in_group("player"):
 		$TimerAttack.start()
+		target = body
 		body.takeDamage(damage)
 
 func _on_range_attack_body_exited(body):
 	if body.is_in_group("player"):
 		$TimerAttack.stop()
+		target = false
+
 
 func takeDamage(value):
 	life -= value
@@ -64,6 +66,6 @@ func takeDamage(value):
 func dead():
 	queue_free()
 
-
 func _on_timer_attack_timeout():
-	target.takeDamage(damage)
+	if target != null:
+		target.takeDamage(damage)

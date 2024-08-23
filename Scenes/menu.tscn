@@ -497,28 +497,28 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ogprb")
 theme_override_font_sizes/font_size = 30
-text = "JSKEY : Developer and sounds designer"
+text = "JSKEY : Developer and Sound Designer"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="AspectRatioContainer/Credit"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ogprb")
 theme_override_font_sizes/font_size = 30
-text = "NEVEN98 : Developer and Graphiste"
+text = "NEVEN98 : Developer and Graphic Designer"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="AspectRatioContainer/Credit"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ogprb")
 theme_override_font_sizes/font_size = 30
-text = "Choko : Graphiste"
+text = "Choko : Graphic Designer"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="AspectRatioContainer/Credit"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ogprb")
 theme_override_font_sizes/font_size = 30
-text = "Wabon : Graphiste"
+text = "Wabon : Graphic Designer"
 horizontal_alignment = 1
 
 [node name="ReturnMenu" type="Button" parent="AspectRatioContainer/Credit"]

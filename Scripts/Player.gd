@@ -193,7 +193,7 @@ func getMaxSpeedDown():
 	return max (down_velocity,down_velocity + (down_velocity/4) * GameManager.speedLevel)
 
 func getMaxSpeedUp():
-	return max (up_velocity_on_swimming,(up_velocity_on_swimming * GameManager.speedLevel))
+	return max (up_velocity_on_swimming,up_velocity_on_swimming * (GameManager.speedLevel+1))
 
 func getMaxOxygene():
 	return max(initTimerOxygen, initTimerOxygen + initTimerOxygen * GameManager.oxygeneLevel)

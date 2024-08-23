@@ -141,6 +141,7 @@ func _on_delete_save_3_pressed() -> void:
 
 func _on_return_menu_pressed() -> void:
 	$"%Credits".grab_focus()
+	AudioManager.playAudioSelect()
 	$AspectRatioContainer/VBoxContainer/MarginContainer/MainMenu.visible = true
 	$AspectRatioContainer/Credit.visible = false
 
