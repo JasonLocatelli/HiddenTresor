@@ -83,8 +83,8 @@ func takeDamage(value):
 	if life <= 0:
 		dead()
 	else:
-		AudioManager.playAudioSlash()
-	print(life)
+		AudioManager.playAudioDmgBoss()
+		
 	var calculPercent25 = life * (25.0/100.0)
 	if life > calculPercent25 && life <= initLife/2.0:
 		AudioManager.editPitchAudioMusicBoss1(1.1)
@@ -124,11 +124,3 @@ func _on_timer_attack_timeout():
 
 func _on_timer_shoot_timeout():
 	launchBubble()
-
-
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	visible = true
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	visible = false

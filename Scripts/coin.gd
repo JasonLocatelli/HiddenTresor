@@ -9,11 +9,3 @@ func _on_body_entered(body):
 		GameManager.add_coins(coinsToAdd)
 		AudioManager.play_pick_up_coin()
 		queue_free()
-
-
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	visible = true
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	visible = false

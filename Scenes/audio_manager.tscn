@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b7jh3ypa2rla3"]
+[gd_scene load_steps=19 format=4 uid="uid://b7jh3ypa2rla3"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y6pe1"]
 [ext_resource type="AudioStream" uid="uid://db7ob0n77b5ad" path="res://SFX/Musics/Jason_Locatelli_Discovery.mp3" id="2_yhoks"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bsrc571eih56g" path="res://SFX/Sounds/442769__qubodup__sword-hit.mp3" id="12_4very"]
 [ext_resource type="AudioStream" uid="uid://12epgndgsi1f" path="res://SFX/Sounds/484184__sieuamthanh__duoi-mat-bien.mp3" id="13_sskef"]
 [ext_resource type="AudioStream" uid="uid://bx1hp68o2e7e7" path="res://SFX/Musics/Hidden_Treasure_Boss1.mp3" id="14_nyu2b"]
+[ext_resource type="AudioStream" uid="uid://bmhvlndh1q0jx" path="res://SFX/Sounds/458867__raclure__damage-sound-effect.mp3" id="16_fmwtp"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_1r2sy"]
 stream_count = 3
@@ -83,3 +84,8 @@ volume_db = -40.0
 [node name="AudioWin" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_m7pua")
 volume_db = -10.0
+
+[node name="AudioDmgBoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_fmwtp")
+volume_db = -10.0
+bus = &"SFX"

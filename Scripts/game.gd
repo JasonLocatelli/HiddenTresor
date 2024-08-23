@@ -16,6 +16,7 @@ func _ready():
 	GameManager.doorEndBoss1 = $"%EndDoorBoss1"
 	GameManager.doorEndBoss2 = $"%EndDoorBoss2"
 	GameManager.canOpenChest = false
+	GameManager.add_coins(999)
 
 	#GameManager.add_coins(1000)
 # Méthode chargée d'activer le bloquage du passage par les oursins.
@@ -59,7 +60,7 @@ func _on_trigger_boss_2_body_entered(body):
 
 func _on_trigger_chest_body_entered(body):
 	if body.is_in_group("player") && GameManager.canOpenChest:
-		print("Afficher credit")
+		get_tree().change_scene_to_file("res://Scenes/endScene.tscn")
 		
 
 func _on_trigger_urchin_10_body_entered(body):

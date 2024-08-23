@@ -192,3 +192,6 @@ func setVolumeAudioProcedural(value):
 
 func playAudioWin():
 	$AudioWin.play()
+
+func playAudioDmgBoss():
+	$AudioDmgBoss.play()

@@ -174,10 +174,6 @@ bus = &"SFX"
 
 [node name="TimerMakeAttackPoison" type="Timer" parent="."]
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1, -1)
-scale = Vector2(3, 2.7)
-
 [connection signal="body_entered" from="RangeDetect" to="." method="_on_range_detect_body_entered"]
 [connection signal="body_exited" from="RangeDetect" to="." method="_on_range_detect_body_exited"]
 [connection signal="timeout" from="TimerWaitToMove" to="." method="_on_timer_wait_to_move_timeout"]
@@ -189,5 +185,3 @@ scale = Vector2(3, 2.7)
 [connection signal="timeout" from="TimerPuffy" to="." method="_on_timer_puffy_timeout"]
 [connection signal="timeout" from="TimerVulnerable" to="." method="_on_timer_vulnerable_timeout"]
 [connection signal="timeout" from="TimerMakeAttackPoison" to="." method="_on_make_attack_poison_timeout"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
